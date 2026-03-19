@@ -11,7 +11,13 @@
 }
 
 @layer base {
-
+  h1{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: calc(1.75 / 1.125);
+    letter-spacing: 0.025em;
+    margin-bottom: 8px;
+  }
 }
 
 @layer components {

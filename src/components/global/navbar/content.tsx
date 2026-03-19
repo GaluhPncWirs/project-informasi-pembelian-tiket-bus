@@ -6,7 +6,7 @@ export default function Navbar() {
       <img src="/images/global/logo.png" alt="Logo" className="size-20" />
       <ul className="flex items-center justify-around text-lg font-medium gap-10">
         <li>
-          <Link to="/LandingPage">Home</Link>
+          <Link to="/LandingPage">Beranda</Link>
         </li>
         <li>
           <Link to="/daftarBus">Daftar Bus</Link>
