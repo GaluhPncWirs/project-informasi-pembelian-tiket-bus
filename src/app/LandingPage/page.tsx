@@ -1,7 +1,12 @@
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import RootLayout from "../../layout/rootLayout/content";
-import { MapPin } from "lucide-react";
+import {
+  MapPin,
+  SlidersHorizontal,
+  TicketPercent,
+  Verified,
+} from "lucide-react";
 import RutePopulerLayout from "../../components/local/rutePopulerLayout/content";
 
 export default function LandingPage() {
@@ -46,6 +51,55 @@ export default function LandingPage() {
             <RutePopulerLayout rute="Bandung - Ciamis" harga="150.000" />
             <RutePopulerLayout rute="Medan - Aceh" harga="650.000" />
             <RutePopulerLayout rute="Solo - Trenggalek" harga="400.000" />
+          </div>
+        </div>
+        <div className="mt-8">
+          <h1 className="text-2xl">Mitra Operator</h1>
+          <div className="flex items-center justify-around mt-5">
+            <img src="/images/global/logo.png" alt="Logo" className="w-1/5" />
+            <p className="w-1/2 text-justify text-lg">
+              Satu-satunya mitra operator untuk rute ini menawarkan kenyamanan
+              dan keandalan armada bus terbaru. Armanda PO nusantara mas selalu
+              siap melayani perjalanan anda dengan layanan terbaik.
+            </p>
+            <Button className="text-white p-5 text-base w-1/5">
+              Lihat Informasi Detail
+            </Button>
+          </div>
+        </div>
+        <div className="mt-8">
+          <h1 className="text-2xl">Kenapa Memilih siBusTiket?</h1>
+          <div className="grid grid-cols-3 gap-5 mt-5">
+            <div className="border border-slate-400 rounded-md p-3">
+              <SlidersHorizontal className="size-12 mb-2" />
+              <h2 className="font-semibold text-lg tracking-wide">
+                Beragam pilihan bus
+              </h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Exercitationem eligendi et velit cumque consequatur eius!
+              </p>
+            </div>
+            <div className="border border-slate-400 rounded-md p-3">
+              <TicketPercent className="size-12 mb-2" />
+              <h2 className="font-semibold text-lg tracking-wide">
+                Harga Termurah
+              </h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Exercitationem eligendi et velit cumque consequatur eius!
+              </p>
+            </div>
+            <div className="border border-slate-400 rounded-md p-3">
+              <Verified className="size-12 mb-2" />
+              <h2 className="font-semibold text-lg tracking-wide">
+                Sertifikasi Mitra Terverifikasi
+              </h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Exercitationem eligendi et velit cumque
+              </p>
+            </div>
           </div>
         </div>
       </RootLayout>

@@ -18,6 +18,11 @@
     letter-spacing: 0.025em;
     margin-bottom: 8px;
   }
+
+  li >:hover {
+    text-decoration: underline;
+    color: #1A237E;
+  }
 }
 
 @layer components {
