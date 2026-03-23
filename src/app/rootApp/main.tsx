@@ -1,23 +1,28 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import LandingPage from "../LandingPage/page.tsx";
 import {
   createBrowserRouter,
   redirect,
   RouterProvider,
 } from "react-router-dom";
+import Beranda from "../Beranda/page.tsx";
+import DaftarBus from "../DaftarBus/page.tsx";
 
 const root = createRoot(document.getElementById("root")!);
 
 const router = createBrowserRouter([
   {
     path: "/",
-    loader: () => redirect("/LandingPage"),
+    loader: () => redirect("/Beranda"),
   },
   {
-    path: "/LandingPage",
-    element: <LandingPage />,
+    path: "/Beranda",
+    element: <Beranda />,
+  },
+  {
+    path: "/DaftarBus",
+    element: <DaftarBus />,
   },
 ]);
 
