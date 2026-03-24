@@ -34,19 +34,27 @@ export default function Footer() {
             <ul className="flex flex-col gap-1.5">
               <li>
                 <Home className="size-5 inline-block mr-2" />
-                <Link to="#">Beranda</Link>
+                <Link to="#" className="texsClickable">
+                  Beranda
+                </Link>
               </li>
               <li>
                 <ClipboardList className="size-5 inline-block mr-2" />
-                <Link to="#">Daftar Bus</Link>
+                <Link to="#" className="texsClickable">
+                  Daftar Bus
+                </Link>
               </li>
               <li>
                 <Route className="size-5 inline-block mr-2" />
-                <Link to="#">Rute Populer</Link>
+                <Link to="#" className="texsClickable">
+                  Rute Populer
+                </Link>
               </li>
               <li>
                 <Building2 className="size-5 inline-block mr-2" />
-                <Link to="#">Tentang</Link>
+                <Link to="#" className="texsClickable">
+                  Tentang
+                </Link>
               </li>
             </ul>
           </div>
@@ -55,23 +63,33 @@ export default function Footer() {
             <ul className="flex flex-col gap-1.5">
               <li>
                 <MessageCircleQuestion className="size-5 inline-block mr-2" />
-                <Link to="#">FAQ</Link>
+                <Link to="#" className="texsClickable">
+                  FAQ
+                </Link>
               </li>
               <li>
                 <HelpingHand className="size-5 inline-block mr-2" />
-                <Link to="#">Pusat Bantuan</Link>
+                <Link to="#" className="texsClickable">
+                  Pusat Bantuan
+                </Link>
               </li>
               <li>
                 <Lightbulb className="size-5 inline-block mr-2" />
-                <Link to="#">Panduan Pemesanan</Link>
+                <Link to="#" className="texsClickable">
+                  Panduan Pemesanan
+                </Link>
               </li>
               <li>
                 <ScrollText className="size-5 inline-block mr-2" />
-                <Link to="#">Syarat & Ketentuan</Link>
+                <Link to="#" className="texsClickable">
+                  Syarat & Ketentuan
+                </Link>
               </li>
               <li>
                 <ShieldCheck className="size-5 inline-block mr-2" />
-                <Link to="#">Kebijakan Privasi</Link>
+                <Link to="#" className="texsClickable">
+                  Kebijakan Privasi
+                </Link>
               </li>
             </ul>
           </div>
@@ -84,9 +102,7 @@ export default function Footer() {
               </li>
               <li>
                 <Mail className="size-5 inline-block mr-2" />
-                <span>
-                  Email : <Link to="#">info@siBusTiket.com</Link>
-                </span>
+                <span>Email : info@siBusTiket.com</span>
               </li>
               <li>
                 <MapPin className="size-5 inline-block mr-2" />
@@ -99,15 +115,21 @@ export default function Footer() {
             <ul className="flex flex-col gap-1.5">
               <li className="flex items-center gap-2">
                 <Instagram className="size-5" />
-                <Link to="#">@SiBusTiket_id</Link>
+                <Link to="#" className="texsClickable">
+                  @SiBusTiket_id
+                </Link>
               </li>
               <li className="flex items-center gap-2">
                 <Facebook className="size-5" />
-                <Link to="#">@SiBusTiket_id</Link>
+                <Link to="#" className="texsClickable">
+                  @SiBusTiket_id
+                </Link>
               </li>
               <li className="flex items-center gap-2">
                 <XIcon className="size-5" />
-                <Link to="#">@SiBusTiket_id</Link>
+                <Link to="#" className="texsClickable">
+                  @SiBusTiket_id
+                </Link>
               </li>
             </ul>
           </div>

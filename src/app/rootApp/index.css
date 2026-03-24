@@ -6,11 +6,11 @@
 @custom-variant dark (&:is(.dark *));
 
 @layer utilities {
-  .bg-primary {
+  .color-primary {
     background-color: #1A237E;
   }
 
-  .bg-secondary {
+  .color-secondary {
     background-color: #2E7D32;
   }
 }
@@ -24,7 +24,7 @@
     margin-bottom: 8px;
   }
 
-  li >:hover {
+  li > .texsClickable:hover {
     text-decoration: underline;
     color: #1A237E;
   }
@@ -33,9 +33,6 @@
   }
   body {
     @apply bg-background text-foreground;
-  }
-  html {
-    @apply font-sans;
   }
 }
 

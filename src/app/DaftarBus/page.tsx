@@ -4,6 +4,7 @@ import { Slider } from "../../components/ui/slider";
 import RootLayout from "../../layout/rootLayout/content";
 import { Checkbox } from "../../components/ui/checkbox";
 import PilihTiketBus from "../../components/local/pilihTiketBus/content";
+import { Link } from "react-router-dom";
 
 export default function DaftarBus() {
   const MIN_PRICE = 50_000;
@@ -95,19 +96,53 @@ export default function DaftarBus() {
             </div>
           </div>
           <div className="bg-white rounded-md p-5 w-3/4 shadow-lg">
-            <h1>Sort</h1>
-            <div className="flex items-center justify-around mt-3 bg-slate-300 py-3 rounded-lg">
-              <h2 className="bg-primary text-white py-2 px-4 rounded-lg">
-                Harga Termurah
-              </h2>
-              <h2>Harga Tertinggi</h2>
-              <h2>Keberangkatan Paling Awal</h2>
+            <div className="flex items-center mt-3 gap-2">
+              <h2 className="text-lg font-semibold tracking-wide">Sort:</h2>
+              <div className="flex items-center justify-around w-full">
+                <Link
+                  to="#"
+                  className="color-primary text-white py-2 px-4 rounded-lg"
+                >
+                  Harga Termurah
+                </Link>
+                <Link to="#">Harga Tertinggi</Link>
+                <Link to="#">Keberangkatan Paling Awal</Link>
+              </div>
             </div>
-            <div className="mt-7 grid grid-cols-1 gap-5">
-              <PilihTiketBus />
-              <PilihTiketBus />
-              <PilihTiketBus />
-              <PilihTiketBus />
+            <div className="mt-5 grid grid-cols-1 gap-5">
+              <PilihTiketBus
+                srcImg="images/local/daftarBus/bus_double_decker.webp"
+                typeBus="Double Decker"
+                rute="Jakarta - Bandung"
+                waktuBerangkat="18:00"
+                waktuEstimasi="1 jam"
+                waktuKeberangkatan="malam"
+                tglBerangkat="15 April 2026"
+                harga="150.000"
+                detailTiket="#"
+              />
+              <PilihTiketBus
+                srcImg="images/local/daftarBus/bus_double_decker.webp"
+                typeBus="Bus Original"
+                rute="Jakarta - Sumedang"
+                waktuBerangkat="09:00"
+                waktuEstimasi="2 jam 40 menit"
+                waktuKeberangkatan="pagi"
+                tglBerangkat="25 April 2026"
+                harga="350.000"
+                detailTiket="#"
+              />
+              <PilihTiketBus
+                srcImg="images/local/daftarBus/bus_double_decker.webp"
+                typeBus="Bus Original"
+                rute="Jakarta - Sumedang"
+                waktuBerangkat="09:00"
+                waktuEstimasi="2 jam 40 menit"
+                waktuKeberangkatan="pagi"
+                tglBerangkat="25 April 2026"
+                harga="350.000"
+                detailTiket="#"
+              />
             </div>
           </div>
         </div>

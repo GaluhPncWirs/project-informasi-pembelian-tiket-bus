@@ -18,7 +18,9 @@ export default function CariJadwalBus() {
         <div className="basis-1/3">
           <Input type="date" placeholder="Pilih tanggal keberangkatan" />
         </div>
-        <Button className="text-white px-5 text-base">Cari</Button>
+        <Button className="text-white px-7 text-base color-primary">
+          Cari
+        </Button>
       </div>
     </>
   );

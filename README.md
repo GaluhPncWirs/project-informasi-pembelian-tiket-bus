@@ -1,73 +1,75 @@
-# React + TypeScript + Vite
+# Project Name: Aplikasi React JS Modern
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Deskripsi singkat proyek Anda di sini. Misalnya: "Aplikasi berbasis React.js yang fokus pada antarmuka pengguna yang bersih, minimalis, dan responsif untuk memberikan pengalaman terbaik bagi pengguna."
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Fitur Utama
 
-## React Compiler
+- **UI/UX Minimalis:** Menggunakan layout kartu (card-based) dengan ruang kosong (whitespace) yang proporsional.
+- **Navigasi Cepat:** Integrasi dengan `react-router-dom` untuk perpindahan halaman tanpa reload.
+- **Komponen Modular:** Struktur kode yang rapi dan mudah dikelola.
+- **Desain Responsif:** Tampilan optimal di berbagai ukuran layar (Mobile, Tablet, Desktop).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Teknologi yang Digunakan
 
-## Expanding the ESLint configuration
+- **React.js** - Library utama untuk membangun antarmuka.
+- **React Router** - Library untuk manajemen routing aplikasi.
+- **CSS / Framework UI** - Digunakan untuk styling modern dan minimalis.
+- **Lucide React / Heroicons** - (Opsional) Untuk ikon yang bersih.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Memulai (Getting Started)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Ikuti langkah-langkah di bawah ini untuk menjalankan proyek ini di PC Anda.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 📋 Prasyarat
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Pastikan Anda sudah menginstal:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- [Node.js](https://nodejs.org/) (Versi 14.x atau yang terbaru)
+- npm atau yarn
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 🔧 Instalasi & Penggunaan
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1.  **Clone Repositori**
+
+    ```bash
+    git clone [https://github.com/username/nama-repo.git](https://github.com/username/nama-repo.git)
+    cd nama-repo
+    ```
+
+2.  **Instal Dependensi**
+
+    ```bash
+    npm install
+    # atau jika menggunakan yarn
+    yarn install
+    ```
+
+3.  **Jalankan Server Pengembangan**
+
+    ```bash
+    npm start
+    # atau
+    yarn start
+    ```
+
+    Aplikasi akan berjalan di [http://localhost:3000](http://localhost:3000).
+
+4.  **Build untuk Produksi**
+    Jika ingin membuat versi siap sebar (deploy):
+    ```bash
+    npm run build
+    ```
+
+## 📂 Struktur Folder
+
+```text
+src/
+├── assets/       # Gambar, ikon, dan file statis
+├── components/   # Komponen UI (Button, Card, Navbar)
+├── pages/        # Halaman utama (Home, Search, Details)
+├── utils/        # Fungsi bantuan atau konstanta
+├── App.js        # Konfigurasi Route dan Layout Utama
+└── index.js      # Entry point aplikasi
 ```

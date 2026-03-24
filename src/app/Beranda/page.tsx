@@ -15,7 +15,7 @@ export default function Beranda() {
         </div>
       </header>
       <RootLayout>
-        <div className="bg-white p-5 w-3/4 mx-auto -mt-16 rounded-md shadow-lg relative">
+        <div className="bg-white p-5 w-4/5 mx-auto -mt-16 rounded-md shadow-lg relative">
           <CariJadwalBus />
         </div>
         <div className="mt-8">
@@ -37,15 +37,15 @@ export default function Beranda() {
         <div className="mt-8">
           <h1 className="text-2xl">Mitra Operator</h1>
           <div className="flex items-center justify-around mt-5">
-            <img src="/images/global/logo.png" alt="Logo" className="w-1/5" />
-            <p className="w-1/2 text-justify text-lg">
+            <img src="/images/global/logo.png" alt="Logo" className="w-1/6" />
+            <p className="w-1/2 text-justify">
               Satu-satunya mitra operator untuk rute ini menawarkan kenyamanan
               dan keandalan armada bus terbaru. Armanda PO nusantara mas selalu
               siap melayani perjalanan anda dengan layanan terbaik.
             </p>
             <Link
               to="/Tentang"
-              className="py-2 px-5 rounded-md text-white bg-primary"
+              className="py-2 px-5 rounded-md text-white color-primary"
             >
               Lihat Informasi Detail
             </Link>

@@ -1,25 +1,72 @@
 import { Link } from "react-router-dom";
 
-export default function PilihTiketBus() {
+type PropsPilihTiketBus = {
+  srcImg: string;
+  typeBus: string;
+  rute: string;
+  waktuBerangkat: string;
+  waktuEstimasi: string;
+  waktuKeberangkatan: string;
+  tglBerangkat: string;
+  harga: string;
+  detailTiket: string;
+};
+
+export default function PilihTiketBus(props: PropsPilihTiketBus) {
+  const {
+    srcImg,
+    typeBus,
+    rute,
+    waktuBerangkat,
+    waktuEstimasi,
+    waktuKeberangkatan,
+    tglBerangkat,
+    harga,
+    detailTiket,
+  } = props;
   return (
-    <div className="flex items-center gap-3 px-3 py-4 bg-slate-200 rounded-md">
-      <img
-        src="images/local/daftarBus/bus_double_decker.webp"
-        alt="Bus"
-        className="rounded-md w-1/3 object-cover"
-      />
-      <div>
-        <h1>Bis Double Decker</h1>
-        <h3 className="font-semibold tracking-wide">Jakarta - Bandung</h3>
-        <h3>19:00 Estimasi Perjalanan 25 Menit</h3>
-        <h4 className="mt-1.5 font-semibold tracking-wide">Malam</h4>
+    <div className="flex flex-col md:flex-row items-stretch gap-6 p-4 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+      <div className="w-full md:w-1/4">
+        <img
+          src={srcImg}
+          alt="Bus"
+          className="rounded-lg w-full h-full object-cover min-h-30"
+        />
       </div>
-      <div className="bg-white w-0.5 rounded-md h-32" />
-      <div>
-        <h2 className="text-end mb-3">15 April 2026</h2>
-        <h3 className="font-semibold">Harga</h3>
-        <h1 className="text-2xl text-[#2E7D32] mb-3">Rp 100.000</h1>
-        <Link to="#" className="bg-primary py-1.5 px-8 text-white rounded-md">
+
+      <div className="flex-1 flex flex-col justify-center border-b md:border-b-0 md:border-r border-slate-200 pb-4 md:pb-0 md:pr-6">
+        <span className="text-sm font-bold uppercase tracking-wider text-[#2E7D32] mb-1">
+          {typeBus}
+        </span>
+        <h3 className="text-lg font-bold text-slate-800">{rute}</h3>
+
+        <div className="mt-2 space-y-1 text-sm text-slate-600">
+          <div className="flex items-center gap-2">
+            <span className="font-semibold text-slate-900">
+              {waktuBerangkat}
+            </span>
+            <span className="text-slate-400 text-xs">|</span>
+            <span>{waktuEstimasi}</span>
+          </div>
+          <p className="flex items-center gap-1.5 mt-2">
+            <span className="px-2 py-0.5 bg-slate-100 rounded text-[10px] font-bold uppercase">
+              {waktuKeberangkatan}
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <div className="w-full md:w-1/4 flex flex-col justify-between text-right">
+        <div>
+          <p className="text-xs text-slate-500 mb-1">{tglBerangkat}</p>
+          <p className="text-xs font-medium text-slate-400">Harga mulai dari</p>
+          <p className="text-2xl font-bold text-[#2E7D32]">Rp {harga}</p>
+        </div>
+
+        <Link
+          to={detailTiket}
+          className="color-primary text-white text-center py-2 px-4 rounded-lg font-semibold hover:bg-blue-900 transition-colors shadow-sm"
+        >
           Lihat Detail
         </Link>
       </div>
