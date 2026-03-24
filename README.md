@@ -65,11 +65,13 @@ Pastikan Anda sudah menginstal:
 ## 📂 Struktur Folder
 
 ```text
+public/images/
+├── global/       # Untuk Gambar yang dipakai untuk semua halaman
+├── local/        # Untuk Gambar yang dipakai dengan halaman yang spesifik
+
 src/
-├── assets/       # Gambar, ikon, dan file statis
 ├── components/   # Komponen UI (Button, Card, Navbar)
-├── pages/        # Halaman utama (Home, Search, Details)
-├── utils/        # Fungsi bantuan atau konstanta
-├── App.js        # Konfigurasi Route dan Layout Utama
-└── index.js      # Entry point aplikasi
+├── app/          # Halaman utama pada sistem (Home, Search, Details)
+├── layout/       # Untuk menyimpan beberapa layout yang bisa dipakai berulang kali
+├── lib/           # Fungsi bantuan atau konstanta
 ```
