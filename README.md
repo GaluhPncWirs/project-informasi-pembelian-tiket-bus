@@ -73,5 +73,5 @@ src/
 ├── components/   # Komponen UI (Button, Card, Navbar)
 ├── app/          # Halaman utama pada sistem (Home, Search, Details)
 ├── layout/       # Untuk menyimpan beberapa layout yang bisa dipakai berulang kali
-├── lib/           # Fungsi bantuan atau konstanta
+├── lib/          # Fungsi bantuan atau konstanta
 ```

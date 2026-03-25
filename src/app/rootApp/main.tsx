@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Beranda from "../Beranda/page.tsx";
 import DaftarBus from "../DaftarBus/page.tsx";
+import DetailTiketBus from "../DaftarBus/DetailTiketBus/page.tsx";
 
 const root = createRoot(document.getElementById("root")!);
 
@@ -22,7 +23,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/DaftarBus",
-    element: <DaftarBus />,
+    children: [
+      {
+        index: true,
+        element: <DaftarBus />,
+      },
+      {
+        path: "Detail/:idTiketBus",
+        element: <DetailTiketBus />,
+      },
+    ],
   },
 ]);
 

@@ -15,10 +15,10 @@ export default function Beranda() {
         </div>
       </header>
       <RootLayout>
-        <div className="bg-white p-5 w-4/5 mx-auto -mt-16 rounded-md shadow-lg relative">
+        <div className="bg-white p-5 w-4/5 mx-auto -mt-48 rounded-md shadow-lg relative">
           <CariJadwalBus />
         </div>
-        <div className="mt-8">
+        <div className="mt-10">
           <h1 className="text-2xl">Rute Populer</h1>
           <p className="text-justify">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
