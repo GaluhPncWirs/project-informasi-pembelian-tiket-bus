@@ -21,14 +21,14 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="bg-blue-100">
-      <div className="w-10/12 mx-auto">
-        <div className="grid grid-cols-3 gap-y-10 gap-x-5 pt-10 pb-5">
-          <div className="flex items-center gap-x-3">
-            <img src="/images/global/logo.png" alt="Logo" className="size-40" />
-            <div className="h-4/5 w-1 bg-slate-700 rounded-lg" />
-            <h1>Portal Informasi Tiket Bus Terpercaya</h1>
-          </div>
+      <div className="w-11/12 mx-auto pt-10 md:w-10/12">
+        <div className="flex items-center gap-x-4">
+          <img src="/images/global/logo.png" alt="Logo" className="size-40" />
+          <div className="h-32 w-0.5 bg-slate-500 rounded-lg" />
+          <h1>Portal Informasi Tiket Bus Terpercaya</h1>
+        </div>
 
+        <div className="grid gap-y-10 gap-x-5 py-5 grid-cols-2 md:grid-cols-3">
           <div>
             <h1>Navigasi Utama</h1>
             <ul className="flex flex-col gap-1.5">
@@ -41,7 +41,7 @@ export default function Footer() {
               <li>
                 <ClipboardList className="size-5 inline-block mr-2" />
                 <Link to="#" className="texsClickable">
-                  Daftar Bus
+                  Daftar Tiket
                 </Link>
               </li>
               <li>

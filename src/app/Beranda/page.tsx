@@ -8,24 +8,24 @@ export default function Beranda() {
   return (
     <>
       <header className="heroSection">
-        <div className="absolute bottom-0 h-full flex items-center mx-16">
-          <h1 className="text-4xl font-bold tracking-wide max-w-sm">
+        <div className="absolute bottom-0 h-full flex items-center mx-7 md:mx-16">
+          <h1 className="text-4xl font-bold tracking-wider max-w-sm">
             Temukan Informasi Harga Tiket Bus dengan Mudah
           </h1>
         </div>
       </header>
       <RootLayout>
-        <div className="bg-white p-5 w-4/5 mx-auto -mt-48 rounded-md shadow-lg relative">
+        <div className="bg-white p-5 mx-auto -mt-48 rounded-md shadow-lg relative md:w-10/12">
           <CariJadwalBus />
         </div>
-        <div className="mt-10">
+        <div className="mt-8">
           <h1 className="text-2xl">Rute Populer</h1>
           <p className="text-justify">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
             veniam dignissimos ab asperiores esse recusandae aperiam dolores
             necessitatibus facere.
           </p>
-          <div className="grid grid-cols-3 gap-4 mt-5">
+          <div className="grid gap-4 mt-5 grid-cols-2 md:grid-cols-3">
             <RutePopulerLayout rute="Jakarta - Bandung" harga="250.000" />
             <RutePopulerLayout rute="Surabaya - Malang" harga="500.000" />
             <RutePopulerLayout rute="Palembang - Lampung" harga="350.000" />
@@ -36,9 +36,13 @@ export default function Beranda() {
         </div>
         <div className="mt-8">
           <h1 className="text-2xl">Mitra Operator</h1>
-          <div className="flex items-center justify-around mt-5">
-            <img src="/images/global/logo.png" alt="Logo" className="w-1/6" />
-            <p className="w-1/2 text-justify">
+          <div className="flex flex-col items-center md:flex-row md:justify-around mt-5 gap-y-5">
+            <img
+              src="/images/global/logo.png"
+              alt="Logo"
+              className="w-1/3 md:w-1/6"
+            />
+            <p className="md:w-1/2 text-justify">
               Satu-satunya mitra operator untuk rute ini menawarkan kenyamanan
               dan keandalan armada bus terbaru. Armanda PO nusantara mas selalu
               siap melayani perjalanan anda dengan layanan terbaik.
@@ -53,7 +57,7 @@ export default function Beranda() {
         </div>
         <div className="mt-8">
           <h1 className="text-2xl">Kenapa Memilih siBusTiket?</h1>
-          <div className="grid grid-cols-3 gap-5 mt-5">
+          <div className="grid grid-cols-1 gap-5 mt-5 md:grid-cols-3">
             <div className="border border-slate-400 rounded-md p-3">
               <SlidersHorizontal className="size-12 mb-2" />
               <h2 className="font-semibold text-lg tracking-wide">

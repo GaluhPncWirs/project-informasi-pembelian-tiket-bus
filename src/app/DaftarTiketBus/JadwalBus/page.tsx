@@ -23,8 +23,8 @@ export default function JadwalBus() {
       <div className="bg-white p-5 mx-auto rounded-md shadow-lg">
         <CariJadwalBus />
       </div>
-      <div className="mt-8 flex gap-5">
-        <div className="bg-white rounded-md p-5 w-1/4 shadow-lg h-fit">
+      <div className="mt-8 flex gap-5 flex-col md:flex-row">
+        <div className="bg-white rounded-md p-5 shadow-lg h-fit w-full md:w-1/4">
           <h1>Filter Berdasarkan:</h1>
           <div className="flex flex-col gap-y-3">
             <div>
@@ -35,7 +35,7 @@ export default function JadwalBus() {
                 step={50_000}
                 value={[rangePriceValue]}
                 onValueChange={(value) => setRangePriceValue(value[0])}
-                className="max-w-xs my-3"
+                className="my-3"
               />
               <h2>{formatRupiah(rangePriceValue)}</h2>
             </div>
@@ -94,18 +94,30 @@ export default function JadwalBus() {
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-md p-5 w-3/4 shadow-lg">
-          <div className="flex items-center mt-3 gap-2">
-            <h2 className="text-lg font-semibold tracking-wide">Sort:</h2>
-            <div className="flex items-center justify-around w-full">
+        <div className="bg-white rounded-md p-5 shadow-lg w-full md:w-3/4">
+          <div className="flex flex-col mt-3 gap-3 md:flex-row md:items-center">
+            <h2 className="text-lg font-semibold tracking-wide shrink-0">
+              Sort:
+            </h2>
+            <div className="flex items-center gap-3 overflow-x-auto pb-2 w-full md:pb-0 md:overflow-visible">
               <Link
                 to="#"
-                className="color-primary text-white py-2 px-4 rounded-lg"
+                className="color-primary text-white py-2 px-4 rounded-lg whitespace-nowrap text-sm md:text-base"
               >
                 Harga Termurah
               </Link>
-              <Link to="#">Harga Tertinggi</Link>
-              <Link to="#">Keberangkatan Paling Awal</Link>
+              <Link
+                to="#"
+                className="whitespace-nowrap text-sm md:text-base hover:text-blue-900 transition"
+              >
+                Harga Tertinggi
+              </Link>
+              <Link
+                to="#"
+                className="whitespace-nowrap text-sm md:text-base hover:text-blue-900 transition"
+              >
+                Keberangkatan Paling Awal
+              </Link>
             </div>
           </div>
           <div className="mt-5 grid grid-cols-1 gap-5">

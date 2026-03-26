@@ -57,7 +57,7 @@ export default function PilihTiketBus(props: PropsPilihTiketBus) {
       </div>
 
       <div className="w-full md:w-1/4 flex flex-col justify-between text-right">
-        <div>
+        <div className="mb-3">
           <p className="text-xs text-slate-500 mb-1">{tglBerangkat}</p>
           <p className="text-xs font-medium text-slate-400">Harga mulai dari</p>
           <p className="text-2xl font-bold text-[#2E7D32]">Rp {harga}</p>

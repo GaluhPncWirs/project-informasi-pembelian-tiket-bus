@@ -14,15 +14,37 @@ export default function DetailTiketBus() {
             alt="tiket bus detail"
             className="rounded-lg w-full max-h-96 object-cover mb-5 shadow-md shadow-slate-700"
           />
-          <div className="flex items-center justify-between">
-            {Array.from({ length: 5 }).map((_, i: number) => (
-              <img
-                key={i}
-                src="/images/local/jadwalBus/bus_double_decker.webp"
-                alt="tiket bus detail"
-                className="w-1/6 rounded-lg"
-              />
-            ))}
+          <div className="flex items-center gap-3">
+            {Array.from({ length: 10 })
+              .slice(0, 5)
+              .map((_, i: number) => {
+                const gambarTerakhir = i === 4;
+                const sisaGambar = 10 - 4;
+
+                return (
+                  <div
+                    key={i}
+                    className="relative w-1/3 aspect-video cursor-pointer"
+                  >
+                    <img
+                      src="/images/local/jadwalBus/bus_double_decker.webp"
+                      alt={`tiket bus detail ${i}`}
+                      className="size-full object-cover rounded-lg"
+                    />
+
+                    {gambarTerakhir && sisaGambar > 0 && (
+                      <div
+                        className="absolute inset-0 bg-black/60 rounded-lg flex items-center justify-center hover:bg-black/50 transition"
+                        onClick={() => console.log("buka selengkapnya")}
+                      >
+                        <span className="text-white font-bold text-sm md:text-lg">
+                          +{sisaGambar}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
           </div>
         </div>
         <div className="mt-7 flex flex-col gap-5">
@@ -31,19 +53,18 @@ export default function DetailTiketBus() {
               <img
                 src="/images/local/detailBus/double-decker-bus.png"
                 alt="icon"
+                className="size-12"
               />
               <div>
                 <h2 className="text-2xl font-bold tracking-wide">
                   Double Decker
                 </h2>
-                <h2 className="text-sm text-slate-600">
-                  Lorem ipsum dolor, sit amet consectetur
-                </h2>
+                <h2 className="text-sm text-slate-600">Lorem ipsum dolor</h2>
               </div>
             </div>
             <h3 className="text-[#2E7D32] text-xl font-bold">RP 150.000</h3>
           </div>
-          <div className="flex items-center gap-10">
+          <div className="grid grid-cols-2 gap-7 md:gap-0 md:grid-cols-3">
             <div>
               <h4>Tipe Bus</h4>
               <h3 className="font-bold tracking-wide text-xl">Executive</h3>
@@ -62,7 +83,7 @@ export default function DetailTiketBus() {
           <div className="w-full h-1 bg-slate-300 rounded-md" />
           <div>
             <h1 className="text-xl mb-5">Fasilitas Bus</h1>
-            <div className="grid grid-cols-5 gap-5 place-items-center">
+            <div className="grid grid-cols-4 gap-5 place-items-center md:grid-cols-5">
               <div className="flex flex-col gap-3 items-center">
                 <div className="bg-slate-200 p-5 rounded-md">
                   <AirVentIcon className="size-10 text-[#1A237E]" />

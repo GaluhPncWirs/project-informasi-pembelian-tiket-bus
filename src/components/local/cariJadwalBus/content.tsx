@@ -6,19 +6,17 @@ export default function CariJadwalBus() {
   return (
     <>
       <h1 className="text-xl">Cari Jadwal Bus</h1>
-      <div className="flex items-center gap-5 p-2 mt-2">
-        <div className="relative flex items-center justify-end basis-1/3 ">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-5 p-2 mt-2">
+        <div className="relative flex items-center justify-end">
           <MapPin className="absolute right-2 size-5" />
-          <Input placeholder="Masukkan kota asal" />
+          <Input placeholder="Kota asal" />
         </div>
-        <div className="relative flex items-center justify-end basis-1/3">
+        <div className="relative flex items-center justify-end">
           <MapPin className="absolute right-2 size-5" />
-          <Input placeholder="Masukkan kota tujuan" />
+          <Input placeholder="Kota tujuan" />
         </div>
-        <div className="basis-1/3">
-          <Input type="date" placeholder="Pilih tanggal keberangkatan" />
-        </div>
-        <Button className="text-white px-7 text-base color-primary">
+        <Input type="date" placeholder="Pilih tanggal keberangkatan" />
+        <Button className="text-white px-7 text-lg tracking-wide color-primary h-10">
           Cari
         </Button>
       </div>

@@ -7,7 +7,7 @@ export default function ListNavigasiBar() {
         <Link to="/Beranda">Beranda</Link>
       </li>
       <li>
-        <Link to="/DaftarTiketBus">Daftar Bus</Link>
+        <Link to="/DaftarTiketBus">Daftar Tiket</Link>
       </li>
       <li>
         <Link to="/RutePopuler">Rute Populer</Link>
