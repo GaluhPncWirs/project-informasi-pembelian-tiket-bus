@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import LinkButton from "../../global/linkButton/content";
 
 type PropsPilihTiketBus = {
   srcImg: string;
@@ -63,12 +63,7 @@ export default function PilihTiketBus(props: PropsPilihTiketBus) {
           <p className="text-2xl font-bold text-[#2E7D32]">Rp {harga}</p>
         </div>
 
-        <Link
-          to={detailTiket}
-          className="color-primary text-white text-center py-2 px-4 rounded-lg font-semibold hover:bg-blue-900 transition-colors shadow-sm"
-        >
-          Lihat Detail
-        </Link>
+        <LinkButton href={detailTiket} textButton="Lihat Detail" />
       </div>
     </div>
   );

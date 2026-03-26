@@ -45,6 +45,29 @@
         min-height: 75vh;
         position: relative;
     }
+
+    .hamburgerMenu > div span:nth-child(1){
+      transform-origin: 0 0;
+    }
+
+    .hamburgerMenu > div span:nth-child(3){
+      transform-origin: 0 100%;
+    }
+
+    .hamburgerMenu input:checked ~ div span:nth-child(1){
+      background-color: red;
+      transform: rotate(45deg) translate(0px, 2px);
+    }
+
+    .hamburgerMenu input:checked ~ div span:nth-child(2){
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    .hamburgerMenu input:checked ~ div > span:nth-child(3){
+      background-color: red;
+      transform: rotate(-45deg) translate(0px, -2px);
+    }
 }
 
 @theme inline {

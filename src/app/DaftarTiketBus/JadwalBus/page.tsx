@@ -1,12 +1,12 @@
 import { useState } from "react";
-import CariJadwalBus from "../../components/local/cariJadwalBus/content";
-import { Slider } from "../../components/ui/slider";
-import RootLayout from "../../layout/rootLayout/content";
-import { Checkbox } from "../../components/ui/checkbox";
-import PilihTiketBus from "../../components/local/pilihTiketBus/content";
+import CariJadwalBus from "../../../components/local/cariJadwalBus/content";
+import { Slider } from "../../../components/ui/slider";
+import RootLayout from "../../../layout/rootLayout/content";
+import { Checkbox } from "../../../components/ui/checkbox";
+import PilihTiketBus from "../../../components/local/pilihTiketBus/content";
 import { Link } from "react-router-dom";
 
-export default function DaftarBus() {
+export default function JadwalBus() {
   const MIN_PRICE = 50_000;
   const MAX_PRICE = 10_000_000;
   const [rangePriceValue, setRangePriceValue] = useState<number>(MIN_PRICE);
@@ -110,7 +110,7 @@ export default function DaftarBus() {
           </div>
           <div className="mt-5 grid grid-cols-1 gap-5">
             <PilihTiketBus
-              srcImg="/images/local/daftarBus/bus_double_decker.webp"
+              srcImg="/images/local/jadwalBus/bus_double_decker.webp"
               typeBus="Double Decker"
               rute="Jakarta - Bandung"
               waktuBerangkat="18:00"
@@ -118,10 +118,10 @@ export default function DaftarBus() {
               waktuKeberangkatan="malam"
               tglBerangkat="15 April 2026"
               harga="150.000"
-              detailTiket="/DaftarBus/Detail/lkafhasdf"
+              detailTiket="/DaftarTiketBus/Detail/lkafhasdf"
             />
             <PilihTiketBus
-              srcImg="/images/local/daftarBus/bus_double_decker.webp"
+              srcImg="/images/local/jadwalBus/bus_double_decker.webp"
               typeBus="Bus Original"
               rute="Jakarta - Sumedang"
               waktuBerangkat="09:00"
@@ -132,7 +132,7 @@ export default function DaftarBus() {
               detailTiket="#"
             />
             <PilihTiketBus
-              srcImg="/images/local/daftarBus/bus_double_decker.webp"
+              srcImg="/images/local/jadwalBus/bus_double_decker.webp"
               typeBus="Bus Original"
               rute="Jakarta - Sumedang"
               waktuBerangkat="09:00"

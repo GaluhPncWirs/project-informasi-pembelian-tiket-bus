@@ -1,6 +1,7 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import RootLayout from "../../../layout/rootLayout/content";
 import { AirVentIcon, Armchair, Plug2, Toilet, Wifi } from "lucide-react";
+import LinkButton from "../../../components/global/linkButton/content";
 
 export default function DetailTiketBus() {
   const { idTiketBus } = useParams();
@@ -9,7 +10,7 @@ export default function DetailTiketBus() {
       <div className="mb-10">
         <div>
           <img
-            src="/images/local/daftarBus/bus_double_decker.webp"
+            src="/images/local/jadwalBus/bus_double_decker.webp"
             alt="tiket bus detail"
             className="rounded-lg w-full max-h-96 object-cover mb-5 shadow-md shadow-slate-700"
           />
@@ -17,7 +18,7 @@ export default function DetailTiketBus() {
             {Array.from({ length: 5 }).map((_, i: number) => (
               <img
                 key={i}
-                src="/images/local/daftarBus/bus_double_decker.webp"
+                src="/images/local/jadwalBus/bus_double_decker.webp"
                 alt="tiket bus detail"
                 className="w-1/6 rounded-lg"
               />
@@ -26,15 +27,21 @@ export default function DetailTiketBus() {
         </div>
         <div className="mt-7 flex flex-col gap-5">
           <div className="flex justify-between">
-            <div>
-              <h1 className="text-2xl">Double Decker</h1>
-              <h2 className="text-sm text-slate-600">
-                Lorem ipsum dolor, sit amet consectetur
-              </h2>
+            <div className="flex items-center gap-5">
+              <img
+                src="/images/local/detailBus/double-decker-bus.png"
+                alt="icon"
+              />
+              <div>
+                <h2 className="text-2xl font-bold tracking-wide">
+                  Double Decker
+                </h2>
+                <h2 className="text-sm text-slate-600">
+                  Lorem ipsum dolor, sit amet consectetur
+                </h2>
+              </div>
             </div>
-            <h3 className="text-[#2E7D32] text-xl font-bold tracking-wide">
-              RP 150.000
-            </h3>
+            <h3 className="text-[#2E7D32] text-xl font-bold">RP 150.000</h3>
           </div>
           <div className="flex items-center gap-10">
             <div>
@@ -119,7 +126,7 @@ export default function DetailTiketBus() {
           </div>
         </div>
       </div>
-      <Link to="/DaftarBus">Kembali</Link>
+      <LinkButton href="/DaftarTiketBus" textButton="Kembali" />
     </RootLayout>
   );
 }
