@@ -35,7 +35,7 @@ export default function PilihTiketBus(props: PropsPilihTiketBus) {
       </div>
 
       <div className="flex-1 flex flex-col justify-center border-b md:border-b-0 md:border-r border-slate-200 pb-4 md:pb-0 md:pr-6">
-        <span className="text-sm font-bold uppercase tracking-wider text-[#2E7D32] mb-1">
+        <span className="text-sm font-bold uppercase traczking-wider text-[#2E7D32] mb-1">
           {typeBus}
         </span>
         <h3 className="text-lg font-bold text-slate-800">{rute}</h3>

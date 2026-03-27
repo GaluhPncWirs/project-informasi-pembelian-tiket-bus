@@ -100,7 +100,7 @@ export default function DetailTiketBus() {
                 <div className="bg-slate-200 p-5 rounded-md">
                   <Armchair className="size-10 text-[#1A237E]" />
                 </div>
-                <h2>Kursi Empuk</h2>
+                <h2>Kursi Rebah</h2>
               </div>
               <div className="flex flex-col gap-3 items-center">
                 <div className="bg-slate-200 p-5 rounded-md">

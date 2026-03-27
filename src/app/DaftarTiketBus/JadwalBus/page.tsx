@@ -4,12 +4,15 @@ import { Slider } from "../../../components/ui/slider";
 import RootLayout from "../../../layout/rootLayout/content";
 import { Checkbox } from "../../../components/ui/checkbox";
 import PilihTiketBus from "../../../components/local/pilihTiketBus/content";
-import { Link } from "react-router-dom";
+import { Button } from "../../../components/ui/button";
 
 export default function JadwalBus() {
   const MIN_PRICE = 50_000;
   const MAX_PRICE = 10_000_000;
   const [rangePriceValue, setRangePriceValue] = useState<number>(MIN_PRICE);
+  const [sortFindTicketBus, setSortFindTicketBus] =
+    useState<string>("Harga Termurah");
+
   function formatRupiah(value: number): string {
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
@@ -100,24 +103,21 @@ export default function JadwalBus() {
               Sort:
             </h2>
             <div className="flex items-center gap-3 overflow-x-auto pb-2 w-full md:pb-0 md:overflow-visible">
-              <Link
-                to="#"
-                className="color-primary text-white py-2 px-4 rounded-lg whitespace-nowrap text-sm md:text-base"
-              >
-                Harga Termurah
-              </Link>
-              <Link
-                to="#"
-                className="whitespace-nowrap text-sm md:text-base hover:text-blue-900 transition"
-              >
-                Harga Tertinggi
-              </Link>
-              <Link
-                to="#"
-                className="whitespace-nowrap text-sm md:text-base hover:text-blue-900 transition"
-              >
-                Keberangkatan Paling Awal
-              </Link>
+              {["Harga Termurah", "Harga Tertinggi", "Keberangkatan Awal"].map(
+                (item, i) => (
+                  <Button
+                    key={i}
+                    variant="ghost"
+                    id={item}
+                    className={`px-5 rounded-lg whitespace-nowrap md:text-base hover:text-blue-900 ${sortFindTicketBus === item && `color-primary text-white`}`}
+                    onClick={(e) =>
+                      setSortFindTicketBus((e.target as HTMLElement).id)
+                    }
+                  >
+                    {item}
+                  </Button>
+                ),
+              )}
             </div>
           </div>
           <div className="mt-5 grid grid-cols-1 gap-5">

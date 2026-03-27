@@ -10,7 +10,7 @@ export default function RootLayout({
   return (
     <div className="bg-[#F8F9FA]">
       <Navbar />
-      <div className="w-11/12 mx-auto pb-20 pt-32 md:w-4/5">{children}</div>
+      <div className="w-11/12 mx-auto pb-20 pt-32 lg:w-10/12">{children}</div>
       <Footer />
     </div>
   );
