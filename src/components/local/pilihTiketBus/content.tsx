@@ -1,18 +1,7 @@
+import type { dataTicket } from "../../../types/typeDataTicket";
 import LinkButton from "../../global/linkButton/content";
 
-type PropsPilihTiketBus = {
-  srcImg: string;
-  typeBus: string;
-  rute: string;
-  waktuBerangkat: string;
-  waktuEstimasi: string;
-  waktuKeberangkatan: string;
-  tglBerangkat: string;
-  harga: string;
-  detailTiket: string;
-};
-
-export default function PilihTiketBus(props: PropsPilihTiketBus) {
+export default function PilihTiketBus(props: dataTicket) {
   const {
     srcImg,
     typeBus,
@@ -60,7 +49,9 @@ export default function PilihTiketBus(props: PropsPilihTiketBus) {
         <div className="mb-3">
           <p className="text-xs text-slate-500 mb-1">{tglBerangkat}</p>
           <p className="text-xs font-medium text-slate-400">Harga mulai dari</p>
-          <p className="text-2xl font-bold text-[#2E7D32]">Rp {harga}</p>
+          <p className="text-2xl font-bold text-[#2E7D32]">
+            Rp {String(harga)}
+          </p>
         </div>
 
         <LinkButton href={detailTiket} textButton="Lihat Detail" />

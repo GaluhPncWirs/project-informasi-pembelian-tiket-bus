@@ -25,7 +25,7 @@ export default function Footer() {
         <div className="flex items-center gap-x-4">
           <img src="/images/global/logo.png" alt="Logo" className="size-40" />
           <div className="h-28 w-0.5 bg-slate-500 rounded-lg" />
-          <h1>Portal Informasi Tiket Bus Terpercaya</h1>
+          <h1 className="max-w-xs">Portal Informasi Tiket Bus Terpercaya</h1>
         </div>
 
         <div className="grid gap-y-10 gap-x-5 py-5 grid-cols-2 md:grid-cols-3">
