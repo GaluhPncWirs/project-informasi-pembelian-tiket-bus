@@ -20,7 +20,6 @@ export default function DetailTiketBus() {
               .map((_, i: number) => {
                 const gambarTerakhir = i === 4;
                 const sisaGambar = 10 - 4;
-
                 return (
                   <div
                     key={i}
