@@ -84,31 +84,31 @@ export default function DetailTiketBus() {
           <div>
             <h1 className="text-xl mb-5">Fasilitas Bus</h1>
             <div className="grid grid-cols-4 gap-5 place-items-center md:grid-cols-5">
-              <div className="flex flex-col gap-3 items-center">
+              <div className="flex flex-col gap-3 items-center hover:scale-105 transition-all">
                 <div className="bg-slate-200 p-5 rounded-md">
                   <AirVentIcon className="size-10 text-[#1A237E]" />
                 </div>
                 <h2>AC</h2>
               </div>
-              <div className="flex flex-col gap-3 items-center">
+              <div className="flex flex-col gap-3 items-center hover:scale-105 transition-all">
                 <div className="bg-slate-200 p-5 rounded-md">
                   <Wifi className="size-10 text-[#1A237E]" />
                 </div>
                 <h2>WI-FI</h2>
               </div>
-              <div className="flex flex-col gap-3 items-center">
+              <div className="flex flex-col gap-3 items-center hover:scale-105 transition-all">
                 <div className="bg-slate-200 p-5 rounded-md">
                   <Armchair className="size-10 text-[#1A237E]" />
                 </div>
                 <h2>Kursi Rebah</h2>
               </div>
-              <div className="flex flex-col gap-3 items-center">
+              <div className="flex flex-col gap-3 items-center hover:scale-105 transition-all">
                 <div className="bg-slate-200 p-5 rounded-md">
                   <Plug2 className="size-10 text-[#1A237E]" />
                 </div>
                 <h2>Soket</h2>
               </div>
-              <div className="flex flex-col gap-3 items-center">
+              <div className="flex flex-col gap-3 items-center hover:scale-105 transition-all">
                 <div className="bg-slate-200 p-5 rounded-md">
                   <Toilet className="size-10 text-[#1A237E]" />
                 </div>

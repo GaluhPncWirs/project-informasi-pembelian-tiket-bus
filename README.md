@@ -1,6 +1,6 @@
-# Project Name: Aplikasi React JS Modern
+# Project sistem informasi pembelian tiket bus
 
-Deskripsi singkat proyek Anda di sini. Misalnya: "Aplikasi berbasis React.js yang fokus pada antarmuka pengguna yang bersih, minimalis, dan responsif untuk memberikan pengalaman terbaik bagi pengguna."
+Aplikasi berbasis React.js yang fokus pada antarmuka pengguna yang bersih, minimalis, dan responsif untuk memberikan pengalaman terbaik bagi pengguna.
 
 ---
 
@@ -13,10 +13,12 @@ Deskripsi singkat proyek Anda di sini. Misalnya: "Aplikasi berbasis React.js yan
 
 ## 🛠️ Teknologi yang Digunakan
 
-- **React.js** - Library utama untuk membangun antarmuka.
+- **React.js** - Library utama untuk membangun UI.
 - **React Router** - Library untuk manajemen routing aplikasi.
-- **CSS / Framework UI** - Digunakan untuk styling modern dan minimalis.
-- **Lucide React / Heroicons** - (Opsional) Untuk ikon yang bersih.
+- **TailwindCSS** - Digunakan untuk styling modern dan minimalis.
+- **Lucide React** - Untuk ikon yang bersih.
+- **Shadcn** - Untuk mempermudah mendapatkan komponen-komponen ui.
+- **Zustand** - Untuk state management.
 
 ## 🚀 Memulai (Getting Started)
 

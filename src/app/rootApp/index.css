@@ -68,6 +68,44 @@
       background-color: red;
       transform: rotate(-45deg) translate(0px, -2px);
     }
+
+    .textUnderline{
+      position: relative;
+      width: fit-content;
+    }
+
+    .textUnderline::before{
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      bottom: -35px;
+      border-radius: 10px;
+      background-color: #2E7D32;
+    }
+
+    @media (max-width: 40rem) {
+        .textUnderline::before{
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 3px;
+          bottom: -5px;
+          border-radius: 10px;
+          background-color: #2E7D32;
+      }
+    }
+    @media (max-width: 48rem) {
+        .textUnderline::before{
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 3px;
+          bottom: -5px;
+          border-radius: 10px;
+          background-color: #2E7D32;
+      }
+    }
 }
 
 @theme inline {

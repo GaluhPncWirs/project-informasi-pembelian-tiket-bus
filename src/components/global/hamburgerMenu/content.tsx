@@ -2,9 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import ListNavigasiBar from "../listNavigasiBar/content";
 
 export default function HamburgerMenu() {
-  const containerHamburgerMenu = useRef<HTMLDivElement | null>(null);
   const [isChecked, setIsChecked] = useState<boolean>(false);
-
+  const containerHamburgerMenu = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     if (!isChecked) return;
     function handleClickOutsideNavbar(event: MouseEvent) {
@@ -12,7 +11,7 @@ export default function HamburgerMenu() {
         containerHamburgerMenu.current &&
         !containerHamburgerMenu.current.contains(event.target as Node)
       ) {
-        setIsChecked(true);
+        setIsChecked(false);
       }
     }
 
@@ -29,7 +28,8 @@ export default function HamburgerMenu() {
         <input
           type="checkbox"
           className="absolute cursor-pointer z-20 size-5 opacity-0"
-          onClick={() => setIsChecked((prev) => !prev)}
+          checked={isChecked}
+          onChange={() => setIsChecked((prev) => !prev)}
         />
         <div className="flex flex-col h-5 justify-between">
           <span className="block w-5 h-1 bg-black rounded-md transition-all"></span>
