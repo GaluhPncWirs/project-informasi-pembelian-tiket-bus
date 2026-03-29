@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useState } from "react";
 import CariJadwalBus from "../../../components/local/cariJadwalBus/content";
 import { Slider } from "../../../components/ui/slider";
 import RootLayout from "../../../layout/rootLayout/content";
 import { Checkbox } from "../../../components/ui/checkbox";
 import PilihTiketBus from "../../../components/local/pilihTiketBus/content";
 import { Button } from "../../../components/ui/button";
-import type { dataTicket } from "../../../types/typeDataTicket";
+import { formatRupiah } from "../../../hooks/convertRupiah";
 
 const daftarTiket = [
   {
@@ -60,46 +60,28 @@ export default function JadwalBus() {
   const [rangePriceValue, setRangePriceValue] = useState<number>(MIN_PRICE);
   const [sortFindTicketBus, setSortFindTicketBus] =
     useState<string>("Harga Termurah");
-  const [sortDataTicketBus, setSortDataTicketBus] = useState<dataTicket[]>([]);
 
-  function formatRupiah(value: number): string {
-    return new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      minimumFractionDigits: 0,
-    }).format(value);
-  }
+  const [isChekedTypeBus, setIsChekedTypeBus] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (sortFindTicketBus === "Harga Termurah") {
-      const sortDataCheapTicket = [...daftarTiket].sort(
-        (a, b) => a.harga - b.harga,
-      );
-      setSortDataTicketBus(sortDataCheapTicket);
-    }
-  }, [sortFindTicketBus]);
-
-  function handleSortTicketBus(event: React.MouseEvent<HTMLButtonElement>) {
-    const clickedButton = (event.target as HTMLElement).id;
-    setSortFindTicketBus(clickedButton);
-
-    if (clickedButton === "Harga Tertinggi") {
-      const sortDataExpensiveTicket = [...daftarTiket].sort(
-        (a, b) => b.harga - a.harga,
-      );
-      setSortDataTicketBus(sortDataExpensiveTicket);
-    } else if (clickedButton === "Keberangkatan Awal") {
+  const sortDataTicketBus = useMemo(() => {
+    if (sortFindTicketBus === "Keberangkatan Awal") {
       const earlyDepature = daftarTiket.filter(
         (data) => data.waktuKeberangkatan === "pagi",
       );
-      setSortDataTicketBus(earlyDepature);
-    } else if (clickedButton === "Harga Termurah") {
-      const sortDataCheapTicket = [...daftarTiket].sort(
-        (a, b) => a.harga - b.harga,
+      return earlyDepature;
+    } else if (sortFindTicketBus === "Harga Tertinggi") {
+      const sortDataExpensiveTicket = [...daftarTiket].sort(
+        (a, b) => b.harga - a.harga,
       );
-      setSortDataTicketBus(sortDataCheapTicket);
+      return sortDataExpensiveTicket;
     }
-  }
+
+    const sortDataCheapTicket = [...daftarTiket].sort(
+      (a, b) => a.harga - b.harga,
+    );
+
+    return sortDataCheapTicket;
+  }, [sortFindTicketBus]);
 
   return (
     <RootLayout>
@@ -126,15 +108,12 @@ export default function JadwalBus() {
             <div>
               <h1 className="mb-3">Tipe Bus</h1>
               <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-x-2">
-                  <Checkbox /> <span>Bus Double Decker</span>
-                </div>
-                <div className="flex items-center gap-x-2">
-                  <Checkbox /> <span>Elf</span>
-                </div>
-                <div className="flex items-center gap-x-2">
-                  <Checkbox /> <span>Bus Original</span>
-                </div>
+                {["Bus Double Decker", "Elf", "Bus Original"].map((item, i) => (
+                  <div className="flex items-center gap-x-2" key={i}>
+                    <Checkbox id={item} name={item} />{" "}
+                    <label htmlFor={item}>{item}</label>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="bg-slate-200 h-0.5 rounded-md w-full" />
@@ -175,6 +154,9 @@ export default function JadwalBus() {
                 </div>
               </div>
             </div>
+            <Button size="lg" className="bg-[#1A237E]">
+              Filter Tiket
+            </Button>
           </div>
         </div>
         <div className="bg-white rounded-md p-5 shadow-lg w-full lg:w-3/4">
@@ -190,7 +172,9 @@ export default function JadwalBus() {
                     variant="ghost"
                     id={item}
                     className={`px-5 rounded-lg whitespace-nowrap md:text-base hover:text-blue-900 ${sortFindTicketBus === item && `color-primary text-white`}`}
-                    onClick={(e) => handleSortTicketBus(e)}
+                    onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                      setSortFindTicketBus((e.target as HTMLElement).id)
+                    }
                   >
                     {item}
                   </Button>
