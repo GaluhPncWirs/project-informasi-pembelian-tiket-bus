@@ -14,7 +14,7 @@ const daftarTiket = [
     rute: "Jakarta - Bandung",
     waktuBerangkat: "18:00",
     waktuEstimasi: "1 jam",
-    waktuKeberangkatan: "malam",
+    waktuKeberangkatan: "Malam",
     tglBerangkat: "15 April 2026",
     harga: 150000,
     detailTiket: "/DaftarTiketBus/Detail/lkafhasdf",
@@ -25,7 +25,7 @@ const daftarTiket = [
     rute: "Jakarta - Sumedang",
     waktuBerangkat: "09:00",
     waktuEstimasi: "2 jam 40 menit",
-    waktuKeberangkatan: "pagi",
+    waktuKeberangkatan: "Pagi",
     tglBerangkat: "25 April 2026",
     harga: 350000,
     detailTiket: "/DaftarTiketBus/Detail/lkafhasdf",
@@ -36,7 +36,7 @@ const daftarTiket = [
     rute: "Bekasi - Pangandaran",
     waktuBerangkat: "15:30",
     waktuEstimasi: "2 jam 40 menit",
-    waktuKeberangkatan: "sore",
+    waktuKeberangkatan: "Sore",
     tglBerangkat: "25 April 2026",
     harga: 100000,
     detailTiket: "/DaftarTiketBus/Detail/lkafhasdf",
@@ -47,7 +47,7 @@ const daftarTiket = [
     rute: "Bandung - Ciamis",
     waktuBerangkat: "07:00",
     waktuEstimasi: "2 jam 40 menit",
-    waktuKeberangkatan: "pagi",
+    waktuKeberangkatan: "Pagi",
     tglBerangkat: "25 April 2026",
     harga: 200000,
     detailTiket: "/DaftarTiketBus/Detail/lkafhasdf",
@@ -56,32 +56,59 @@ const daftarTiket = [
 
 export default function JadwalBus() {
   const MIN_PRICE = 50_000;
-  const MAX_PRICE = 10_000_000;
+  const MAX_PRICE = 5_000_000;
   const [rangePriceValue, setRangePriceValue] = useState<number>(MIN_PRICE);
   const [sortFindTicketBus, setSortFindTicketBus] =
     useState<string>("Harga Termurah");
+  const [selectedTypeBus, setSelectedTypeBus] = useState<string[]>([]);
+  const [timeOfDepature, setTimeOfDepature] = useState<string | null>(null);
 
-  const [isChekedTypeBus, setIsChekedTypeBus] = useState<boolean>(false);
+  function handleTypeBusChange(
+    busType: string,
+    checked: boolean | "indeterminate",
+  ) {
+    setSelectedTypeBus((prev) => {
+      if (checked) {
+        return prev.includes(busType) ? prev : [...prev, busType];
+      }
+
+      return prev.filter((item) => item !== busType);
+    });
+  }
 
   const sortDataTicketBus = useMemo(() => {
-    if (sortFindTicketBus === "Keberangkatan Awal") {
-      const earlyDepature = daftarTiket.filter(
-        (data) => data.waktuKeberangkatan === "pagi",
+    let filteredTickets = [...daftarTiket];
+
+    if (rangePriceValue > MIN_PRICE) {
+      filteredTickets = filteredTickets.filter(
+        (data) => data.harga === rangePriceValue,
       );
-      return earlyDepature;
-    } else if (sortFindTicketBus === "Harga Tertinggi") {
-      const sortDataExpensiveTicket = [...daftarTiket].sort(
-        (a, b) => b.harga - a.harga,
-      );
-      return sortDataExpensiveTicket;
     }
 
-    const sortDataCheapTicket = [...daftarTiket].sort(
-      (a, b) => a.harga - b.harga,
-    );
+    if (selectedTypeBus.length > 0) {
+      filteredTickets = filteredTickets.filter((data) =>
+        selectedTypeBus.includes(data.typeBus),
+      );
+    }
 
-    return sortDataCheapTicket;
-  }, [sortFindTicketBus]);
+    if (timeOfDepature !== null) {
+      filteredTickets = filteredTickets.filter(
+        (data) => data.waktuKeberangkatan === timeOfDepature,
+      );
+    }
+
+    if (sortFindTicketBus === "Keberangkatan Awal") {
+      return filteredTickets.filter(
+        (data) => data.waktuKeberangkatan === "pagi",
+      );
+    }
+
+    if (sortFindTicketBus === "Harga Tertinggi") {
+      return filteredTickets.sort((a, b) => b.harga - a.harga);
+    }
+
+    return filteredTickets.sort((a, b) => a.harga - b.harga);
+  }, [selectedTypeBus, sortFindTicketBus, timeOfDepature, rangePriceValue]);
 
   return (
     <RootLayout>
@@ -108,9 +135,16 @@ export default function JadwalBus() {
             <div>
               <h1 className="mb-3">Tipe Bus</h1>
               <div className="flex flex-col gap-1">
-                {["Bus Double Decker", "Elf", "Bus Original"].map((item, i) => (
-                  <div className="flex items-center gap-x-2" key={i}>
-                    <Checkbox id={item} name={item} />{" "}
+                {["Bus Double Decker", "Elf", "Bus Original"].map((item) => (
+                  <div className="flex items-center gap-x-2" key={item}>
+                    <Checkbox
+                      id={item}
+                      name={item}
+                      checked={selectedTypeBus.includes(item)}
+                      onCheckedChange={(checked) =>
+                        handleTypeBusChange(item, checked)
+                      }
+                    />{" "}
                     <label htmlFor={item}>{item}</label>
                   </div>
                 ))}
@@ -120,43 +154,22 @@ export default function JadwalBus() {
             <div>
               <h1 className="mb-3">Waktu Keberangkatan</h1>
               <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-x-2">
-                  <input
-                    type="radio"
-                    name="timeOfDepature"
-                    className="size-4"
-                  />{" "}
-                  <span>Pagi</span>
-                </div>
-                <div className="flex items-center gap-x-2">
-                  <input
-                    type="radio"
-                    name="timeOfDepature"
-                    className="size-4"
-                  />{" "}
-                  <span>Siang</span>
-                </div>
-                <div className="flex items-center gap-x-2">
-                  <input
-                    type="radio"
-                    name="timeOfDepature"
-                    className="size-4"
-                  />{" "}
-                  <span>Sore</span>
-                </div>
-                <div className="flex items-center gap-x-2">
-                  <input
-                    type="radio"
-                    name="timeOfDepature"
-                    className="size-4"
-                  />{" "}
-                  <span>Malam</span>
-                </div>
+                {["Pagi", "Siang", "Sore", "Malam"].map((item) => (
+                  <div className="flex items-center gap-x-2" key={item}>
+                    <input
+                      type="radio"
+                      name="timeOfDepature"
+                      className="size-4"
+                      id={item}
+                      onClick={(e: React.MouseEvent<HTMLInputElement>) =>
+                        setTimeOfDepature((e.target as HTMLInputElement).id)
+                      }
+                    />{" "}
+                    <span>{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
-            <Button size="lg" className="bg-[#1A237E]">
-              Filter Tiket
-            </Button>
           </div>
         </div>
         <div className="bg-white rounded-md p-5 shadow-lg w-full lg:w-3/4">
@@ -173,7 +186,7 @@ export default function JadwalBus() {
                     id={item}
                     className={`px-5 rounded-lg whitespace-nowrap md:text-base hover:text-blue-900 ${sortFindTicketBus === item && `color-primary text-white`}`}
                     onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-                      setSortFindTicketBus((e.target as HTMLElement).id)
+                      setSortFindTicketBus(e.currentTarget.id)
                     }
                   >
                     {item}
@@ -183,20 +196,24 @@ export default function JadwalBus() {
             </div>
           </div>
           <div className="mt-5 grid grid-cols-1 gap-5">
-            {sortDataTicketBus.map((item, i) => (
-              <PilihTiketBus
-                key={i}
-                srcImg={item.srcImg}
-                typeBus={item.typeBus}
-                rute={item.rute}
-                waktuBerangkat={item.waktuBerangkat}
-                waktuEstimasi={item.waktuEstimasi}
-                waktuKeberangkatan={item.waktuKeberangkatan}
-                tglBerangkat={item.tglBerangkat}
-                harga={item.harga}
-                detailTiket={item.detailTiket}
-              />
-            ))}
+            {sortDataTicketBus.length > 0 ? (
+              sortDataTicketBus.map((item, i) => (
+                <PilihTiketBus
+                  key={i}
+                  srcImg={item.srcImg}
+                  typeBus={item.typeBus}
+                  rute={item.rute}
+                  waktuBerangkat={item.waktuBerangkat}
+                  waktuEstimasi={item.waktuEstimasi}
+                  waktuKeberangkatan={item.waktuKeberangkatan}
+                  tglBerangkat={item.tglBerangkat}
+                  harga={item.harga}
+                  detailTiket={item.detailTiket}
+                />
+              ))
+            ) : (
+              <h1>Tidak Ada Tiketnya</h1>
+            )}
           </div>
         </div>
       </div>
