@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { kotaDiPulauJawa } from "../../data/kotaPulauJawa";
+import { kotaDiPulauJawa } from "../../data/dataPulauJawa/data";
 
 type SearchCityState = {
   hasilCariKotaAsal: string[];

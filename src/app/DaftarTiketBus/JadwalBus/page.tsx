@@ -6,53 +6,7 @@ import { Checkbox } from "../../../components/ui/checkbox";
 import PilihTiketBus from "../../../components/local/pilihTiketBus/content";
 import { Button } from "../../../components/ui/button";
 import { formatRupiah } from "../../../hooks/convertRupiah";
-
-const daftarTiket = [
-  {
-    srcImg: "/images/local/jadwalBus/bus_double_decker.webp",
-    typeBus: "Double Decker",
-    rute: "Jakarta - Bandung",
-    waktuBerangkat: "18:00",
-    waktuEstimasi: "1 jam",
-    waktuKeberangkatan: "Malam",
-    tglBerangkat: "15 April 2026",
-    harga: 150000,
-    detailTiket: "/DaftarTiketBus/Detail/lkafhasdf",
-  },
-  {
-    srcImg: "/images/local/jadwalBus/bus_double_decker.webp",
-    typeBus: "Bus Original",
-    rute: "Jakarta - Sumedang",
-    waktuBerangkat: "09:00",
-    waktuEstimasi: "2 jam 40 menit",
-    waktuKeberangkatan: "Pagi",
-    tglBerangkat: "25 April 2026",
-    harga: 350000,
-    detailTiket: "/DaftarTiketBus/Detail/lkafhasdf",
-  },
-  {
-    srcImg: "/images/local/jadwalBus/bus_double_decker.webp",
-    typeBus: "Bus Original",
-    rute: "Bekasi - Pangandaran",
-    waktuBerangkat: "15:30",
-    waktuEstimasi: "2 jam 40 menit",
-    waktuKeberangkatan: "Sore",
-    tglBerangkat: "25 April 2026",
-    harga: 100000,
-    detailTiket: "/DaftarTiketBus/Detail/lkafhasdf",
-  },
-  {
-    srcImg: "/images/local/jadwalBus/bus_double_decker.webp",
-    typeBus: "Bus Original",
-    rute: "Bandung - Ciamis",
-    waktuBerangkat: "07:00",
-    waktuEstimasi: "2 jam 40 menit",
-    waktuKeberangkatan: "Pagi",
-    tglBerangkat: "25 April 2026",
-    harga: 200000,
-    detailTiket: "/DaftarTiketBus/Detail/lkafhasdf",
-  },
-];
+import { daftarTiket } from "../../../data/dataTiketBus/data";
 
 export default function JadwalBus() {
   const MIN_PRICE = 50_000;
@@ -81,7 +35,7 @@ export default function JadwalBus() {
 
     if (rangePriceValue > MIN_PRICE) {
       filteredTickets = filteredTickets.filter(
-        (data) => data.harga === rangePriceValue,
+        (data) => data.harga >= rangePriceValue,
       );
     }
 
@@ -212,7 +166,9 @@ export default function JadwalBus() {
                 />
               ))
             ) : (
-              <h1>Tidak Ada Tiketnya</h1>
+              <h1 className="flex justify-center items-center h-90">
+                Tiket Tidak Tersedia
+              </h1>
             )}
           </div>
         </div>

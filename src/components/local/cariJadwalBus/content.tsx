@@ -1,6 +1,6 @@
 import { Input } from "../../ui/input";
 import { Button } from "../../ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Command,
   CommandEmpty,
@@ -11,17 +11,14 @@ import {
 } from "../../ui/command";
 import { useSearchCity } from "../../../store/useSearchCity/state";
 import { useShallow } from "zustand/shallow";
+import { useFilterTicketBus } from "../../../store/useFilterTicketBus/state";
 
 export default function CariJadwalBus() {
   const [kotaAsal, setKotaAsal] = useState<string>("");
   const [kotaTujuan, setKotaTujuan] = useState<string>("");
   const [isOpenSuggest, setIsOpenSuggest] = useState<boolean>(false);
-  const [kotaAsalYangDipilih, setKotaAsalYangDipilih] = useState<string | null>(
-    null,
-  );
-  const [kotaTujuanYangDipilih, setKotaTujuanYangDipilih] = useState<
-    string | null
-  >(null);
+  const [kotaYangDipilih, setKotaYangDipilih] = useState<string[]>([]);
+  const [tanggalBerangkat, setTanggalBerangkat] = useState<string>("");
 
   const {
     setHandleInputCariKota,
@@ -37,38 +34,51 @@ export default function CariJadwalBus() {
     })),
   );
 
-  function handleKlikKotaAsal(item: string) {
-    setKotaAsalYangDipilih(item);
-    setKotaAsal(item);
+  const { searchTicketBus, setHandleSearchTicketBus } = useFilterTicketBus(
+    useShallow((state) => ({
+      searchTicketBus: state.searchTicketBus,
+      setHandleSearchTicketBus: state.setHandleSearchTicketBus,
+    })),
+  );
+
+  useEffect(() => {
+    setHandleSearchTicketBus(kotaYangDipilih, tanggalBerangkat);
+  }, [kotaYangDipilih, tanggalBerangkat, setHandleSearchTicketBus]);
+
+  console.log(searchTicketBus);
+
+  function handleKlikKota(tipeKota: "asal" | "tujuan", item: string) {
+    if (tipeKota === "asal") {
+      setKotaYangDipilih((prev) => [...prev, item]);
+      setKotaAsal(item);
+    } else {
+      setKotaYangDipilih((prev) => [...prev, item]);
+      setKotaTujuan(item);
+    }
+
     setIsOpenSuggest(false);
   }
 
-  function handleKlikKotaTujuan(item: string) {
-    setKotaTujuanYangDipilih(item);
-    setKotaTujuan(item);
-    setIsOpenSuggest(false);
-  }
+  function handleInputCariKota(tipeKota: "asal" | "tujuan", value: string) {
+    if (tipeKota === "asal") {
+      setKotaAsal(value);
+      setHandleInputCariKota(value);
 
-  function setHandleInputCariKotaAsal(value: string) {
-    setKotaAsal(value);
-    setHandleInputCariKota(value);
-    if (value === "") {
-      setKotaAsalYangDipilih(null);
-      setIsOpenSuggest(false);
+      if (value === "") {
+        setIsOpenSuggest(false);
+        return;
+      }
     } else {
-      setIsOpenSuggest(true);
-    }
-  }
+      setKotaTujuan(value);
+      setHandleCariInputKotaTujuan(value);
 
-  function setHandleInputCariKotaTujuan(value: string) {
-    setKotaTujuan(value);
-    setHandleCariInputKotaTujuan(value);
-    if (value === "") {
-      setKotaTujuanYangDipilih(null);
-      setIsOpenSuggest(false);
-    } else {
-      setIsOpenSuggest(true);
+      if (value === "") {
+        setIsOpenSuggest(false);
+        return;
+      }
     }
+
+    setIsOpenSuggest(true);
   }
 
   return (
@@ -79,7 +89,7 @@ export default function CariJadwalBus() {
           <CommandInput
             placeholder="Kota asal"
             value={kotaAsal}
-            onValueChange={(value) => setHandleInputCariKotaAsal(value)}
+            onValueChange={(value) => handleInputCariKota("asal", value)}
           />
           {isOpenSuggest && (
             <div>
@@ -91,7 +101,7 @@ export default function CariJadwalBus() {
                         <CommandItem
                           className="cursor-pointer mb-1"
                           key={i}
-                          onSelect={() => handleKlikKotaAsal(item)}
+                          onSelect={() => handleKlikKota("asal", item)}
                         >
                           {item}
                         </CommandItem>
@@ -109,7 +119,7 @@ export default function CariJadwalBus() {
           <CommandInput
             placeholder="Kota Tujuan"
             value={kotaTujuan}
-            onValueChange={(value) => setHandleInputCariKotaTujuan(value)}
+            onValueChange={(value) => handleInputCariKota("tujuan", value)}
           />
           {isOpenSuggest && (
             <div>
@@ -121,7 +131,7 @@ export default function CariJadwalBus() {
                         <CommandItem
                           className="cursor-pointer mb-1"
                           key={i}
-                          onSelect={() => handleKlikKotaTujuan(item)}
+                          onSelect={() => handleKlikKota("tujuan", item)}
                         >
                           {item}
                         </CommandItem>
@@ -136,7 +146,11 @@ export default function CariJadwalBus() {
           )}
         </Command>
 
-        <Input type="date" placeholder="Pilih tanggal keberangkatan" />
+        <Input
+          type="date"
+          placeholder="Pilih tanggal keberangkatan"
+          onChange={(e) => setTanggalBerangkat(e.target.value)}
+        />
         <Button className="text-white px-7 text-lg tracking-wide color-primary h-10">
           Cari
         </Button>
