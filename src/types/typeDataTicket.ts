@@ -1,4 +1,5 @@
 export type dataTicket = {
+  id: string;
   srcImg: string;
   typeBus: string;
   rute: string;

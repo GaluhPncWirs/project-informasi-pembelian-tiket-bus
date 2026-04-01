@@ -1,5 +1,17 @@
-import type { dataTicket } from "../../../types/typeDataTicket";
+import { formatRupiah } from "../../../hooks/convertRupiah";
 import LinkButton from "../../global/linkButton/content";
+
+type dataTicket = {
+  srcImg: string;
+  typeBus: string;
+  rute: string;
+  waktuBerangkat: string;
+  waktuEstimasi: string;
+  waktuKeberangkatan: string;
+  tglBerangkat: string;
+  harga: number;
+  detailTiket: string;
+};
 
 export default function PilihTiketBus(props: dataTicket) {
   const {
@@ -50,7 +62,7 @@ export default function PilihTiketBus(props: dataTicket) {
           <p className="text-xs text-slate-500 mb-1">{tglBerangkat}</p>
           <p className="text-xs font-medium text-slate-400">Harga mulai dari</p>
           <p className="text-2xl font-bold text-[#2E7D32]">
-            Rp {String(harga)}
+            {formatRupiah(harga)}
           </p>
         </div>
 

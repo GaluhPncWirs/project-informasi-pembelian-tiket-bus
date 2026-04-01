@@ -1,20 +1,28 @@
 import { create } from "zustand";
-import { daftarTiket } from "../../data/dataTiketBus/data";
+import { daftarTiketBus } from "../../data/dataTiketBus/data";
 import type { dataTicket } from "../../types/typeDataTicket";
 
+type ApplyAllFilters = {
+  rangePriceVal: number;
+  MIN_PRICE: number;
+  selectedTypeBus: string[];
+  timeOfDepature: string | null;
+  sortFindTicketBus: string;
+};
+
 type FilterTicketBus = {
-  dataTicketBus: dataTicket[];
   allDataTicketBus: dataTicket[];
+  dataTicketBus: dataTicket[];
+  setApplyAllFilters: (filters: ApplyAllFilters) => void;
   setHandleSearchTicketBus: (
     kotaYangDipilih: string[],
     tanggalBerangkat: string,
   ) => void;
-  setApplyAllFilters: (filters) => void;
 };
 
 export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
-  allDataTicketBus: [...daftarTiket],
-  dataTicketBus: [...daftarTiket],
+  allDataTicketBus: [...daftarTiketBus],
+  dataTicketBus: [...daftarTiketBus],
 
   setApplyAllFilters: (filters) => {
     set((prev) => {

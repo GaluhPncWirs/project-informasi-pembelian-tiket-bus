@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CariJadwalBus from "../../../components/local/cariJadwalBus/content";
 import { Slider } from "../../../components/ui/slider";
 import RootLayout from "../../../layout/rootLayout/content";
@@ -6,7 +6,17 @@ import { Checkbox } from "../../../components/ui/checkbox";
 import PilihTiketBus from "../../../components/local/pilihTiketBus/content";
 import { Button } from "../../../components/ui/button";
 import { formatRupiah } from "../../../hooks/convertRupiah";
-import { daftarTiket } from "../../../data/dataTiketBus/data";
+import { useFilterTicketBus } from "../../../store/useFilterTicketBus/state";
+import { useShallow } from "zustand/shallow";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "../../../components/ui/pagination";
 
 export default function JadwalBus() {
   const MIN_PRICE = 50_000;
@@ -30,71 +40,49 @@ export default function JadwalBus() {
     });
   }
 
-  // const {
-  //   dataTicketBus,
-  //   setHandleRangePrice,
-  //   setHandleSelectTypeBus,
-  //   setHandleTimeBusOfDepature,
-  //   setHandleSortTicketBus,
-  // } = useFilterTicketBus(
-  //   useShallow((state) => ({
-  //     dataTicketBus: state.dataTicketBus,
-  //     setHandleRangePrice: state.setHandleRangePrice,
-  //     setHandleSelectTypeBus: state.setHandleSelectTypeBus,
-  //     setHandleTimeBusOfDepature: state.setHandleTimeBusOfDepature,
-  //     setHandleSortTicketBus: state.setHandleSortTicketBus,
-  //   })),
-  // );
+  const { dataTicketBus, setApplyAllFilters } = useFilterTicketBus(
+    useShallow((state) => ({
+      dataTicketBus: state.dataTicketBus,
+      setApplyAllFilters: state.setApplyAllFilters,
+    })),
+  );
 
-  // useEffect(() => {
-  //   setHandleRangePrice(rangePriceValue, MIN_PRICE);
-  //   setHandleSelectTypeBus(selectedTypeBus);
-  //   setHandleTimeBusOfDepature(timeOfDepature);
-  //   setHandleSortTicketBus(sortFindTicketBus);
-  // }, [
-  //   setHandleRangePrice,
-  //   setHandleSelectTypeBus,
-  //   setHandleTimeBusOfDepature,
-  //   setHandleSortTicketBus,
-  //   rangePriceValue,
-  //   selectedTypeBus,
-  //   timeOfDepature,
-  //   sortFindTicketBus,
-  // ]);
+  useEffect(() => {
+    setApplyAllFilters({
+      rangePriceVal: rangePriceValue,
+      MIN_PRICE: MIN_PRICE,
+      selectedTypeBus: selectedTypeBus,
+      timeOfDepature: timeOfDepature,
+      sortFindTicketBus: sortFindTicketBus,
+    });
+  }, [rangePriceValue, selectedTypeBus, timeOfDepature, sortFindTicketBus]);
 
-  const sortDataTicketBus = useMemo(() => {
-    let filteredTickets = [...daftarTiket];
+  const totalPages = Math.ceil(dataTicketBus.length / 2);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
-    if (rangePriceValue > MIN_PRICE) {
-      filteredTickets = filteredTickets.filter(
-        (data) => data.harga >= rangePriceValue,
-      );
+  function getPaginationRange(current: number, total: number) {
+    const range: number[] = [];
+    const rangeWithDots: (number | "...")[] = [];
+    let lastNum: number | undefined;
+
+    if (total <= 0) return [];
+
+    for (let i = 1; i <= total; i++) {
+      if (i === 1 || i === total || (i >= current - 1 && i <= current + 1)) {
+        range.push(i);
+      }
     }
 
-    if (selectedTypeBus.length > 0) {
-      filteredTickets = filteredTickets.filter((data) =>
-        selectedTypeBus.includes(data.typeBus),
-      );
+    for (const i of range) {
+      if (lastNum && i - lastNum > 1) {
+        rangeWithDots.push("...");
+      }
+      rangeWithDots.push(i);
+      lastNum = i;
     }
 
-    if (timeOfDepature !== null) {
-      filteredTickets = filteredTickets.filter(
-        (data) => data.waktuKeberangkatan === timeOfDepature,
-      );
-    }
-
-    if (sortFindTicketBus === "Keberangkatan Awal") {
-      filteredTickets = filteredTickets.filter(
-        (data) => data.waktuKeberangkatan === "pagi",
-      );
-    }
-
-    if (sortFindTicketBus === "Harga Tertinggi") {
-      filteredTickets = filteredTickets.sort((a, b) => b.harga - a.harga);
-    }
-
-    return filteredTickets.sort((a, b) => a.harga - b.harga);
-  }, [selectedTypeBus, sortFindTicketBus, timeOfDepature, rangePriceValue]);
+    return rangeWithDots;
+  }
 
   return (
     <RootLayout>
@@ -121,26 +109,28 @@ export default function JadwalBus() {
             <div>
               <h1 className="mb-3">Tipe Bus</h1>
               <div className="flex flex-col gap-1">
-                {["Bus Double Decker", "Elf", "Bus Original"].map((item) => (
-                  <div className="flex items-center gap-x-2" key={item}>
-                    <Checkbox
-                      id={item}
-                      name={item}
-                      checked={selectedTypeBus.includes(item)}
-                      onCheckedChange={(checked) =>
-                        handleTypeBusChange(item, checked)
-                      }
-                    />{" "}
-                    <label htmlFor={item}>{item}</label>
-                  </div>
-                ))}
+                {["Double Decker", "Executive", "Luxury", "Economy"].map(
+                  (item) => (
+                    <div className="flex items-center gap-x-2" key={item}>
+                      <Checkbox
+                        id={item}
+                        name={item}
+                        checked={selectedTypeBus.includes(item)}
+                        onCheckedChange={(checked) =>
+                          handleTypeBusChange(item, checked)
+                        }
+                      />{" "}
+                      <label htmlFor={item}>{item}</label>
+                    </div>
+                  ),
+                )}
               </div>
             </div>
             <div className="bg-slate-200 h-0.5 rounded-md w-full" />
             <div>
               <h1 className="mb-3">Waktu Keberangkatan</h1>
               <div className="flex flex-col gap-1">
-                {["Pagi", "Siang", "Sore", "Malam"].map((item) => (
+                {["pagi", "siang", "sore", "malam"].map((item) => (
                   <div className="flex items-center gap-x-2" key={item}>
                     <input
                       type="radio"
@@ -180,21 +170,23 @@ export default function JadwalBus() {
             </div>
           </div>
           <div className="mt-5 grid grid-cols-1 gap-5">
-            {sortDataTicketBus.length > 0 ? (
-              sortDataTicketBus.map((item, i) => (
-                <PilihTiketBus
-                  key={i}
-                  srcImg={item.srcImg}
-                  typeBus={item.typeBus}
-                  rute={item.rute}
-                  waktuBerangkat={item.waktuBerangkat}
-                  waktuEstimasi={item.waktuEstimasi}
-                  waktuKeberangkatan={item.waktuKeberangkatan}
-                  tglBerangkat={item.tglBerangkat}
-                  harga={item.harga}
-                  detailTiket={item.detailTiket}
-                />
-              ))
+            {dataTicketBus.length > 0 ? (
+              dataTicketBus
+                .slice(1, 5)
+                .map((item) => (
+                  <PilihTiketBus
+                    key={item.id}
+                    srcImg={item.srcImg}
+                    typeBus={item.typeBus}
+                    rute={item.rute}
+                    waktuBerangkat={item.waktuBerangkat}
+                    waktuEstimasi={item.waktuEstimasi}
+                    waktuKeberangkatan={item.waktuKeberangkatan}
+                    tglBerangkat={item.tglBerangkat}
+                    harga={item.harga}
+                    detailTiket={`${item.detailTiket}/${item.id}`}
+                  />
+                ))
             ) : (
               <h1 className="flex justify-center items-center h-90">
                 Tiket Tidak Tersedia
@@ -203,6 +195,48 @@ export default function JadwalBus() {
           </div>
         </div>
       </div>
+
+      <Pagination className="mt-5 flex justify-around items-center">
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              size="default"
+              onClick={() => setCurrentPage((page) => Math.max(page - 1, 1))}
+              className={
+                currentPage === 1 ? "pointer-events-none opacity-50" : ""
+              }
+            />
+          </PaginationItem>
+          {getPaginationRange(currentPage, totalPages).map((item, i) => (
+            <PaginationItem key={i}>
+              {item === "..." ? (
+                <PaginationEllipsis />
+              ) : (
+                <PaginationLink
+                  size="default"
+                  isActive={currentPage === item}
+                  onClick={() => setCurrentPage(item)}
+                >
+                  {item}
+                </PaginationLink>
+              )}
+            </PaginationItem>
+          ))}
+          <PaginationItem>
+            <PaginationNext
+              size="default"
+              onClick={() =>
+                setCurrentPage((page) => Math.min(page + 1, totalPages))
+              }
+              className={
+                currentPage === totalPages
+                  ? "pointer-events-none opacity-50"
+                  : ""
+              }
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </RootLayout>
   );
 }
