@@ -4,37 +4,76 @@ import type { dataTicket } from "../../types/typeDataTicket";
 
 type FilterTicketBus = {
   dataTicketBus: dataTicket[];
-  searchTicketBus: dataTicket[] | null;
-  rangePriceValue: string[] | null;
-  typeBus: string[] | null;
-  timeOfDepature: string[] | null;
-  sortForm: string[] | null;
-
+  allDataTicketBus: dataTicket[];
   setHandleSearchTicketBus: (
     kotaYangDipilih: string[],
     tanggalBerangkat: string,
   ) => void;
+  setApplyAllFilters: (filters) => void;
 };
 
 export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
+  allDataTicketBus: [...daftarTiket],
   dataTicketBus: [...daftarTiket],
-  searchTicketBus: null,
-  rangePriceValue: null,
-  typeBus: null,
-  timeOfDepature: null,
-  sortForm: null,
+
+  setApplyAllFilters: (filters) => {
+    set((prev) => {
+      let filtered = [...prev.allDataTicketBus];
+
+      const {
+        rangePriceVal,
+        MIN_PRICE,
+        selectedTypeBus,
+        timeOfDepature,
+        sortFindTicketBus,
+      } = filters;
+
+      // filter harga
+      if (rangePriceVal > MIN_PRICE) {
+        filtered = filtered.filter((price) => price.harga >= rangePriceVal);
+      }
+
+      // filter tipe bus
+      if (selectedTypeBus && selectedTypeBus.length > 0) {
+        filtered = filtered.filter((typeBus) =>
+          selectedTypeBus.includes(typeBus.typeBus),
+        );
+      }
+
+      // filter waktu keberangkatan
+      if (timeOfDepature) {
+        filtered = filtered.filter(
+          (depature) => depature.waktuKeberangkatan === timeOfDepature,
+        );
+      }
+
+      // SortTicketBus
+      if (sortFindTicketBus === "Harga Tertinggi") {
+        filtered.sort((a, b) => b.harga - a.harga);
+      } else {
+        filtered.sort((a, b) => a.harga - b.harga);
+      }
+
+      return { dataTicketBus: filtered };
+    });
+  },
 
   setHandleSearchTicketBus: (kotaYangDipilih, tanggalBerangkat) => {
     set((prev) => {
       const searchCity = prev.dataTicketBus.filter((item) => {
-        const ruteArray = item.rute.split(" - ");
-        const isRuteMatch =
-          kotaYangDipilih.length === ruteArray.length &&
-          kotaYangDipilih.every((val, index) => val === ruteArray[index]);
+        const ruteArray = item.rute
+          .split(" - ")
+          .map((s) => s.trim().toLowerCase());
+        const selectedCityLowerCase = kotaYangDipilih.map((s) =>
+          s.trim().toLowerCase(),
+        );
 
-        if (!tanggalBerangkat) {
-          return isRuteMatch;
-        }
+        const isRuteMatch =
+          selectedCityLowerCase.length === ruteArray.length &&
+          selectedCityLowerCase.every((val, index) => val === ruteArray[index]);
+
+        if (!isRuteMatch) return false;
+        if (!tanggalBerangkat) return true;
 
         const [year, month, day] = tanggalBerangkat.split("-");
         const date = new Date(Number(year), Number(month) - 1, Number(day));
@@ -49,11 +88,11 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
           year: "numeric",
         }).format(date);
 
-        return isRuteMatch && item.tglBerangkat === resultDate;
+        return item.tglBerangkat === resultDate;
       });
 
       return {
-        searchTicketBus: searchCity,
+        dataTicketBus: searchCity,
       };
     });
   },

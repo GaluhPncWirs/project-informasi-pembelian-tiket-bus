@@ -1,6 +1,6 @@
 import { Input } from "../../ui/input";
 import { Button } from "../../ui/button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Command,
   CommandEmpty,
@@ -12,6 +12,7 @@ import {
 import { useSearchCity } from "../../../store/useSearchCity/state";
 import { useShallow } from "zustand/shallow";
 import { useFilterTicketBus } from "../../../store/useFilterTicketBus/state";
+import { useLocation } from "react-router-dom";
 
 export default function CariJadwalBus() {
   const [kotaAsal, setKotaAsal] = useState<string>("");
@@ -19,6 +20,7 @@ export default function CariJadwalBus() {
   const [isOpenSuggest, setIsOpenSuggest] = useState<boolean>(false);
   const [kotaYangDipilih, setKotaYangDipilih] = useState<string[]>([]);
   const [tanggalBerangkat, setTanggalBerangkat] = useState<string>("");
+  const { pathname } = useLocation();
 
   const {
     setHandleInputCariKota,
@@ -34,27 +36,27 @@ export default function CariJadwalBus() {
     })),
   );
 
-  const { searchTicketBus, setHandleSearchTicketBus } = useFilterTicketBus(
-    useShallow((state) => ({
-      searchTicketBus: state.searchTicketBus,
-      setHandleSearchTicketBus: state.setHandleSearchTicketBus,
-    })),
+  const setHandleSearchTicketBus = useFilterTicketBus(
+    (state) => state.setHandleSearchTicketBus,
   );
-
-  useEffect(() => {
-    setHandleSearchTicketBus(kotaYangDipilih, tanggalBerangkat);
-  }, [kotaYangDipilih, tanggalBerangkat, setHandleSearchTicketBus]);
-
-  console.log(searchTicketBus);
 
   function handleKlikKota(tipeKota: "asal" | "tujuan", item: string) {
     if (tipeKota === "asal") {
-      setKotaYangDipilih((prev) => [...prev, item]);
       setKotaAsal(item);
     } else {
-      setKotaYangDipilih((prev) => [...prev, item]);
       setKotaTujuan(item);
     }
+
+    setKotaYangDipilih((prev) => {
+      const newSelection = [...prev];
+      if (tipeKota === "asal") {
+        newSelection[0] = item;
+      } else {
+        newSelection[1] = item;
+      }
+
+      return newSelection.slice(0, 2);
+    });
 
     setIsOpenSuggest(false);
   }
@@ -151,7 +153,12 @@ export default function CariJadwalBus() {
           placeholder="Pilih tanggal keberangkatan"
           onChange={(e) => setTanggalBerangkat(e.target.value)}
         />
-        <Button className="text-white px-7 text-lg tracking-wide color-primary h-10">
+        <Button
+          className="text-white px-7 text-lg tracking-wide color-primary h-10"
+          onClick={() =>
+            setHandleSearchTicketBus(kotaYangDipilih, tanggalBerangkat)
+          }
+        >
           Cari
         </Button>
       </div>

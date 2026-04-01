@@ -30,6 +30,38 @@ export default function JadwalBus() {
     });
   }
 
+  // const {
+  //   dataTicketBus,
+  //   setHandleRangePrice,
+  //   setHandleSelectTypeBus,
+  //   setHandleTimeBusOfDepature,
+  //   setHandleSortTicketBus,
+  // } = useFilterTicketBus(
+  //   useShallow((state) => ({
+  //     dataTicketBus: state.dataTicketBus,
+  //     setHandleRangePrice: state.setHandleRangePrice,
+  //     setHandleSelectTypeBus: state.setHandleSelectTypeBus,
+  //     setHandleTimeBusOfDepature: state.setHandleTimeBusOfDepature,
+  //     setHandleSortTicketBus: state.setHandleSortTicketBus,
+  //   })),
+  // );
+
+  // useEffect(() => {
+  //   setHandleRangePrice(rangePriceValue, MIN_PRICE);
+  //   setHandleSelectTypeBus(selectedTypeBus);
+  //   setHandleTimeBusOfDepature(timeOfDepature);
+  //   setHandleSortTicketBus(sortFindTicketBus);
+  // }, [
+  //   setHandleRangePrice,
+  //   setHandleSelectTypeBus,
+  //   setHandleTimeBusOfDepature,
+  //   setHandleSortTicketBus,
+  //   rangePriceValue,
+  //   selectedTypeBus,
+  //   timeOfDepature,
+  //   sortFindTicketBus,
+  // ]);
+
   const sortDataTicketBus = useMemo(() => {
     let filteredTickets = [...daftarTiket];
 
@@ -52,13 +84,13 @@ export default function JadwalBus() {
     }
 
     if (sortFindTicketBus === "Keberangkatan Awal") {
-      return filteredTickets.filter(
+      filteredTickets = filteredTickets.filter(
         (data) => data.waktuKeberangkatan === "pagi",
       );
     }
 
     if (sortFindTicketBus === "Harga Tertinggi") {
-      return filteredTickets.sort((a, b) => b.harga - a.harga);
+      filteredTickets = filteredTickets.sort((a, b) => b.harga - a.harga);
     }
 
     return filteredTickets.sort((a, b) => a.harga - b.harga);
@@ -132,21 +164,19 @@ export default function JadwalBus() {
               Sort:
             </h2>
             <div className="flex items-center gap-3 overflow-x-auto pb-2 w-full md:pb-0 md:overflow-visible">
-              {["Harga Termurah", "Harga Tertinggi", "Keberangkatan Awal"].map(
-                (item, i) => (
-                  <Button
-                    key={i}
-                    variant="ghost"
-                    id={item}
-                    className={`px-5 rounded-lg whitespace-nowrap md:text-base hover:text-blue-900 ${sortFindTicketBus === item && `color-primary text-white`}`}
-                    onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-                      setSortFindTicketBus(e.currentTarget.id)
-                    }
-                  >
-                    {item}
-                  </Button>
-                ),
-              )}
+              {["Harga Termurah", "Harga Tertinggi"].map((item, i) => (
+                <Button
+                  key={i}
+                  variant="ghost"
+                  id={item}
+                  className={`px-5 rounded-lg whitespace-nowrap md:text-base hover:text-blue-900 ${sortFindTicketBus === item && `color-primary text-white`}`}
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                    setSortFindTicketBus(e.currentTarget.id)
+                  }
+                >
+                  {item}
+                </Button>
+              ))}
             </div>
           </div>
           <div className="mt-5 grid grid-cols-1 gap-5">
