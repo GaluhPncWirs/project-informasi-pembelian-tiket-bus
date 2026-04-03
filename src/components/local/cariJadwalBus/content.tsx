@@ -1,6 +1,6 @@
 import { Input } from "../../ui/input";
 import { Button } from "../../ui/button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Command,
   CommandEmpty,
@@ -36,20 +36,7 @@ export default function CariJadwalBus() {
   const setHandleSearchTicketBus = useFilterTicketBus(
     (state) => state.setHandleSearchTicketBus,
   );
-  const dataTicketBus = useFilterTicketBus((prev) => prev.dataTicketBus);
-  const searchAttempted = useFilterTicketBus((prev) => prev.searchAttempted);
-  const setSearchAttempted = useFilterTicketBus(
-    (prev) => prev.setSearchAttempted,
-  );
-
-  useEffect(() => {
-    if (searchAttempted && dataTicketBus.length === 0) {
-      toast("❌ Terjadi Kesalahan", {
-        description: "Jadwal tiket bus yang dicari tidak ada",
-      });
-      setSearchAttempted(false);
-    }
-  }, [dataTicketBus, searchAttempted]);
+  // const dataTicketBus = useFilterTicketBus((prev) => prev.dataTicketBus);
 
   function handleKlikKota(tipeKota: "asal" | "tujuan", item: string) {
     if (tipeKota === "asal") {
@@ -80,19 +67,19 @@ export default function CariJadwalBus() {
         setIsOpenSuggest(false);
         return;
       }
-    } else {
+    }
+
+    if (tipeKota === "tujuan") {
       setKotaTujuan(value);
       if (value === "") {
         setIsOpenSuggest(false);
         return;
       }
     }
-
     setIsOpenSuggest(true);
   }
 
   function handleSearchScheduleBus() {
-    setSearchAttempted(true);
     setHandleSearchTicketBus(kotaYangDipilih, tanggalBerangkat);
 
     if (pathname === "/Beranda") {
@@ -177,6 +164,7 @@ export default function CariJadwalBus() {
         <Button
           className="text-white px-7 text-lg tracking-wide color-primary h-10"
           onClick={handleSearchScheduleBus}
+          disabled={kotaYangDipilih.length < 2 || !tanggalBerangkat}
         >
           Cari
         </Button>

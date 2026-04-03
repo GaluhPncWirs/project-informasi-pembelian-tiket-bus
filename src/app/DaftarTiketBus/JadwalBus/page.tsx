@@ -40,23 +40,15 @@ export default function JadwalBus() {
     });
   }
 
-  const { dataTicketBus, setApplyAllFilters, searchCriteria } =
-    useFilterTicketBus(
-      useShallow((state) => ({
-        dataTicketBus: state.dataTicketBus,
-        setApplyAllFilters: state.setApplyAllFilters,
-        searchCriteria: state.searchCriteria,
-      })),
-    );
+  const { dataTicketBus, setApplyAllFilters } = useFilterTicketBus(
+    useShallow((state) => ({
+      dataTicketBus: state.dataTicketBus,
+      setApplyAllFilters: state.setApplyAllFilters,
+      searchCriteria: state.searchCriteria,
+    })),
+  );
 
   useEffect(() => {
-    if (
-      searchCriteria.kotaYangDipilih.length === 0 ||
-      searchCriteria.tanggalBerangkat === ""
-    ) {
-      return;
-    }
-
     setApplyAllFilters({
       rangePriceVal: rangePriceValue,
       MIN_PRICE: MIN_PRICE,
@@ -64,13 +56,7 @@ export default function JadwalBus() {
       timeOfDepature: timeOfDepature,
       sortFindTicketBus: sortFindTicketBus,
     });
-  }, [
-    rangePriceValue,
-    selectedTypeBus,
-    timeOfDepature,
-    sortFindTicketBus,
-    searchCriteria.kotaYangDipilih,
-  ]);
+  }, [rangePriceValue, selectedTypeBus, timeOfDepature, sortFindTicketBus]);
 
   const ITEM_PER_PAGE = 4;
   const totalPages = Math.ceil(dataTicketBus.length / ITEM_PER_PAGE);
