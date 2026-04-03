@@ -17,11 +17,13 @@ type FilterTicketBus = {
     kotaYangDipilih: string[];
     tanggalBerangkat: string;
   };
+  searchAttempted: boolean;
   setApplyAllFilters: (filters: ApplyAllFilters) => void;
   setHandleSearchTicketBus: (
     kotaYangDipilih: string[],
     tanggalBerangkat: string,
   ) => void;
+  setSearchAttempted: (value: boolean) => void;
 };
 
 export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
@@ -31,14 +33,15 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
     kotaYangDipilih: [],
     tanggalBerangkat: "",
   },
+  searchAttempted: false,
 
   setApplyAllFilters: (filters) => {
     set((prev) => {
       let filtered: dataTicket[] = [];
 
       if (
-        prev.searchCriteria.kotaYangDipilih &&
-        prev.searchCriteria.kotaYangDipilih.length > 0
+        prev.searchCriteria.kotaYangDipilih.length > 0 &&
+        prev.searchCriteria.tanggalBerangkat
       ) {
         filtered = [...prev.dataTicketBus];
       } else {
@@ -131,4 +134,6 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
       };
     });
   },
+
+  setSearchAttempted: (value) => set({ searchAttempted: value }),
 }));

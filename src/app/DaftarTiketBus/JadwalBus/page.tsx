@@ -17,7 +17,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "../../../components/ui/pagination";
-import { toast } from "sonner";
 
 export default function JadwalBus() {
   const MIN_PRICE = 50_000;
@@ -51,8 +50,10 @@ export default function JadwalBus() {
     );
 
   useEffect(() => {
-    // Jangan update filter jika search criteria kosong
-    if (searchCriteria.kotaYangDipilih.length === 0) {
+    if (
+      searchCriteria.kotaYangDipilih.length === 0 ||
+      searchCriteria.tanggalBerangkat === ""
+    ) {
       return;
     }
 
@@ -185,25 +186,76 @@ export default function JadwalBus() {
           </div>
           <div className="mt-5 grid grid-cols-1 gap-5">
             {dataTicketBus.length > 0 ? (
-              dataTicketBus
-                .slice(
-                  (currentPage - 1) * ITEM_PER_PAGE,
-                  currentPage * ITEM_PER_PAGE,
-                )
-                .map((item) => (
-                  <PilihTiketBus
-                    key={item.id}
-                    srcImg={item.srcImg}
-                    typeBus={item.typeBus}
-                    rute={item.rute}
-                    waktuBerangkat={item.waktuBerangkat}
-                    waktuEstimasi={item.waktuEstimasi}
-                    waktuKeberangkatan={item.waktuKeberangkatan}
-                    tglBerangkat={item.tglBerangkat}
-                    harga={item.harga}
-                    detailTiket={`${item.detailTiket}/${item.id}`}
-                  />
-                ))
+              <>
+                {dataTicketBus
+                  .slice(
+                    (currentPage - 1) * ITEM_PER_PAGE,
+                    currentPage * ITEM_PER_PAGE,
+                  )
+                  .map((item) => (
+                    <PilihTiketBus
+                      key={item.id}
+                      srcImg={item.srcImg}
+                      typeBus={item.typeBus}
+                      rute={item.rute}
+                      waktuBerangkat={item.waktuBerangkat}
+                      waktuEstimasi={item.waktuEstimasi}
+                      waktuKeberangkatan={item.waktuKeberangkatan}
+                      tglBerangkat={item.tglBerangkat}
+                      harga={item.harga}
+                      detailTiket={`${item.detailTiket}/${item.id}`}
+                    />
+                  ))}
+                <Pagination className="mt-3 flex justify-around items-center">
+                  <PaginationContent>
+                    <PaginationItem>
+                      <PaginationPrevious
+                        size="default"
+                        onClick={() =>
+                          setCurrentPage((page) => Math.max(page - 1, 1))
+                        }
+                        className={
+                          currentPage === 1
+                            ? "pointer-events-none opacity-50"
+                            : ""
+                        }
+                      />
+                    </PaginationItem>
+                    {getPaginationRange(currentPage, totalPages).map(
+                      (item, i) => (
+                        <PaginationItem key={i}>
+                          {item === "..." ? (
+                            <PaginationEllipsis />
+                          ) : (
+                            <PaginationLink
+                              size="default"
+                              isActive={currentPage === item}
+                              onClick={() => setCurrentPage(item)}
+                            >
+                              {item}
+                            </PaginationLink>
+                          )}
+                        </PaginationItem>
+                      ),
+                    )}
+                    <PaginationItem>
+                      <PaginationNext
+                        size="default"
+                        onClick={() =>
+                          setCurrentPage((page) =>
+                            Math.min(page + 1, totalPages),
+                          )
+                        }
+                        className={
+                          currentPage === totalPages
+                            ? "pointer-events-none opacity-50"
+                            : ""
+                        }
+                      />
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
+              </>
             ) : (
               <h1 className="flex justify-center items-center h-90">
                 Tiket Tidak Tersedia
@@ -212,48 +264,6 @@ export default function JadwalBus() {
           </div>
         </div>
       </div>
-
-      <Pagination className="mt-5 flex justify-around items-center">
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              size="default"
-              onClick={() => setCurrentPage((page) => Math.max(page - 1, 1))}
-              className={
-                currentPage === 1 ? "pointer-events-none opacity-50" : ""
-              }
-            />
-          </PaginationItem>
-          {getPaginationRange(currentPage, totalPages).map((item, i) => (
-            <PaginationItem key={i}>
-              {item === "..." ? (
-                <PaginationEllipsis />
-              ) : (
-                <PaginationLink
-                  size="default"
-                  isActive={currentPage === item}
-                  onClick={() => setCurrentPage(item)}
-                >
-                  {item}
-                </PaginationLink>
-              )}
-            </PaginationItem>
-          ))}
-          <PaginationItem>
-            <PaginationNext
-              size="default"
-              onClick={() =>
-                setCurrentPage((page) => Math.min(page + 1, totalPages))
-              }
-              className={
-                currentPage === totalPages
-                  ? "pointer-events-none opacity-50"
-                  : ""
-              }
-            />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
     </RootLayout>
   );
 }

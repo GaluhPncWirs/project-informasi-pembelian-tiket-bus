@@ -1,6 +1,6 @@
 import { Input } from "../../ui/input";
 import { Button } from "../../ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Command,
   CommandEmpty,
@@ -24,25 +24,32 @@ export default function CariJadwalBus() {
   const { pathname } = useLocation();
   const redirect = useNavigate();
 
-  const {
-    setHandleInputCariKota,
-    setHandleCariInputKotaTujuan,
-    hasilCariKotaAsal,
-    hasilCariKotaTujuan,
-  } = useSearchCity(
-    useShallow((state) => ({
-      setHandleInputCariKota: state.setHandleInputCariKota,
-      setHandleCariInputKotaTujuan: state.setHandleCariInputKotaTujuan,
-      hasilCariKotaAsal: state.hasilCariKotaAsal,
-      hasilCariKotaTujuan: state.hasilCariKotaTujuan,
-    })),
-  );
+  const { setHandleInputCariTiketBus, hasilCariKotaAsal, hasilCariKotaTujuan } =
+    useSearchCity(
+      useShallow((state) => ({
+        setHandleInputCariTiketBus: state.setHandleInputCariTiketBus,
+        hasilCariKotaAsal: state.hasilCariKotaAsal,
+        hasilCariKotaTujuan: state.hasilCariKotaTujuan,
+      })),
+    );
 
   const setHandleSearchTicketBus = useFilterTicketBus(
     (state) => state.setHandleSearchTicketBus,
   );
+  const dataTicketBus = useFilterTicketBus((prev) => prev.dataTicketBus);
+  const searchAttempted = useFilterTicketBus((prev) => prev.searchAttempted);
+  const setSearchAttempted = useFilterTicketBus(
+    (prev) => prev.setSearchAttempted,
+  );
 
-  const searchCriteria = useFilterTicketBus((state) => state.searchCriteria);
+  useEffect(() => {
+    if (searchAttempted && dataTicketBus.length === 0) {
+      toast("❌ Terjadi Kesalahan", {
+        description: "Jadwal tiket bus yang dicari tidak ada",
+      });
+      setSearchAttempted(false);
+    }
+  }, [dataTicketBus, searchAttempted]);
 
   function handleKlikKota(tipeKota: "asal" | "tujuan", item: string) {
     if (tipeKota === "asal") {
@@ -66,18 +73,15 @@ export default function CariJadwalBus() {
   }
 
   function handleInputCariKota(tipeKota: "asal" | "tujuan", value: string) {
+    setHandleInputCariTiketBus(value, tipeKota);
     if (tipeKota === "asal") {
       setKotaAsal(value);
-      setHandleInputCariKota(value);
-
       if (value === "") {
         setIsOpenSuggest(false);
         return;
       }
     } else {
       setKotaTujuan(value);
-      setHandleCariInputKotaTujuan(value);
-
       if (value === "") {
         setIsOpenSuggest(false);
         return;
@@ -88,13 +92,8 @@ export default function CariJadwalBus() {
   }
 
   function handleSearchScheduleBus() {
+    setSearchAttempted(true);
     setHandleSearchTicketBus(kotaYangDipilih, tanggalBerangkat);
-
-    if (searchCriteria.kotaYangDipilih.length === 0) {
-      toast("Tidak Ditemukan", {
-        description: "Jadwal Tiket Bus Tidak Ditemukan",
-      });
-    }
 
     if (pathname === "/Beranda") {
       redirect("/DaftarTiketBus");
