@@ -1,3 +1,4 @@
+import { CalendarClock } from "lucide-react";
 import { formatRupiah } from "../../../hooks/convertRupiah";
 import LinkButton from "../../global/linkButton/content";
 
@@ -43,13 +44,18 @@ export default function PilihTiketBus(props: dataTicket) {
 
         <div className="mt-2 space-y-1 text-sm text-slate-600">
           <div className="flex items-center gap-2">
-            <span className="font-semibold text-slate-900">
-              {waktuBerangkat}
+            <span className="font-semibold text-slate-900 flex items-center gap-1.5">
+              <CalendarClock /> <span>{waktuBerangkat}</span>
             </span>
             <span className="text-slate-400 text-xs">|</span>
-            <span>{waktuEstimasi}</span>
+            <span>
+              Estimasi{" "}
+              <span className="font-bold text-[#2E7D32]">
+                {waktuEstimasi} jam
+              </span>
+            </span>
           </div>
-          <p className="flex items-center gap-1.5 mt-2">
+          <p className="flex items-center gap-1.5 mt-2.5">
             <span className="px-2 py-0.5 bg-slate-100 rounded text-[10px] font-bold uppercase">
               {waktuKeberangkatan}
             </span>

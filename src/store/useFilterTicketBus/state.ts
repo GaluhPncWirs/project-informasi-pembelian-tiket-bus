@@ -13,6 +13,10 @@ type ApplyAllFilters = {
 type FilterTicketBus = {
   allDataTicketBus: dataTicket[];
   dataTicketBus: dataTicket[];
+  searchCriteria: {
+    kotaYangDipilih: string[];
+    tanggalBerangkat: string;
+  };
   setApplyAllFilters: (filters: ApplyAllFilters) => void;
   setHandleSearchTicketBus: (
     kotaYangDipilih: string[],
@@ -23,10 +27,23 @@ type FilterTicketBus = {
 export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
   allDataTicketBus: [...daftarTiketBus],
   dataTicketBus: [...daftarTiketBus],
+  searchCriteria: {
+    kotaYangDipilih: [],
+    tanggalBerangkat: "",
+  },
 
   setApplyAllFilters: (filters) => {
     set((prev) => {
-      let filtered = [...prev.allDataTicketBus];
+      let filtered: dataTicket[] = [];
+
+      if (
+        prev.searchCriteria.kotaYangDipilih &&
+        prev.searchCriteria.kotaYangDipilih.length > 0
+      ) {
+        filtered = [...prev.dataTicketBus];
+      } else {
+        filtered = [...prev.allDataTicketBus];
+      }
 
       const {
         rangePriceVal,
@@ -68,8 +85,15 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
 
   setHandleSearchTicketBus: (kotaYangDipilih, tanggalBerangkat) => {
     set((prev) => {
-      const searchCity = prev.dataTicketBus.filter((item) => {
-        const ruteArray = item.rute
+      if (!kotaYangDipilih || kotaYangDipilih.length === 0) {
+        return {
+          dataTicketBus: [...prev.allDataTicketBus],
+          searchCriteria: { kotaYangDipilih: [], tanggalBerangkat },
+        };
+      }
+
+      const searchCity = prev.allDataTicketBus.filter((item) => {
+        const ruteArrayLowerCase = item.rute
           .split(" - ")
           .map((s) => s.trim().toLowerCase());
         const selectedCityLowerCase = kotaYangDipilih.map((s) =>
@@ -77,8 +101,10 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
         );
 
         const isRuteMatch =
-          selectedCityLowerCase.length === ruteArray.length &&
-          selectedCityLowerCase.every((val, index) => val === ruteArray[index]);
+          selectedCityLowerCase.length === ruteArrayLowerCase.length &&
+          selectedCityLowerCase.every(
+            (val, index) => val === ruteArrayLowerCase[index],
+          );
 
         if (!isRuteMatch) return false;
         if (!tanggalBerangkat) return true;
@@ -101,6 +127,7 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
 
       return {
         dataTicketBus: searchCity,
+        searchCriteria: { kotaYangDipilih, tanggalBerangkat },
       };
     });
   },

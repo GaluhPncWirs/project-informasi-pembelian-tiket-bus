@@ -12,7 +12,7 @@ import {
 import { useSearchCity } from "../../../store/useSearchCity/state";
 import { useShallow } from "zustand/shallow";
 import { useFilterTicketBus } from "../../../store/useFilterTicketBus/state";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function CariJadwalBus() {
   const [kotaAsal, setKotaAsal] = useState<string>("");
@@ -21,6 +21,7 @@ export default function CariJadwalBus() {
   const [kotaYangDipilih, setKotaYangDipilih] = useState<string[]>([]);
   const [tanggalBerangkat, setTanggalBerangkat] = useState<string>("");
   const { pathname } = useLocation();
+  const redirect = useNavigate();
 
   const {
     setHandleInputCariKota,
@@ -83,6 +84,14 @@ export default function CariJadwalBus() {
     setIsOpenSuggest(true);
   }
 
+  function handleSearchScheduleBus() {
+    setHandleSearchTicketBus(kotaYangDipilih, tanggalBerangkat);
+
+    if (pathname === "/Beranda") {
+      redirect("/DaftarTiketBus");
+    }
+  }
+
   return (
     <>
       <h1 className="text-xl">Cari Jadwal Bus</h1>
@@ -96,9 +105,9 @@ export default function CariJadwalBus() {
           {isOpenSuggest && (
             <div>
               {kotaAsal !== "" && (
-                <CommandList className="p-2 bg-slate-50 absolute z-10 max-h-36 overflow-y-auto rounded-b-lg">
+                <CommandList className="p-2 bg-white absolute z-10 max-h-36 overflow-y-auto rounded-b-lg">
                   {hasilCariKotaAsal.length > 0 ? (
-                    <CommandGroup>
+                    <CommandGroup heading="Kota Asal">
                       {hasilCariKotaAsal.map((item, i) => (
                         <CommandItem
                           className="cursor-pointer mb-1"
@@ -110,7 +119,9 @@ export default function CariJadwalBus() {
                       ))}
                     </CommandGroup>
                   ) : (
-                    <CommandEmpty>Kota Tidak Tersedia.</CommandEmpty>
+                    <CommandEmpty className="px-5">
+                      Kota Tidak Tersedia.
+                    </CommandEmpty>
                   )}
                 </CommandList>
               )}
@@ -128,7 +139,7 @@ export default function CariJadwalBus() {
               {kotaTujuan !== "" && (
                 <CommandList className="p-2 bg-white shadow-md absolute z-10 max-h-36 overflow-y-auto rounded-b-md">
                   {hasilCariKotaTujuan.length > 0 ? (
-                    <CommandGroup>
+                    <CommandGroup heading="Kota Tujuan">
                       {hasilCariKotaTujuan.map((item, i) => (
                         <CommandItem
                           className="cursor-pointer mb-1"
@@ -140,7 +151,9 @@ export default function CariJadwalBus() {
                       ))}
                     </CommandGroup>
                   ) : (
-                    <CommandEmpty>Kota Tidak Tersedia.</CommandEmpty>
+                    <CommandEmpty className="px-5">
+                      Kota Tidak Tersedia.
+                    </CommandEmpty>
                   )}
                 </CommandList>
               )}
@@ -155,9 +168,7 @@ export default function CariJadwalBus() {
         />
         <Button
           className="text-white px-7 text-lg tracking-wide color-primary h-10"
-          onClick={() =>
-            setHandleSearchTicketBus(kotaYangDipilih, tanggalBerangkat)
-          }
+          onClick={handleSearchScheduleBus}
         >
           Cari
         </Button>

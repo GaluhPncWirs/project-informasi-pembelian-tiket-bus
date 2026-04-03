@@ -40,14 +40,21 @@ export default function JadwalBus() {
     });
   }
 
-  const { dataTicketBus, setApplyAllFilters } = useFilterTicketBus(
-    useShallow((state) => ({
-      dataTicketBus: state.dataTicketBus,
-      setApplyAllFilters: state.setApplyAllFilters,
-    })),
-  );
+  const { dataTicketBus, setApplyAllFilters, searchCriteria } =
+    useFilterTicketBus(
+      useShallow((state) => ({
+        dataTicketBus: state.dataTicketBus,
+        setApplyAllFilters: state.setApplyAllFilters,
+        searchCriteria: state.searchCriteria,
+      })),
+    );
 
   useEffect(() => {
+    // Jangan update filter jika search criteria kosong
+    if (searchCriteria.kotaYangDipilih.length === 0) {
+      return;
+    }
+
     setApplyAllFilters({
       rangePriceVal: rangePriceValue,
       MIN_PRICE: MIN_PRICE,
@@ -55,9 +62,16 @@ export default function JadwalBus() {
       timeOfDepature: timeOfDepature,
       sortFindTicketBus: sortFindTicketBus,
     });
-  }, [rangePriceValue, selectedTypeBus, timeOfDepature, sortFindTicketBus]);
+  }, [
+    rangePriceValue,
+    selectedTypeBus,
+    timeOfDepature,
+    sortFindTicketBus,
+    searchCriteria.kotaYangDipilih,
+  ]);
 
-  const totalPages = Math.ceil(dataTicketBus.length / 2);
+  const ITEM_PER_PAGE = 4;
+  const totalPages = Math.ceil(dataTicketBus.length / ITEM_PER_PAGE);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   function getPaginationRange(current: number, total: number) {
@@ -83,7 +97,6 @@ export default function JadwalBus() {
 
     return rangeWithDots;
   }
-
   return (
     <RootLayout>
       <div className="bg-white p-5 mx-auto rounded-md shadow-lg">
@@ -172,7 +185,10 @@ export default function JadwalBus() {
           <div className="mt-5 grid grid-cols-1 gap-5">
             {dataTicketBus.length > 0 ? (
               dataTicketBus
-                .slice(1, 5)
+                .slice(
+                  (currentPage - 1) * ITEM_PER_PAGE,
+                  currentPage * ITEM_PER_PAGE,
+                )
                 .map((item) => (
                   <PilihTiketBus
                     key={item.id}
