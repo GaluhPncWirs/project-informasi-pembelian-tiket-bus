@@ -1,10 +1,10 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import RootLayout from "../../../layout/rootLayout/content";
 import { AirVentIcon, Armchair, Plug2, Toilet, Wifi } from "lucide-react";
 import LinkButton from "../../../components/global/linkButton/content";
 
 export default function DetailTiketBus() {
-  const { idTiketBus } = useParams();
+  // const { idTiketBus } = useParams();
   return (
     <RootLayout>
       <div className="mb-10">
