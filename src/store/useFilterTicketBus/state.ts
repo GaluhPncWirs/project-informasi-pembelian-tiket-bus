@@ -139,7 +139,7 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
   setHandleResetFilter: () => {
     set((prev) => ({
       dataTicketBus: [...prev.allDataTicketBus],
-      resultSearchTicketBus: [...prev.allDataTicketBus],
+      resultSearchTicketBus: [],
       searchCriteria: { kotaYangDipilih: [], tanggalBerangkat: "" },
     }));
   },

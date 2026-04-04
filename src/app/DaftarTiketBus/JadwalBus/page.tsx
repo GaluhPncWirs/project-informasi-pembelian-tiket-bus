@@ -26,6 +26,7 @@ export default function JadwalBus() {
     useState<string>("Harga Termurah");
   const [selectedTypeBus, setSelectedTypeBus] = useState<string[]>([]);
   const [timeOfDepature, setTimeOfDepature] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   function handleTypeBusChange(
     busType: string,
@@ -59,8 +60,6 @@ export default function JadwalBus() {
       sortFindTicketBus: sortFindTicketBus,
     });
   }, [rangePriceValue, selectedTypeBus, timeOfDepature, sortFindTicketBus]);
-
-  const [currentPage, setCurrentPage] = useState<number>(1);
 
   function handleResetFilter() {
     setRangePriceValue(MIN_PRICE);
