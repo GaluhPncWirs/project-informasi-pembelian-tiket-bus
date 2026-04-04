@@ -1,10 +1,34 @@
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import RootLayout from "../../../layout/rootLayout/content";
-import { AirVentIcon, Armchair, Plug2, Toilet, Wifi } from "lucide-react";
+import {
+  Accessibility,
+  AirVent,
+  AirVentIcon,
+  Armchair,
+  Bath,
+  BedDouble,
+  Coffee,
+  Cookie,
+  Luggage,
+  Plug2,
+  ShieldCheck,
+  Tv,
+  Utensils,
+  Wifi,
+  Wind,
+} from "lucide-react";
 import LinkButton from "../../../components/global/linkButton/content";
+import { useFilterTicketBus } from "@/store/useFilterTicketBus/state";
+import { formatRupiah } from "@/hooks/convertRupiah";
 
 export default function DetailTiketBus() {
-  // const { idTiketBus } = useParams();
+  const { idTiketBus } = useParams();
+  const allDataTicketBus = useFilterTicketBus(
+    (state) => state.allDataTicketBus,
+  );
+  const isDetailTicketBus = allDataTicketBus.find(
+    (idTicket) => idTicket.id === idTiketBus,
+  );
   return (
     <RootLayout>
       <div className="mb-10">
@@ -46,105 +70,109 @@ export default function DetailTiketBus() {
               })}
           </div>
         </div>
-        <div className="mt-7 flex flex-col gap-5">
-          <div className="flex justify-between">
-            <div className="flex items-center gap-5">
-              <img
-                src="/images/local/detailBus/double-decker-bus.png"
-                alt="icon"
-                className="size-12"
-              />
-              <div>
-                <h2 className="text-2xl font-bold tracking-wide">
-                  Double Decker
-                </h2>
-                <h2 className="text-sm text-slate-600">Lorem ipsum dolor</h2>
+        {!isDetailTicketBus ? (
+          <h1>Loading...</h1>
+        ) : (
+          <div className="mt-7 flex flex-col gap-5">
+            <div className="flex justify-between">
+              <div className="flex items-center gap-5">
+                <img
+                  src="/images/local/detailBus/double-decker-bus.png"
+                  alt="icon"
+                  className="size-12"
+                />
+                <div>
+                  <h2 className="text-2xl font-bold tracking-wide">
+                    {isDetailTicketBus?.typeBus}
+                  </h2>
+                  <h2 className="text-sm text-slate-600">Lorem ipsum dolor</h2>
+                </div>
               </div>
-            </div>
-            <h3 className="text-[#2E7D32] text-xl font-bold">RP 150.000</h3>
-          </div>
-          <div className="grid grid-cols-2 gap-7 md:gap-0 md:grid-cols-3">
-            <div>
-              <h4>Tipe Bus</h4>
-              <h3 className="font-bold tracking-wide text-xl">Executive</h3>
-            </div>
-            <div>
-              <h4>Rute</h4>
-              <h3 className="font-bold tracking-wide text-xl">
-                Jakarta - Bandung
+              <h3 className="text-[#2E7D32] text-xl font-bold">
+                {formatRupiah(isDetailTicketBus?.harga)}
               </h3>
             </div>
+            <div className="flex flex-wrap gap-8 md:justify-between md:gap-0">
+              <div>
+                <h4>Tipe Bus</h4>
+                <h3 className="font-bold tracking-wide text-xl">
+                  {isDetailTicketBus?.typeBus}
+                </h3>
+              </div>
+              <div>
+                <h4>Rute</h4>
+                <h3 className="font-bold tracking-wide text-xl">
+                  {isDetailTicketBus?.rute}
+                </h3>
+              </div>
+              <div>
+                <h4>Waktu Keberangkatan</h4>
+                <h3 className="font-bold tracking-wide text-xl">
+                  {isDetailTicketBus?.waktuBerangkat}{" "}
+                  {isDetailTicketBus?.waktuKeberangkatan}
+                </h3>
+              </div>
+              <div>
+                <h4>Estimasi Sampai</h4>
+                <h3 className="font-bold tracking-wide text-xl">
+                  {isDetailTicketBus?.waktuEstimasi} Jam
+                </h3>
+              </div>
+            </div>
+            <div className="w-full h-1 bg-slate-300 rounded-md" />
             <div>
-              <h4>Waktu Keberangkatan</h4>
-              <h3 className="font-bold tracking-wide text-xl">18:00 Malam</h3>
-            </div>
-          </div>
-          <div className="w-full h-1 bg-slate-300 rounded-md" />
-          <div>
-            <h1 className="text-xl mb-5">Fasilitas Bus</h1>
-            <div className="grid grid-cols-4 gap-5 place-items-center md:grid-cols-5">
-              <div className="flex flex-col gap-3 items-center hover:scale-105 transition-all">
-                <div className="bg-slate-200 p-5 rounded-md">
-                  <AirVentIcon className="size-10 text-[#1A237E]" />
-                </div>
-                <h2>AC</h2>
-              </div>
-              <div className="flex flex-col gap-3 items-center hover:scale-105 transition-all">
-                <div className="bg-slate-200 p-5 rounded-md">
-                  <Wifi className="size-10 text-[#1A237E]" />
-                </div>
-                <h2>WI-FI</h2>
-              </div>
-              <div className="flex flex-col gap-3 items-center hover:scale-105 transition-all">
-                <div className="bg-slate-200 p-5 rounded-md">
-                  <Armchair className="size-10 text-[#1A237E]" />
-                </div>
-                <h2>Kursi Rebah</h2>
-              </div>
-              <div className="flex flex-col gap-3 items-center hover:scale-105 transition-all">
-                <div className="bg-slate-200 p-5 rounded-md">
-                  <Plug2 className="size-10 text-[#1A237E]" />
-                </div>
-                <h2>Soket</h2>
-              </div>
-              <div className="flex flex-col gap-3 items-center hover:scale-105 transition-all">
-                <div className="bg-slate-200 p-5 rounded-md">
-                  <Toilet className="size-10 text-[#1A237E]" />
-                </div>
-                <h2>Toilet</h2>
+              <h1 className="text-xl mb-5">Fasilitas Bus</h1>
+              <div className="grid grid-cols-4 gap-5 place-items-center md:grid-cols-5">
+                {isDetailTicketBus?.fasilitas.map((item, i) => {
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  const facilityIcons: Record<string, any> = {
+                    AC: AirVent,
+                    WiFi: Wifi,
+                    "Reclining Seat": Armchair,
+                    "USB Charger": Plug2,
+                    Toilet: Bath,
+                    "Sleeper Seat": BedDouble,
+                    "Servis Makan": Utensils,
+                    "Personal TV": Tv,
+                    Snack: Cookie,
+                    Bagasi: Luggage,
+                    "Leg Rest": Accessibility,
+                    Ventilasi: Wind,
+                    Asuransi: ShieldCheck,
+                    Kopi: Coffee,
+                  };
+
+                  const Icon = facilityIcons[item] ?? AirVentIcon;
+
+                  return (
+                    <div
+                      className="flex flex-col gap-3 items-center hover:scale-105 transition-all"
+                      key={i}
+                    >
+                      <div className="bg-slate-200 p-5 rounded-md">
+                        <Icon className="size-10 text-[#1A237E]" />
+                      </div>
+                      <h2>{item}</h2>
+                    </div>
+                  );
+                })}
               </div>
             </div>
+            <div className="w-full h-1 bg-slate-300 rounded-md" />
+            <div>
+              <h1 className="text-xl mb-3">Deskripsi</h1>
+              <p className="text-justify">{isDetailTicketBus?.description}</p>
+            </div>
+            <div>
+              <h1 className="text-xl mb-3">Kebijakan</h1>
+              <ul className="list-disc list-inside">
+                {isDetailTicketBus.policy.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div className="w-full h-1 bg-slate-300 rounded-md" />
-          <div>
-            <h1 className="text-xl mb-3">Deskripsi</h1>
-            <p className="text-justify">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere
-              hic pariatur dolorem autem natus nisi suscipit, labore soluta
-              recusandae, voluptas maiores repudiandae aperiam quas. Hic earum
-              inventore doloremque fugit obcaecati? Tempore quibusdam optio sed
-              fugit eveniet quod nulla voluptate inventore blanditiis. Vitae quo
-              cum, quas quod, nobis debitis quaerat obcaecati itaque voluptate
-              sunt odit similique quasi consectetur quam repellat expedita. Enim
-              maiores est asperiores aspernatur quia recusandae reprehenderit
-              vero minus quod ipsum, aliquam voluptatem illo ex ea aperiam et
-              mollitia nam, animi iste optio autem distinctio! Nemo officiis
-              placeat blanditiis? Odit magni voluptates, facilis eum repudiandae
-              quae delectus, ad laboriosam consequatur saepe totam maxime.
-              Repudiandae, praesentium distinctio, corrupti id illum aspernatur
-              sequi voluptates, debitis porro nobis sunt exercitationem vitae
-              officiis?
-            </p>
-          </div>
-          <div>
-            <h1 className="text-xl mb-3">Kebijakan</h1>
-            <ul className="list-disc list-inside">
-              <li>Lorem ipsum dolor sit.</li>
-              <li>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
-              <li>Lorem ipsum dolor</li>
-            </ul>
-          </div>
-        </div>
+        )}
       </div>
       <LinkButton href="/DaftarTiketBus" textButton="Kembali" />
     </RootLayout>

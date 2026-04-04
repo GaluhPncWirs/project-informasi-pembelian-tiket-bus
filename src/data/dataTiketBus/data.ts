@@ -10,6 +10,22 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 150000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Nikmati perjalanan premium dari Jakarta ke Bandung dengan bus tingkat modern. Dilengkapi dengan kursi yang luas dan pemandangan dari ketinggian yang memukau.",
+    fasilitas: [
+      "AC",
+      "WiFi",
+      "Reclining Seat",
+      "USB Charger",
+      "Cup Holder",
+      "Bagasi Luas",
+    ],
+    policy: [
+      "Dilarang merokok di dalam bus",
+      "Check-in minimal 30 menit sebelum berangkat",
+      "Bagasi maksimal 20kg",
+      "Tiket hanya berlaku sesuai tanggal keberangkatan",
+    ],
   },
   {
     id: "tk-002",
@@ -22,6 +38,24 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 280000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Perjalanan jarak jauh yang nyaman dengan layanan Executive. Kursi ergonomis dengan sandaran kaki memastikan Anda beristirahat dengan baik selama perjalanan malam.",
+    fasilitas: [
+      "AC",
+      "Toilet",
+      "Selimut",
+      "Bantal",
+      "Leg Rest",
+      "Servis Makan",
+      "Snack",
+    ],
+    policy: [
+      "Tiket dapat dijadwal ulang (reschedule)",
+      "Termasuk servis makan malam",
+      "Wajib menjaga ketenangan di malam hari",
+      "Anak usia 3 tahun ke atas wajib tiket",
+      "Dilarang membawa hewan peliharaan",
+    ],
   },
   {
     id: "tk-003",
@@ -34,6 +68,20 @@ export const daftarTiketBus = [
     tglBerangkat: "16 April 2026",
     harga: 95000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Layanan mewah untuk rute singkat Surabaya-Malang. Fasilitas hiburan pribadi di setiap kursi tersedia untuk menemani perjalanan siang Anda.",
+    fasilitas: [
+      "AC",
+      "Personal TV (AVOD)",
+      "Premium Snack",
+      "Free Water",
+      "WiFi",
+    ],
+    policy: [
+      "Pembatalan tiket maksimal H-1",
+      "Tersedia port pengisian daya USB",
+      "Dilarang makan makanan berbau tajam (Durian/Terasi)",
+    ],
   },
   {
     id: "tk-004",
@@ -46,6 +94,25 @@ export const daftarTiketBus = [
     tglBerangkat: "17 April 2026",
     harga: 350000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Kembali ke Jakarta dengan gaya. Bus Double Decker kami menawarkan area sleeper di lantai bawah untuk kenyamanan tidur yang maksimal.",
+    fasilitas: [
+      "AC",
+      "Sleeper Seat",
+      "Toilet",
+      "WiFi",
+      "USB Charger",
+      "Bantal & Selimut",
+      "Lampu Baca",
+    ],
+    policy: [
+      "Sudah termasuk selimut dan bantal",
+      "Berhenti di Rest Area pilihan",
+      "Dilarang menyalakan speaker HP",
+      "Penurunan sesuai titik drop-off resmi",
+      "Refund 50% jika batal di hari H",
+      "Wajib menunjukkan KTP saat check-in",
+    ],
   },
   {
     id: "tk-005",
@@ -58,6 +125,15 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 45000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Pilihan paling hemat untuk mobilitas harian Anda antar kota di Banten. Bus bersih dan terawat dengan AC standar.",
+    fasilitas: ["AC", "Bagasi Atas", "Konfigurasi Kursi 2-3"],
+    policy: [
+      "Tiket tidak dapat di-refund",
+      "Dilarang membawa senjata tajam",
+      "First-come, first-served seat",
+      "Barang bawaan adalah tanggung jawab penumpang",
+    ],
   },
   {
     id: "tk-006",
@@ -70,6 +146,16 @@ export const daftarTiketBus = [
     tglBerangkat: "18 April 2026",
     harga: 120000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Layanan Eksekutif sore hari menuju Kota Udang. Dilengkapi dengan toilet di dalam bus dan konfigurasi kursi 2-2 yang lapang.",
+    fasilitas: ["AC", "Toilet", "Reclining Seat", "Snack Box", "USB Charger"],
+    policy: [
+      "Termasuk air minum botol",
+      "Penurunan hanya di terminal tujuan",
+      "Dilarang merokok",
+      "Voucher makan tidak tersedia untuk rute singkat",
+      "Wajib menggunakan sabuk pengaman",
+    ],
   },
   {
     id: "tk-007",
@@ -82,6 +168,24 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 420000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Perjalanan eksklusif tengah malam via Tol Trans Jawa menggunakan kursi sleeper kelas utama.",
+    fasilitas: [
+      "Full Sleeper Seat",
+      "AC",
+      "Personal Screen",
+      "CCTV",
+      "Snack",
+      "WiFi",
+      "Headphone",
+    ],
+    policy: [
+      "Layanan antar jemput terbatas",
+      "Wajib menunjukkan kartu identitas",
+      "Refund 50% untuk pembatalan mendadak",
+      "Hanya tersedia untuk 18 penumpang",
+      "Disediakan sandal hotel",
+    ],
   },
   {
     id: "tk-008",
@@ -94,6 +198,22 @@ export const daftarTiketBus = [
     tglBerangkat: "20 April 2026",
     harga: 185000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Awali pagi Anda dari Depok menuju Tasikmalaya dengan armada bus tingkat terbaru kami yang stabil.",
+    fasilitas: [
+      "AC",
+      "Leg Rest",
+      "USB Charger",
+      "Toilet",
+      "Bagasi Luas",
+      "Cup Holder",
+    ],
+    policy: [
+      "Bagasi sepeda lipat diperbolehkan",
+      "Tersedia toilet bersih",
+      "Free snack box",
+      "Dilarang membuang sampah sembarangan",
+    ],
   },
   {
     id: "tk-009",
@@ -106,6 +226,23 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 310000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Perjalanan lintas provinsi dengan standar eksekutif. Fasilitas lengkap mulai dari selimut hingga servis makan gratis.",
+    fasilitas: [
+      "AC",
+      "Toilet",
+      "Bantal & Selimut",
+      "Servis Makan",
+      "Reclining Seat",
+      "Bagasi",
+    ],
+    policy: [
+      "Voucher makan di restoran rekanan",
+      "Asuransi Jasa Raharja termasuk",
+      "Dilarang membawa barang berbahaya",
+      "Barang elektronik tanggung jawab penumpang",
+      "Tersedia ruang merokok di rest area",
+    ],
   },
   {
     id: "tk-010",
@@ -118,6 +255,14 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 65000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Transportasi efisien bagi Anda dari Cilegon menuju wilayah Jakarta Utara dengan harga terjangkau.",
+    fasilitas: ["AC", "Konfigurasi 2-3", "Bagasi"],
+    policy: [
+      "Barang bawaan di bawah kursi",
+      "Dilarang berjualan di bus",
+      "Non-smoking area",
+    ],
   },
   {
     id: "tk-011",
@@ -130,6 +275,26 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 450000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Layanan First Class dari Jogja ke Ibu Kota. Nikmati kursi pijat elektrik dan kru kabin yang siap melayani kebutuhan Anda sepanjang perjalanan malam.",
+    fasilitas: [
+      "AC",
+      "Sleeper Seat",
+      "Massage Chair",
+      "Personal TV",
+      "Coffee/Tea Maker",
+      "WiFi",
+      "Toilet",
+      "Bantal & Selimut",
+    ],
+    policy: [
+      "Fasilitas kursi pijat elektrik gratis",
+      "Check-in khusus di lounge eksekutif",
+      "Tersedia sandal hotel untuk di dalam bus",
+      "Makan malam prasmanan di resto khusus",
+      "Gratis refill kopi dan teh sepuasnya",
+      "Refund 100% jika pembatalan H-2",
+    ],
   },
   {
     id: "tk-012",
@@ -142,6 +307,24 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 380000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Menghubungkan dua kota sejuk di Pulau Jawa. Armada Executive tangguh dengan suspensi udara untuk kenyamanan di jalur berkelok.",
+    fasilitas: [
+      "AC",
+      "Toilet",
+      "Leg Rest",
+      "Servis Makan",
+      "Snack Box",
+      "USB Charger",
+      "WiFi",
+    ],
+    policy: [
+      "Bagasi khusus oleh-oleh tersedia",
+      "Pemberhentian istirahat dua kali",
+      "Dilarang menyalakan musik tanpa headset",
+      "Wajib menjaga kebersihan area kursi",
+      "Tersedia kantong sampah di setiap kursi",
+    ],
   },
   {
     id: "tk-013",
@@ -154,6 +337,14 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 35000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Jadwal paling pagi untuk mobilitas pekerja dan pelajar. Menghindari kemacetan puncak di rute Sukabumi-Bogor.",
+    fasilitas: ["AC", "Kursi 2-3", "Bagasi Atas"],
+    policy: [
+      "Naik/Turun bisa di titik tertentu sesuai rute",
+      "Tarif flat untuk jauh-dekat",
+      "Dilarang membawa barang yang memakan tempat duduk",
+    ],
   },
   {
     id: "tk-014",
@@ -166,6 +357,24 @@ export const daftarTiketBus = [
     tglBerangkat: "16 April 2026",
     harga: 220000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Layanan bus tingkat via jalur tol Trans Jawa. Ruang kabin yang luas sangat cocok untuk perjalanan keluarga menuju Surabaya.",
+    fasilitas: [
+      "AC",
+      "Toilet",
+      "WiFi",
+      "USB Charger",
+      "Cup Holder",
+      "Snack",
+      "CCTV",
+    ],
+    policy: [
+      "Tersedia charger port di setiap kursi",
+      "Anak di bawah 2 tahun gratis (pangku)",
+      "Penitipan paket barang diperbolehkan (biaya tambahan)",
+      "Dilarang membawa barang berbau menyengat",
+      "Wajib memakai sabuk pengaman",
+    ],
   },
   {
     id: "tk-015",
@@ -178,6 +387,21 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 110000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Perjalanan siang hari yang efisien antar kota pesisir utara dengan konfigurasi kursi eksekutif yang lega.",
+    fasilitas: [
+      "AC",
+      "Toilet",
+      "Reclining Seat",
+      "Air Mineral",
+      "Audio Visual",
+    ],
+    policy: [
+      "Dilarang membawa minuman beralkohol",
+      "Pemesanan online wajib tukar struk fisik di agen",
+      "Check-in 15 menit sebelum keberangkatan",
+      "Barang berharga menjadi tanggung jawab penumpang",
+    ],
   },
   {
     id: "tk-016",
@@ -190,6 +414,24 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 400000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Layanan Luxury dengan privasi tinggi. Menggunakan sekat antar kursi dan hiburan layar sentuh pribadi.",
+    fasilitas: [
+      "Sleeper Seat",
+      "AC",
+      "AVOD (Personal Screen)",
+      "WiFi",
+      "Toilet",
+      "Snack Malam",
+      "Bantal & Selimut",
+    ],
+    policy: [
+      "Makan malam di restoran eksklusif",
+      "Asuransi perjalanan sudah termasuk",
+      "Dilarang merokok dan vape di dalam bus",
+      "Tersedia earphone gratis untuk hiburan pribadi",
+      "Wajib melepas alas kaki di area sleeper",
+    ],
   },
   {
     id: "tk-017",
@@ -202,6 +444,15 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 25000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Layanan shuttle ekonomi praktis untuk perjalanan antar kota di Jawa Barat. Jadwal keberangkatan yang sangat disiplin.",
+    fasilitas: ["AC", "Kursi Standar", "Bagasi"],
+    policy: [
+      "Tanpa sistem nomor kursi (bebas pilih)",
+      "Berhenti di terminal tujuan akhir saja",
+      "Bayar langsung di loket diperbolehkan",
+      "Dilarang membawa senjata tajam",
+    ],
   },
   {
     id: "tk-018",
@@ -214,6 +465,24 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 360000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Menempuh jarak jauh Kediri-Jakarta dengan bus tingkat. Dek bawah untuk kursi sleeper dan dek atas untuk kelas eksekutif.",
+    fasilitas: [
+      "AC",
+      "Toilet",
+      "Bantal & Selimut",
+      "Servis Makan",
+      "Leg Rest",
+      "WiFi",
+      "Reading Light",
+    ],
+    policy: [
+      "Selimut dicuci setiap kali perjalanan",
+      "Dilarang membawa hewan peliharaan",
+      "Wajib menjaga ketenangan setelah jam 22:00",
+      "Penurunan penumpang hanya di agen resmi",
+      "Dilarang membawa benda berbahaya",
+    ],
   },
   {
     id: "tk-019",
@@ -226,6 +495,22 @@ export const daftarTiketBus = [
     tglBerangkat: "16 April 2026",
     harga: 190000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Pilihan terbaik bagi pebisnis batik Pekalongan. Tiba di Jakarta pagi hari siap untuk beraktivitas.",
+    fasilitas: [
+      "AC",
+      "Toilet",
+      "Reclining Seat",
+      "Snack",
+      "WiFi",
+      "USB Charger",
+    ],
+    policy: [
+      "Asuransi Jasa Raharja sudah termasuk",
+      "Bagasi maksimal 2 koli per orang",
+      "Dilarang membawa buah durian",
+      "Tiket hangus jika terlambat datang",
+    ],
   },
   {
     id: "tk-020",
@@ -238,6 +523,22 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 130000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Perjalanan turun dari kota wisata Batu menuju Surabaya dengan armada eksklusif dan layanan snack premium.",
+    fasilitas: [
+      "AC",
+      "Leg Rest",
+      "Premium Snack",
+      "WiFi",
+      "USB Charger",
+      "Air Mineral",
+    ],
+    policy: [
+      "Full AC dan pengharum ruangan otomatis",
+      "Sopir bersertifikasi keselamatan berkendara",
+      "Tersedia dispenser air mineral di dalam bus",
+      "Dilarang merokok di dalam kabin",
+    ],
   },
   {
     id: "tk-021",
@@ -250,6 +551,14 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 30000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Layanan ekonomi cepat antar kabupaten di Jawa Timur. Solusi hemat untuk perjalanan jarak pendek.",
+    fasilitas: ["AC", "Kursi Standar", "Bagasi Atas"],
+    policy: [
+      "Anak pangku gratis (di bawah 3 tahun)",
+      "Tidak ada sistem refund tiket",
+      "Non-smoking area (Dilarang merokok)",
+    ],
   },
   {
     id: "tk-022",
@@ -262,6 +571,22 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 165000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Bus tingkat pagi hari dari BSD/Tangsel langsung ke Bandung via Tol Pasteur. Nyaman dan bebas repot.",
+    fasilitas: [
+      "AC",
+      "Toilet",
+      "Reclining Seat",
+      "Cup Holder",
+      "WiFi",
+      "USB Charger",
+    ],
+    policy: [
+      "Dilarang membawa makanan berbau tajam",
+      "Diskon 10% untuk lansia (syarat berlaku)",
+      "Check-in mandiri lewat aplikasi di terminal",
+      "Tersedia air mineral gratis 600ml",
+    ],
   },
   {
     id: "tk-023",
@@ -274,6 +599,15 @@ export const daftarTiketBus = [
     tglBerangkat: "17 April 2026",
     harga: 85000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Perjalanan sore yang indah melintasi jalur pegunungan Jawa Tengah dengan kursi eksekutif yang empuk.",
+    fasilitas: ["AC", "Reclining Seat", "WiFi", "USB Charger", "P3K"],
+    policy: [
+      "Wajib menggunakan sabuk pengaman",
+      "Hanya berhenti di titik agen resmi Salatiga & Magelang",
+      "Tersedia asuransi jiwa per perjalanan",
+      "Dilarang berjualan di dalam armada",
+    ],
   },
   {
     id: "tk-024",
@@ -286,6 +620,23 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 145000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Menghadirkan kenyamanan bintang lima di jalur Jawa Timur. Sangat direkomendasikan untuk Anda yang mengutamakan istirahat.",
+    fasilitas: [
+      "AC",
+      "Sleeper Seat",
+      "Toilet",
+      "Bantal & Selimut",
+      "Snack Malam",
+      "WiFi",
+    ],
+    policy: [
+      "Selimut dibersihkan dengan teknologi UV",
+      "Tersedia bantal kepala ergonomis",
+      "Reschedule gratis maksimal 1 kali",
+      "Disediakan earphone untuk hiburan",
+      "Dilarang membawa benda tajam atau berbau",
+    ],
   },
   {
     id: "tk-025",
@@ -298,5 +649,22 @@ export const daftarTiketBus = [
     tglBerangkat: "15 April 2026",
     harga: 140000,
     detailTiket: "/DaftarTiketBus/Detail",
+    description:
+      "Cara tercepat dari Cimahi menuju Bekasi. Armada bus tingkat menjamin stabilitas berkendara di kecepatan tinggi tol Cipularang.",
+    fasilitas: [
+      "AC",
+      "Toilet",
+      "Reclining Seat",
+      "USB Charger",
+      "WiFi",
+      "Cup Holder",
+      "Snack Box",
+    ],
+    policy: [
+      "Bagasi kabin terbatas (barang kecil)",
+      "Dilarang membawa obat-obatan terlarang",
+      "Penurunan dilakukan tepat di depan terminal Bekasi",
+      "Tersedia hand sanitizer di setiap pintu bus",
+    ],
   },
 ];

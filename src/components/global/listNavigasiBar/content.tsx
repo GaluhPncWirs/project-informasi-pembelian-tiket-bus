@@ -11,7 +11,7 @@ export default function ListNavigasiBar() {
       <li
         className={`${pathname === `/DaftarTiketBus` || pathname === `/DaftarTiketBus/Detail/${idTiketBus}` ? `textUnderline` : ``}`}
       >
-        <Link to="/DaftarTiketBus">Daftar Tiket</Link>
+        <Link to="/DaftarTiketBus">Tiket Bus</Link>
       </li>
       <li className={`${pathname === `/RutePopuler` && `textUnderline`}`}>
         <Link to="/RutePopuler">Rute Populer</Link>

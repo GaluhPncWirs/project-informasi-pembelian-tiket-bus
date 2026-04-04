@@ -9,4 +9,7 @@ export type dataTicket = {
   tglBerangkat: string;
   harga: number;
   detailTiket: string;
+  description: string;
+  policy: string[];
+  fasilitas: string[];
 };
