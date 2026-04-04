@@ -60,9 +60,22 @@ export default function JadwalBus() {
     });
   }, [rangePriceValue, selectedTypeBus, timeOfDepature, sortFindTicketBus]);
 
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  function handleResetFilter() {
+    setRangePriceValue(MIN_PRICE);
+    setSelectedTypeBus([]);
+    setTimeOfDepature(null);
+    setSortFindTicketBus("Harga Termurah");
+    setCurrentPage(1);
+    setHandleResetFilter();
+    //     toast("✅ Filter berhasil di-reset", {
+    //   description: "Semua filter kembali ke nilai default.",
+    // });
+  }
+
   const ITEM_PER_PAGE = 4;
   const totalPages = Math.ceil(dataTicketBus.length / ITEM_PER_PAGE);
-  const [currentPage, setCurrentPage] = useState<number>(1);
 
   function getPaginationRange(current: number, total: number) {
     const range: number[] = [];
@@ -141,8 +154,9 @@ export default function JadwalBus() {
                       name="timeOfDepature"
                       className="size-4"
                       id={item}
-                      onClick={(e: React.MouseEvent<HTMLInputElement>) =>
-                        setTimeOfDepature((e.target as HTMLInputElement).id)
+                      checked={timeOfDepature === item}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setTimeOfDepature(e.target.id)
                       }
                     />{" "}
                     <span>{item}</span>
@@ -152,7 +166,7 @@ export default function JadwalBus() {
             </div>
             <Button
               className="text-white px-7 tracking-wide color-primary h-10"
-              onClick={setHandleResetFilter}
+              onClick={handleResetFilter}
             >
               Reset
             </Button>
