@@ -23,6 +23,7 @@ type FilterTicketBus = {
     kotaYangDipilih: string[],
     tanggalBerangkat: string,
   ) => void;
+  setHandleResetFilter: () => void;
 };
 
 export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
@@ -133,5 +134,11 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
         searchCriteria: { kotaYangDipilih, tanggalBerangkat },
       };
     });
+  },
+
+  setHandleResetFilter: () => {
+    set((prev) => ({
+      dataTicketBus: prev.allDataTicketBus,
+    }));
   },
 }));

@@ -40,13 +40,15 @@ export default function JadwalBus() {
     });
   }
 
-  const { dataTicketBus, setApplyAllFilters } = useFilterTicketBus(
-    useShallow((state) => ({
-      dataTicketBus: state.dataTicketBus,
-      setApplyAllFilters: state.setApplyAllFilters,
-      searchCriteria: state.searchCriteria,
-    })),
-  );
+  const { dataTicketBus, setApplyAllFilters, setHandleResetFilter } =
+    useFilterTicketBus(
+      useShallow((state) => ({
+        dataTicketBus: state.dataTicketBus,
+        setApplyAllFilters: state.setApplyAllFilters,
+        searchCriteria: state.searchCriteria,
+        setHandleResetFilter: state.setHandleResetFilter,
+      })),
+    );
 
   useEffect(() => {
     setApplyAllFilters({
@@ -85,6 +87,7 @@ export default function JadwalBus() {
 
     return rangeWithDots;
   }
+
   return (
     <RootLayout>
       <div className="bg-white p-5 mx-auto rounded-md shadow-lg">
@@ -147,6 +150,12 @@ export default function JadwalBus() {
                 ))}
               </div>
             </div>
+            <Button
+              className="text-white px-7 tracking-wide color-primary h-10"
+              onClick={setHandleResetFilter}
+            >
+              Reset
+            </Button>
           </div>
         </div>
         <div className="bg-white rounded-md p-5 shadow-lg w-full lg:w-3/4">
@@ -160,7 +169,7 @@ export default function JadwalBus() {
                   key={i}
                   variant="ghost"
                   id={item}
-                  className={`px-5 rounded-lg whitespace-nowrap md:text-base hover:text-blue-900 ${sortFindTicketBus === item && `color-primary text-white`}`}
+                  className={`px-5 rounded-lg whitespace-nowrap text-sm hover:text-blue-900 ${sortFindTicketBus === item && `color-primary text-white`}`}
                   onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
                     setSortFindTicketBus(e.currentTarget.id)
                   }

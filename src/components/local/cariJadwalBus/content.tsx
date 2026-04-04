@@ -1,6 +1,6 @@
 import { Input } from "../../ui/input";
 import { Button } from "../../ui/button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Command,
   CommandEmpty,
