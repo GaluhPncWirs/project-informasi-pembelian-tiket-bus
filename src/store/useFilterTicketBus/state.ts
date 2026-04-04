@@ -17,6 +17,7 @@ type FilterTicketBus = {
     kotaYangDipilih: string[];
     tanggalBerangkat: string;
   };
+  resultSearchTicketBus: dataTicket[];
   setApplyAllFilters: (filters: ApplyAllFilters) => void;
   setHandleSearchTicketBus: (
     kotaYangDipilih: string[],
@@ -31,6 +32,7 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
     kotaYangDipilih: [],
     tanggalBerangkat: "",
   },
+  resultSearchTicketBus: [],
 
   setApplyAllFilters: (filters) => {
     set((prev) => {
@@ -127,6 +129,7 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
 
       return {
         dataTicketBus: searchCity,
+        resultSearchTicketBus: searchCity,
         searchCriteria: { kotaYangDipilih, tanggalBerangkat },
       };
     });

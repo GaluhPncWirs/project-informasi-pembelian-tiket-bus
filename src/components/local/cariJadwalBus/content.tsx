@@ -1,6 +1,6 @@
 import { Input } from "../../ui/input";
 import { Button } from "../../ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Command,
   CommandEmpty,
@@ -36,7 +36,9 @@ export default function CariJadwalBus() {
   const setHandleSearchTicketBus = useFilterTicketBus(
     (state) => state.setHandleSearchTicketBus,
   );
-  // const dataTicketBus = useFilterTicketBus((prev) => prev.dataTicketBus);
+  const isDataTicketBus = useFilterTicketBus(
+    (state) => state.resultSearchTicketBus,
+  );
 
   function handleKlikKota(tipeKota: "asal" | "tujuan", item: string) {
     if (tipeKota === "asal") {
@@ -81,6 +83,11 @@ export default function CariJadwalBus() {
 
   function handleSearchScheduleBus() {
     setHandleSearchTicketBus(kotaYangDipilih, tanggalBerangkat);
+    if (isDataTicketBus.length === 0) {
+      toast("❌ Terjadi Kesalahan", {
+        description: "Jadwal tiket bus yang dicari tidak ada",
+      });
+    }
 
     if (pathname === "/Beranda") {
       redirect("/DaftarTiketBus");
