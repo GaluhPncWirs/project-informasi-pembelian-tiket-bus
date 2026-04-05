@@ -20,10 +20,14 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="bg-blue-100">
+    <footer className="bg-blue-50">
       <div className="w-11/12 mx-auto pt-10 md:w-10/12">
         <div className="flex items-center gap-x-4">
-          <img src="/images/global/logo.png" alt="Logo" className="size-40" />
+          <img
+            src="/images/global/full_logo.png"
+            alt="Logo"
+            className="size-40 object-contain"
+          />
           <div className="h-28 w-0.5 bg-slate-500 rounded-lg" />
           <h1 className="max-w-xs">Portal Informasi Tiket Bus Terpercaya</h1>
         </div>

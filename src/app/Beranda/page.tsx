@@ -8,10 +8,17 @@ export default function Beranda() {
   return (
     <>
       <header className="heroSection">
-        <div className="absolute h-full flex items-center mx-7 md:mx-10 lg:mx-16">
-          <h1 className="text-4xl font-bold tracking-wider max-w-sm">
-            Temukan Informasi Harga Tiket Bus dengan Mudah
+        <div className="absolute h-full flex justify-center mx-7 flex-col max-w-md gap-y-3.5 drop-shadow-sm drop-shadow-blue-200 md:mx-10 lg:mx-16">
+          <h3 className="text-xl tracking-wide font-medium text-[#1A237E]">
+            Tour & Travel di Kota Bekasi
+          </h3>
+          <h1 className="text-4xl font-semibold tracking-wider">
+            Temukan Informasi Harga Tiket Bus dengan Mudah, di{" "}
+            <span className="text-[#1A237E]">MF Rent Car Tour and Travel!</span>
           </h1>
+          <h5 className="tracking-wide">
+            Rencanakan Perjalanan Anda Bersama Kami!
+          </h5>
         </div>
       </header>
       <RootLayout>
@@ -38,9 +45,9 @@ export default function Beranda() {
           <h1 className="text-2xl">Mitra Operator</h1>
           <div className="flex flex-col items-baseline md:items-center md:flex-row md:justify-around mt-5 gap-y-5">
             <img
-              src="/images/global/logo.png"
+              src="/images/global/full_logo.png"
               alt="Logo"
-              className="w-1/3 md:w-1/6"
+              className="w-1/3 object-contain md:w-1/6"
             />
             <p className="md:w-1/2 text-justify">
               Satu-satunya mitra operator untuk rute ini menawarkan kenyamanan
