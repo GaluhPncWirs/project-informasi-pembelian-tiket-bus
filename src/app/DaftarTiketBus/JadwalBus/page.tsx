@@ -104,7 +104,7 @@ export default function JadwalBus() {
       </div>
       <div className="mt-8 flex gap-5 flex-col lg:flex-row">
         <div className="bg-white rounded-md p-5 shadow-lg h-fit w-full lg:w-1/4">
-          <h1>Filter Berdasarkan:</h1>
+          <h1 className="mb-5">Filter Berdasarkan:</h1>
           <div className="flex flex-col gap-y-3">
             <div>
               <h1>Harga</h1>
@@ -122,7 +122,7 @@ export default function JadwalBus() {
             <div>
               <h1 className="mb-3">Tipe Tiket</h1>
               <div className="flex flex-col gap-1">
-                {["Executive", "Luxury", "Economy"].map((item) => (
+                {["Economy", "Executive", "Luxury"].map((item) => (
                   <div className="flex items-center gap-x-2" key={item}>
                     <Checkbox
                       id={item}

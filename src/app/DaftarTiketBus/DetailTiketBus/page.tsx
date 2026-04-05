@@ -9,10 +9,13 @@ import {
   BedDouble,
   Coffee,
   Cookie,
+  Crown,
+  Gem,
   Luggage,
   Plug2,
   ShieldCheck,
   Tv,
+  Users2,
   Utensils,
   Wifi,
   Wind,
@@ -20,6 +23,14 @@ import {
 import LinkButton from "../../../components/global/linkButton/content";
 import { useFilterTicketBus } from "@/store/useFilterTicketBus/state";
 import { formatRupiah } from "@/hooks/convertRupiah";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function DetailTiketBus() {
   const { idTiketBus } = useParams();
@@ -49,11 +60,23 @@ export default function DetailTiketBus() {
                     key={i}
                     className="relative w-1/3 aspect-video cursor-pointer"
                   >
-                    <img
-                      src="/images/local/jadwalBus/bus_double_decker.webp"
-                      alt={`tiket bus detail ${i}`}
-                      className="size-full object-cover rounded-lg"
-                    />
+                    <Dialog>
+                      <DialogTrigger>
+                        <img
+                          src="/images/local/jadwalBus/bus_double_decker.webp"
+                          alt={`tiket bus detail ${i}`}
+                          className="size-full object-cover rounded-lg"
+                        />
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>Gambar ke-{i + 1}</DialogTitle>
+                        </DialogHeader>
+                        <DialogDescription>
+                          harusnya gambar yang muncul
+                        </DialogDescription>
+                      </DialogContent>
+                    </Dialog>
 
                     {gambarTerakhir && sisaGambar > 0 && (
                       <div
@@ -76,11 +99,21 @@ export default function DetailTiketBus() {
           <div className="mt-7 flex flex-col gap-5">
             <div className="flex justify-between">
               <div className="flex items-center gap-5">
-                <img
-                  src="/images/local/detailBus/double-decker-bus.png"
-                  alt="icon"
-                  className="size-12"
-                />
+                <div className="flex flex-col items-center">
+                  {isDetailTicketBus.typeTiket === "Economy" ? (
+                    <Users2 className="text-[#1A237E]" />
+                  ) : isDetailTicketBus.typeTiket === "Executive" ? (
+                    <Gem className="text-[#1A237E]" />
+                  ) : (
+                    <Crown className="text-[#1A237E]" />
+                  )}
+
+                  <img
+                    src="/images/local/detailBus/double-decker-bus.png"
+                    alt="icon"
+                    className="size-12"
+                  />
+                </div>
                 <div>
                   <h2 className="text-2xl font-bold tracking-wide">
                     {isDetailTicketBus?.typeTiket}

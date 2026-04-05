@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="bg-blue-50">
+    <footer className="bg-blue-50 shadow-lg shadow-slate-900">
       <div className="w-11/12 mx-auto pt-10 md:w-10/12">
         <div className="flex items-center gap-x-4">
           <img
@@ -29,7 +29,9 @@ export default function Footer() {
             className="size-40 object-contain"
           />
           <div className="h-28 w-0.5 bg-slate-500 rounded-lg" />
-          <h1 className="max-w-xs">Portal Informasi Tiket Bus Terpercaya</h1>
+          <h1 className="max-w-xs">
+            Portal Informasi Tiket Bus Terlengkap dan Terpercaya
+          </h1>
         </div>
 
         <div className="grid gap-y-10 gap-x-5 py-5 grid-cols-2 md:grid-cols-3">
@@ -139,11 +141,11 @@ export default function Footer() {
           </div>
         </div>
         <div>
-          <div className="bg-slate-400 w-full h-1 rounded-md" />
+          <div className="bg-slate-300 w-full h-1 rounded-md" />
           <h3 className="py-2 text-sm">
             Copyright{" "}
             <span className="text-blue-800 font-semibold">{currentYear} </span>|{" "}
-            <span>Portal tiket informasi terpercaya</span>
+            <span>MF Rent Car Bus, Tour and Travel All rights reserved</span>
           </h3>
         </div>
       </div>
