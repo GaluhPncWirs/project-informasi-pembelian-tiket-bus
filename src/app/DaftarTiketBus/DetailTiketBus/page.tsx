@@ -83,7 +83,7 @@ export default function DetailTiketBus() {
                 />
                 <div>
                   <h2 className="text-2xl font-bold tracking-wide">
-                    {isDetailTicketBus?.typeBus}
+                    {isDetailTicketBus?.typeTiket}
                   </h2>
                   <h2 className="text-sm text-slate-600">Lorem ipsum dolor</h2>
                 </div>
@@ -142,7 +142,7 @@ export default function DetailTiketBus() {
                     Kopi: Coffee,
                   };
 
-                  const Icon = facilityIcons[item] ?? AirVentIcon;
+                  const Icon = facilityIcons[item.label] ?? AirVentIcon;
 
                   return (
                     <div
@@ -152,7 +152,7 @@ export default function DetailTiketBus() {
                       <div className="bg-slate-200 p-5 rounded-md">
                         <Icon className="size-10 text-[#1A237E]" />
                       </div>
-                      <h2>{item}</h2>
+                      <h2 className="text-center">{item.label}</h2>
                     </div>
                   );
                 })}

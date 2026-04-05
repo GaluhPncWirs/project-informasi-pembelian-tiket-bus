@@ -24,7 +24,7 @@ export default function JadwalBus() {
   const [rangePriceValue, setRangePriceValue] = useState<number>(MIN_PRICE);
   const [sortFindTicketBus, setSortFindTicketBus] =
     useState<string>("Harga Termurah");
-  const [selectedTypeBus, setSelectedTypeBus] = useState<string[]>([]);
+  const [selectedTypeTiket, setselectedTypeTiket] = useState<string[]>([]);
   const [timeOfDepature, setTimeOfDepature] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -32,7 +32,7 @@ export default function JadwalBus() {
     busType: string,
     checked: boolean | "indeterminate",
   ) {
-    setSelectedTypeBus((prev) => {
+    setselectedTypeTiket((prev) => {
       if (checked) {
         return prev.includes(busType) ? prev : [...prev, busType];
       }
@@ -55,22 +55,19 @@ export default function JadwalBus() {
     setApplyAllFilters({
       rangePriceVal: rangePriceValue,
       MIN_PRICE: MIN_PRICE,
-      selectedTypeBus: selectedTypeBus,
+      selectedTypeTiket: selectedTypeTiket,
       timeOfDepature: timeOfDepature,
       sortFindTicketBus: sortFindTicketBus,
     });
-  }, [rangePriceValue, selectedTypeBus, timeOfDepature, sortFindTicketBus]);
+  }, [rangePriceValue, selectedTypeTiket, timeOfDepature, sortFindTicketBus]);
 
   function handleResetFilter() {
     setRangePriceValue(MIN_PRICE);
-    setSelectedTypeBus([]);
+    setselectedTypeTiket([]);
     setTimeOfDepature(null);
     setSortFindTicketBus("Harga Termurah");
     setCurrentPage(1);
     setHandleResetFilter();
-    //     toast("✅ Filter berhasil di-reset", {
-    //   description: "Semua filter kembali ke nilai default.",
-    // });
   }
 
   const ITEM_PER_PAGE = 4;
@@ -123,23 +120,21 @@ export default function JadwalBus() {
             </div>
             <div className="bg-slate-200 h-0.5 rounded-md w-full" />
             <div>
-              <h1 className="mb-3">Tipe Bus</h1>
+              <h1 className="mb-3">Tipe Tiket</h1>
               <div className="flex flex-col gap-1">
-                {["Double Decker", "Executive", "Luxury", "Economy"].map(
-                  (item) => (
-                    <div className="flex items-center gap-x-2" key={item}>
-                      <Checkbox
-                        id={item}
-                        name={item}
-                        checked={selectedTypeBus.includes(item)}
-                        onCheckedChange={(checked) =>
-                          handleTypeBusChange(item, checked)
-                        }
-                      />{" "}
-                      <label htmlFor={item}>{item}</label>
-                    </div>
-                  ),
-                )}
+                {["Executive", "Luxury", "Economy"].map((item) => (
+                  <div className="flex items-center gap-x-2" key={item}>
+                    <Checkbox
+                      id={item}
+                      name={item}
+                      checked={selectedTypeTiket.includes(item)}
+                      onCheckedChange={(checked) =>
+                        handleTypeBusChange(item, checked)
+                      }
+                    />{" "}
+                    <label htmlFor={item}>{item}</label>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="bg-slate-200 h-0.5 rounded-md w-full" />
@@ -163,6 +158,7 @@ export default function JadwalBus() {
                 ))}
               </div>
             </div>
+
             <Button
               className="text-white px-7 tracking-wide color-primary h-10"
               onClick={handleResetFilter}
@@ -204,7 +200,7 @@ export default function JadwalBus() {
                     <PilihTiketBus
                       key={item.id}
                       srcImg={item.srcImg}
-                      typeBus={item.typeBus}
+                      typeTiket={item.typeTiket}
                       rute={item.rute}
                       waktuBerangkat={item.waktuBerangkat}
                       waktuEstimasi={item.waktuEstimasi}

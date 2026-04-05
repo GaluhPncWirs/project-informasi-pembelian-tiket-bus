@@ -2,6 +2,7 @@ export type dataTicket = {
   id: string;
   srcImg: string;
   typeBus: string;
+  typeTiket: string;
   rute: string;
   waktuBerangkat: string;
   waktuEstimasi: string;
@@ -11,5 +12,8 @@ export type dataTicket = {
   detailTiket: string;
   description: string;
   policy: string[];
-  fasilitas: string[];
+  fasilitas: {
+    label: string;
+    icon: string;
+  }[];
 };

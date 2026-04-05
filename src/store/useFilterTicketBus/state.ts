@@ -1,11 +1,12 @@
 import { create } from "zustand";
 import { daftarTiketBus } from "../../data/dataTiketBus/data";
 import type { dataTicket } from "../../types/typeDataTicket";
+import { toast } from "sonner";
 
 type ApplyAllFilters = {
   rangePriceVal: number;
   MIN_PRICE: number;
-  selectedTypeBus: string[];
+  selectedTypeTiket: string[];
   timeOfDepature: string | null;
   sortFindTicketBus: string;
 };
@@ -17,7 +18,6 @@ type FilterTicketBus = {
     kotaYangDipilih: string[];
     tanggalBerangkat: string;
   };
-  resultSearchTicketBus: dataTicket[];
   setApplyAllFilters: (filters: ApplyAllFilters) => void;
   setHandleSearchTicketBus: (
     kotaYangDipilih: string[],
@@ -33,7 +33,6 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
     kotaYangDipilih: [],
     tanggalBerangkat: "",
   },
-  resultSearchTicketBus: [],
 
   setApplyAllFilters: (filters) => {
     set((prev) => {
@@ -51,7 +50,7 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
       const {
         rangePriceVal,
         MIN_PRICE,
-        selectedTypeBus,
+        selectedTypeTiket,
         timeOfDepature,
         sortFindTicketBus,
       } = filters;
@@ -62,9 +61,9 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
       }
 
       // filter tipe bus
-      if (selectedTypeBus && selectedTypeBus.length > 0) {
+      if (selectedTypeTiket && selectedTypeTiket.length > 0) {
         filtered = filtered.filter((typeBus) =>
-          selectedTypeBus.includes(typeBus.typeBus),
+          selectedTypeTiket.includes(typeBus.typeTiket),
         );
       }
 
@@ -128,9 +127,14 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
         return item.tglBerangkat === resultDate;
       });
 
+      if (searchCity.length === 0) {
+        toast("❌ Terjadi Kesalahan", {
+          description: "Jadwal tiket bus yang dicari tidak ada",
+        });
+      }
+
       return {
         dataTicketBus: searchCity,
-        resultSearchTicketBus: searchCity,
         searchCriteria: { kotaYangDipilih, tanggalBerangkat },
       };
     });
@@ -139,7 +143,6 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
   setHandleResetFilter: () => {
     set((prev) => ({
       dataTicketBus: [...prev.allDataTicketBus],
-      resultSearchTicketBus: [],
       searchCriteria: { kotaYangDipilih: [], tanggalBerangkat: "" },
     }));
   },

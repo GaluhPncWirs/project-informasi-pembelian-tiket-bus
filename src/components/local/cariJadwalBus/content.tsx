@@ -13,7 +13,6 @@ import { useSearchCity } from "../../../store/useSearchCity/state";
 import { useShallow } from "zustand/shallow";
 import { useFilterTicketBus } from "../../../store/useFilterTicketBus/state";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toast } from "sonner";
 
 export default function CariJadwalBus() {
   const [kotaAsal, setKotaAsal] = useState<string>("");
@@ -35,9 +34,6 @@ export default function CariJadwalBus() {
 
   const setHandleSearchTicketBus = useFilterTicketBus(
     (state) => state.setHandleSearchTicketBus,
-  );
-  const isDataTicketBus = useFilterTicketBus(
-    (state) => state.resultSearchTicketBus,
   );
 
   function handleKlikKota(tipeKota: "asal" | "tujuan", item: string) {
@@ -83,11 +79,6 @@ export default function CariJadwalBus() {
 
   function handleSearchScheduleBus() {
     setHandleSearchTicketBus(kotaYangDipilih, tanggalBerangkat);
-    if (isDataTicketBus.length === 0) {
-      toast("❌ Terjadi Kesalahan", {
-        description: "Jadwal tiket bus yang dicari tidak ada",
-      });
-    }
 
     if (pathname === "/Beranda") {
       redirect("/DaftarTiketBus");

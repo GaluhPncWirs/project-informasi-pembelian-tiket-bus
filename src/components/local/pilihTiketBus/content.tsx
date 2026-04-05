@@ -4,7 +4,7 @@ import LinkButton from "../../global/linkButton/content";
 
 type dataTicket = {
   srcImg: string;
-  typeBus: string;
+  typeTiket: string;
   rute: string;
   waktuBerangkat: string;
   waktuEstimasi: string;
@@ -17,7 +17,7 @@ type dataTicket = {
 export default function PilihTiketBus(props: dataTicket) {
   const {
     srcImg,
-    typeBus,
+    typeTiket,
     rute,
     waktuBerangkat,
     waktuEstimasi,
@@ -38,7 +38,7 @@ export default function PilihTiketBus(props: dataTicket) {
 
       <div className="flex-1 flex flex-col justify-center border-b md:border-b-0 md:border-r border-slate-200 pb-4 md:pb-0 md:pr-6">
         <span className="text-sm font-bold uppercase traczking-wider text-[#2E7D32] mb-1">
-          {typeBus}
+          {typeTiket}
         </span>
         <h3 className="text-lg font-bold text-slate-800">{rute}</h3>
 
