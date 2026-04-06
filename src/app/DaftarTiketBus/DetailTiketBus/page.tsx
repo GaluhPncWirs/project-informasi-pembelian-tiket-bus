@@ -31,6 +31,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export default function DetailTiketBus() {
   const { idTiketBus } = useParams();
@@ -82,14 +89,38 @@ export default function DetailTiketBus() {
                     </Dialog>
 
                     {gambarTerakhir && sisaGambar > 0 && (
-                      <div
-                        className="absolute inset-0 bg-black/60 rounded-lg flex items-center justify-center hover:bg-black/50 transition"
-                        onClick={() => console.log("buka selengkapnya")}
-                      >
-                        <span className="text-white font-bold text-sm md:text-lg">
-                          +{sisaGambar}
-                        </span>
-                      </div>
+                      <Dialog>
+                        <DialogTrigger>
+                          <div className="absolute inset-0 bg-black/60 rounded-lg flex items-center justify-center hover:bg-black/50 transition">
+                            <span className="text-white font-bold text-sm md:text-lg">
+                              +{sisaGambar}
+                            </span>
+                          </div>
+                        </DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>Gambar ke-{i + 1}</DialogTitle>
+                          </DialogHeader>
+                          <div>
+                            <Carousel>
+                              <CarouselContent>
+                                {Array.from({ length: i }).map(
+                                  (_, indexImg) => (
+                                    <CarouselItem key={indexImg}>
+                                      <img
+                                        src="/images/local/jadwalBus/bus_double_decker.webp"
+                                        alt={`gambar ke-${i}`}
+                                      />
+                                    </CarouselItem>
+                                  ),
+                                )}
+                              </CarouselContent>
+                              <CarouselPrevious />
+                              <CarouselNext />
+                            </Carousel>
+                          </div>
+                        </DialogContent>
+                      </Dialog>
                     )}
                   </div>
                 );
