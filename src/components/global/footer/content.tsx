@@ -108,11 +108,11 @@ export default function Footer() {
               </li>
               <li>
                 <Mail className="size-5 inline-block mr-2" />
-                <span>Email : info@siBusTiket.com</span>
+                <span>Email : MFTravel@inform.com</span>
               </li>
               <li>
                 <MapPin className="size-5 inline-block mr-2" />
-                <span>Alamat : Jl Jend. Sudirman, Jakarta Selatan</span>
+                <span>Alamat : Jl Jend. Sudirman, Bekasi Timur</span>
               </li>
             </ul>
           </div>
@@ -122,19 +122,19 @@ export default function Footer() {
               <li className="flex items-center gap-2">
                 <Instagram className="size-5" />
                 <Link to="#" className="texsClickable">
-                  @SiBusTiket_id
+                  @MFTravel_id
                 </Link>
               </li>
               <li className="flex items-center gap-2">
                 <Facebook className="size-5" />
                 <Link to="#" className="texsClickable">
-                  @SiBusTiket_id
+                  @MFTravel_id
                 </Link>
               </li>
               <li className="flex items-center gap-2">
                 <XIcon className="size-5" />
                 <Link to="#" className="texsClickable">
-                  @SiBusTiket_id
+                  @MFTravel_id
                 </Link>
               </li>
             </ul>

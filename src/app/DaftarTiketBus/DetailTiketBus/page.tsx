@@ -73,7 +73,10 @@ export default function DetailTiketBus() {
                           <DialogTitle>Gambar ke-{i + 1}</DialogTitle>
                         </DialogHeader>
                         <DialogDescription>
-                          harusnya gambar yang muncul
+                          <img
+                            src="/images/local/jadwalBus/bus_double_decker.webp"
+                            alt={`gambar ke-${i}`}
+                          />
                         </DialogDescription>
                       </DialogContent>
                     </Dialog>
@@ -107,7 +110,6 @@ export default function DetailTiketBus() {
                   ) : (
                     <Crown className="text-[#1A237E]" />
                   )}
-
                   <img
                     src="/images/local/detailBus/double-decker-bus.png"
                     alt="icon"
@@ -118,7 +120,9 @@ export default function DetailTiketBus() {
                   <h2 className="text-2xl font-bold tracking-wide">
                     {isDetailTicketBus?.typeTiket}
                   </h2>
-                  <h2 className="text-sm text-slate-600">Lorem ipsum dolor</h2>
+                  <h2 className="text-sm text-slate-600">
+                    MF Rent Car, Tour and Travel
+                  </h2>
                 </div>
               </div>
               <h3 className="text-[#2E7D32] text-xl font-bold">
