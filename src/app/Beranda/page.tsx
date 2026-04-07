@@ -3,6 +3,50 @@ import { Bus, SlidersHorizontal, TicketPercent, Verified } from "lucide-react";
 import RutePopulerLayout from "../../components/local/rutePopulerLayout/content";
 import { Link } from "react-router-dom";
 import CariJadwalBus from "../../components/local/cariJadwalBus/content";
+import RutePopuler from "@/components/local/rutePopuler/content";
+
+const ruteTerpopuler = [
+  {
+    rute: "Jakarta - Bandung",
+    totalJadwal: 3,
+    minHarga: 140000,
+    maxHarga: 165000,
+    kategori: "Paling Ramai",
+    layanan: ["Executive", "Double Decker"],
+  },
+  {
+    rute: "Yogyakarta - Jakarta",
+    totalJadwal: 2,
+    minHarga: 280000,
+    maxHarga: 450000,
+    kategori: "Favorit Jarak Jauh",
+    layanan: ["Executive", "Luxury"],
+  },
+  {
+    rute: "Surabaya - Malang",
+    totalJadwal: 2,
+    minHarga: 95000,
+    maxHarga: 130000,
+    kategori: "Rute Wisata",
+    layanan: ["Luxury", "Executive"],
+  },
+  {
+    rute: "Jakarta - Surakarta (Solo)",
+    totalJadwal: 2,
+    minHarga: 400000,
+    maxHarga: 420000,
+    kategori: "Premium Sleeper",
+    layanan: ["Luxury", "Sleeper Bus"],
+  },
+  {
+    rute: "Bogor - Sukabumi",
+    totalJadwal: 1,
+    minHarga: 35000,
+    maxHarga: 35000,
+    kategori: "Komuter Ekonomi",
+    layanan: ["Economy"],
+  },
+];
 
 export default function Beranda() {
   return (
@@ -101,6 +145,9 @@ export default function Beranda() {
             </div>
           </div>
         </div>
+        {ruteTerpopuler.map((item, i) => (
+          <RutePopuler item={item} key={i} />
+        ))}
       </RootLayout>
     </>
   );

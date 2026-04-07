@@ -99,7 +99,7 @@ export default function DetailTiketBus() {
                         </DialogTrigger>
                         <DialogContent>
                           <DialogHeader>
-                            <DialogTitle>Gambar ke-{i + 1}</DialogTitle>
+                            <DialogTitle>Gambar Selanjutnya</DialogTitle>
                           </DialogHeader>
                           <div>
                             <Carousel>
