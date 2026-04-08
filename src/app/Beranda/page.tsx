@@ -44,8 +44,8 @@ export default function Beranda() {
                   (currentPage - 1) * ITEM_PER_PAGE,
                   currentPage * ITEM_PER_PAGE,
                 )
-                .map((item, i) => (
-                  <RutePopuler item={item} key={i} />
+                .map((item) => (
+                  <RutePopuler item={item} />
                 ))}
             </div>
             <PaginationListTicketBus

@@ -1,17 +1,21 @@
 import { Button } from "@/components/ui/button";
+import { daftarTiketBus } from "@/data/dataTiketBus/data";
 import type { dataRutePopuler } from "@/types/typeDataRutePopuler";
 import { ArrowRight, Bus, Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-type PropsRutePopuler = {
-  item: dataRutePopuler;
-  key: number;
-};
-
-export default function RutePopuler({ item, key }: PropsRutePopuler) {
+export default function RutePopuler({ item }: { item: dataRutePopuler }) {
+  const push = useNavigate();
+  function handleToDetailTicket() {
+    const toDetailTicket = daftarTiketBus.find(
+      (nameRute) => nameRute.rute === item.rute,
+    );
+    push(`${toDetailTicket?.detailTiket}/${toDetailTicket?.id}`);
+  }
   return (
     <div
       className="group relative bg-white border border-slate-200 rounded-3xl p-6 transition-all duration-300 hover:border-[#1A237E] hover:shadow-xl hover:shadow-blue-500/10"
-      key={key}
+      key={item.rute}
     >
       {/* Badge Kategori */}
       <div className="absolute -top-3 left-6">
@@ -61,7 +65,10 @@ export default function RutePopuler({ item, key }: PropsRutePopuler) {
             </p>
           </div>
 
-          <Button className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
+          <Button
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all"
+            onClick={handleToDetailTicket}
+          >
             <ArrowRight className="size-5" />
           </Button>
         </div>
