@@ -1,54 +1,15 @@
 import RootLayout from "../../layout/rootLayout/content";
 import { Bus, SlidersHorizontal, TicketPercent, Verified } from "lucide-react";
-import RutePopulerLayout from "../../components/local/rutePopulerLayout/content";
 import { Link } from "react-router-dom";
 import CariJadwalBus from "../../components/local/cariJadwalBus/content";
 import RutePopuler from "@/components/local/rutePopuler/content";
-
-const ruteTerpopuler = [
-  {
-    rute: "Jakarta - Bandung",
-    totalJadwal: 3,
-    minHarga: 140000,
-    maxHarga: 165000,
-    kategori: "Paling Ramai",
-    layanan: ["Executive", "Double Decker"],
-  },
-  {
-    rute: "Yogyakarta - Jakarta",
-    totalJadwal: 2,
-    minHarga: 280000,
-    maxHarga: 450000,
-    kategori: "Favorit Jarak Jauh",
-    layanan: ["Executive", "Luxury"],
-  },
-  {
-    rute: "Surabaya - Malang",
-    totalJadwal: 2,
-    minHarga: 95000,
-    maxHarga: 130000,
-    kategori: "Rute Wisata",
-    layanan: ["Luxury", "Executive"],
-  },
-  {
-    rute: "Jakarta - Surakarta (Solo)",
-    totalJadwal: 2,
-    minHarga: 400000,
-    maxHarga: 420000,
-    kategori: "Premium Sleeper",
-    layanan: ["Luxury", "Sleeper Bus"],
-  },
-  {
-    rute: "Bogor - Sukabumi",
-    totalJadwal: 1,
-    minHarga: 35000,
-    maxHarga: 35000,
-    kategori: "Komuter Ekonomi",
-    layanan: ["Economy"],
-  },
-];
+import { ruteTerpopuler } from "@/data/dataRuteBusPopuler/data";
+import { useState } from "react";
+import PaginationListTicketBus from "@/layout/pagination/content";
 
 export default function Beranda() {
+  const ITEM_PER_PAGE = 2;
+  const [currentPage, setCurrentPage] = useState<number>(1);
   return (
     <>
       <header className="heroSection">
@@ -72,17 +33,27 @@ export default function Beranda() {
         <div className="mt-8">
           <h1 className="text-2xl">Rute Populer</h1>
           <p className="text-justify">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-            veniam dignissimos ab asperiores esse recusandae aperiam dolores
-            necessitatibus facere.
+            Jelajahi rute-rute favorit pilihan jutaan penumpang dengan jadwal
+            keberangkatan paling lengkap dan layanan armada terbaik setiap
+            harinya.
           </p>
-          <div className="grid gap-4 mt-5 grid-cols-2 lg:grid-cols-3">
-            <RutePopulerLayout rute="Jakarta - Bandung" harga="250.000" />
-            <RutePopulerLayout rute="Surabaya - Malang" harga="500.000" />
-            <RutePopulerLayout rute="Palembang - Lampung" harga="350.000" />
-            <RutePopulerLayout rute="Bandung - Ciamis" harga="150.000" />
-            <RutePopulerLayout rute="Medan - Aceh" harga="650.000" />
-            <RutePopulerLayout rute="Solo - Trenggalek" harga="400.000" />
+          <div>
+            <div className="mt-7 grid grid-cols-1 md:grid-cols-2 gap-7">
+              {ruteTerpopuler
+                .slice(
+                  (currentPage - 1) * ITEM_PER_PAGE,
+                  currentPage * ITEM_PER_PAGE,
+                )
+                .map((item, i) => (
+                  <RutePopuler item={item} key={i} />
+                ))}
+            </div>
+            <PaginationListTicketBus
+              dataTicketBus={ruteTerpopuler}
+              ITEM_PER_PAGE={ITEM_PER_PAGE}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
           </div>
         </div>
         <div className="mt-8">
@@ -145,9 +116,6 @@ export default function Beranda() {
             </div>
           </div>
         </div>
-        {ruteTerpopuler.map((item, i) => (
-          <RutePopuler item={item} key={i} />
-        ))}
       </RootLayout>
     </>
   );

@@ -1,8 +1,7 @@
 export type dataRutePopuler = {
   rute: string;
   totalJadwal: number;
-  minHarga: number;
-  maxHarga: number;
+  harga: number;
   kategori: string;
   layanan: string[];
 };

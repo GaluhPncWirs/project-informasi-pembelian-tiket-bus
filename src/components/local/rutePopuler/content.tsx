@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import type { dataRutePopuler } from "@/types/typeDataRutePopuler";
 import { ArrowRight, Bus, Clock } from "lucide-react";
 
@@ -9,12 +10,12 @@ type PropsRutePopuler = {
 export default function RutePopuler({ item, key }: PropsRutePopuler) {
   return (
     <div
-      className="group relative bg-white border border-slate-200 rounded-3xl p-6 transition-all duration-300 hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/10 cursor-pointer"
+      className="group relative bg-white border border-slate-200 rounded-3xl p-6 transition-all duration-300 hover:border-[#1A237E] hover:shadow-xl hover:shadow-blue-500/10"
       key={key}
     >
       {/* Badge Kategori */}
       <div className="absolute -top-3 left-6">
-        <span className="bg-blue-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-lg">
+        <span className="bg-[#1A237E] text-white text-[10px] font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full shadow-lg">
           {item.kategori}
         </span>
       </div>
@@ -55,14 +56,14 @@ export default function RutePopuler({ item, key }: PropsRutePopuler) {
             <p className="text-[10px] text-slate-400 uppercase font-semibold">
               Mulai Dari
             </p>
-            <p className="text-xl font-extrabold text-blue-600">
-              Rp {item.minHarga.toLocaleString()}
+            <p className="text-xl font-extrabold text-[#2E7D32]">
+              Rp {item.harga.toLocaleString()}
             </p>
           </div>
 
-          <button className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
-            <ArrowRight size={20} />
-          </button>
+          <Button className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
+            <ArrowRight className="size-5" />
+          </Button>
         </div>
       </div>
     </div>
