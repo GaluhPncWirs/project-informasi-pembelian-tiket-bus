@@ -26,19 +26,17 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
 
       <div className="flex flex-col h-full">
         {/* Header: Rute */}
-        <div className="flex items-center justify-between mb-4 mt-2">
-          <div className="flex items-center gap-3">
-            <div className="p-3 bg-blue-50 text-blue-600 rounded-2xl group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-              <Bus size={24} />
-            </div>
-            <div>
-              <h4 className="text-xs text-slate-400 tracking-wider">
-                Dari {item.from}
-              </h4>
-              <h3 className="font-bold text-slate-800 text-lg leading-tight truncate max-w-56">
-                {item.city}
-              </h3>
-            </div>
+        <div className="flex items-center gap-3 truncate max-w-56 mb-4 mt-2">
+          <div className="p-3 bg-blue-50 text-blue-600 rounded-2xl group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+            <Bus size={24} />
+          </div>
+          <div>
+            <h4 className="text-xs text-slate-400 tracking-wider">
+              Dari {item.from}
+            </h4>
+            <h3 className="font-bold text-slate-800 text-lg leading-tight">
+              {item.city}
+            </h3>
           </div>
         </div>
 
@@ -55,7 +53,7 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
         </div>
 
         {/* gambar kotanya */}
-        <div className="absolute right-6 w-40 h-46">
+        <div className="absolute right-6 w-1/3 h-46">
           <img
             src="/images/local/beranda/bandung.webp"
             className="size-full object-cover rounded-lg"
@@ -73,7 +71,7 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
             </p>
           </div>
 
-          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all z-50">
+          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-400 group-hover:bg-[#1A237E] group-hover:text-white transition-all z-50 opacity-70 group-hover:opacity-100">
             <ArrowRight className="size-5" />
           </div>
         </div>

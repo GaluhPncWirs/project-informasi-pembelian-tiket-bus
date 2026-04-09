@@ -38,7 +38,7 @@ export default function Beranda() {
             harinya.
           </p>
           <div>
-            <div className="mt-7 grid grid-cols-1 md:grid-cols-2 gap-7">
+            <div className="mt-7 grid grid-cols-1 lg:grid-cols-2 gap-7">
               {ruteTerpopuler
                 .slice(
                   (currentPage - 1) * ITEM_PER_PAGE,
