@@ -32,7 +32,7 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
               <Bus size={24} />
             </div>
             <div>
-              <h3 className="font-bold text-slate-800 text-lg leading-tight">
+              <h3 className="font-bold text-slate-800 text-lg leading-tight truncate max-w-48">
                 {item.rute}
               </h3>
               <p className="text-sm text-slate-400 flex items-center gap-1 mt-1">
@@ -54,6 +54,20 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
           ))}
         </div>
 
+        {/* gambar rute */}
+        <div className="absolute right-4 h-46 flex items-center">
+          <img
+            src="/images/local/beranda/bandung.webp"
+            alt="img-rute"
+            className="w-28 h-full object-cover rounded-xl shadow-md z-10"
+          />
+          <img
+            src="/images/local/beranda/surabaya.webp"
+            alt="img-rute"
+            className="w-28 h-full object-cover rounded-xl shadow-md -ml-10 opacity-80"
+          />
+        </div>
+
         {/* Footer: Harga & Action */}
         <div className="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
           <div>
@@ -66,7 +80,7 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
           </div>
 
           <Button
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all z-50"
             onClick={handleToDetailTicket}
           >
             <ArrowRight className="size-5" />
