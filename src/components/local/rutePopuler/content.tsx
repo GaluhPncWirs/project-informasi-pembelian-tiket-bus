@@ -1,7 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { daftarTiketBus } from "@/data/dataTiketBus/data";
 import type { dataRutePopuler } from "@/types/typeDataRutePopuler";
-import { ArrowRight, Bus, Clock } from "lucide-react";
+import { ArrowRight, Bus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function RutePopuler({ item }: { item: dataRutePopuler }) {
@@ -14,8 +13,9 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
   }
   return (
     <div
-      className="group relative bg-white border border-slate-200 rounded-3xl p-6 transition-all duration-300 hover:border-[#1A237E] hover:shadow-xl hover:shadow-blue-500/10"
+      className="group relative bg-white border border-slate-200 rounded-3xl p-6 transition-all duration-300 hover:border-[#1A237E] hover:shadow-xl hover:shadow-blue-500/10 cursor-pointer"
       key={item.rute}
+      onClick={handleToDetailTicket}
     >
       {/* Badge Kategori */}
       <div className="absolute -top-3 left-6">
@@ -32,12 +32,12 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
               <Bus size={24} />
             </div>
             <div>
-              <h3 className="font-bold text-slate-800 text-lg leading-tight truncate max-w-48">
-                {item.rute}
+              <h4 className="text-xs text-slate-400 tracking-wider">
+                Dari {item.from}
+              </h4>
+              <h3 className="font-bold text-slate-800 text-lg leading-tight truncate max-w-56">
+                {item.city}
               </h3>
-              <p className="text-sm text-slate-400 flex items-center gap-1 mt-1">
-                <Clock size={14} /> {item.totalJadwal} Jadwal tersedia hari ini
-              </p>
             </div>
           </div>
         </div>
@@ -54,22 +54,16 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
           ))}
         </div>
 
-        {/* gambar rute */}
-        <div className="absolute right-4 h-46 flex items-center">
+        {/* gambar kotanya */}
+        <div className="absolute right-6 w-40 h-46">
           <img
             src="/images/local/beranda/bandung.webp"
-            alt="img-rute"
-            className="w-28 h-full object-cover rounded-xl shadow-md z-10"
-          />
-          <img
-            src="/images/local/beranda/surabaya.webp"
-            alt="img-rute"
-            className="w-28 h-full object-cover rounded-xl shadow-md -ml-10 opacity-80"
+            className="size-full object-cover rounded-lg"
           />
         </div>
 
         {/* Footer: Harga & Action */}
-        <div className="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
+        <div className="pt-3 border-t border-slate-50 flex items-center justify-between mx-2">
           <div>
             <p className="text-[10px] text-slate-400 uppercase font-semibold">
               Mulai Dari
@@ -79,12 +73,9 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
             </p>
           </div>
 
-          <Button
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all z-50"
-            onClick={handleToDetailTicket}
-          >
+          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all z-50">
             <ArrowRight className="size-5" />
-          </Button>
+          </div>
         </div>
       </div>
     </div>
