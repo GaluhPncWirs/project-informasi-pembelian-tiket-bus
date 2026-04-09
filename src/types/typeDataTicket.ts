@@ -9,7 +9,6 @@ export type dataTicket = {
   waktuKeberangkatan: string;
   tglBerangkat: string;
   harga: number;
-  detailTiket: string;
   description: string;
   policy: string[];
   fasilitas: {

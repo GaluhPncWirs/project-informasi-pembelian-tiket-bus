@@ -10,7 +10,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "pagi",
     tglBerangkat: "15 April 2026",
     harga: 150000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Nikmati perjalanan premium dengan bus tingkat modern. Kursi luas di dek atas memberikan pandangan luas sepanjang perjalanan.",
     fasilitas: [
@@ -36,7 +35,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "malam",
     tglBerangkat: "15 April 2026",
     harga: 280000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Perjalanan malam yang tenang dengan kursi ergonomis dan leg rest untuk istirahat maksimal.",
     fasilitas: [
@@ -63,7 +61,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "siang",
     tglBerangkat: "16 April 2026",
     harga: 125000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Kelas mewah dengan privasi tinggi. Setiap kursi memiliki sekat dan hiburan pribadi.",
     fasilitas: [
@@ -88,7 +85,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "malam",
     tglBerangkat: "17 April 2026",
     harga: 350000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Kombinasi bus tingkat dan sleeper seat di dek bawah. Pengalaman perjalanan paling nyaman via Tol Trans Jawa.",
     fasilitas: [
@@ -115,7 +111,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "pagi",
     tglBerangkat: "15 April 2026",
     harga: 45000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Pilihan paling hemat untuk perjalanan singkat. Bus bersih dan ber-AC standar.",
     fasilitas: [
@@ -139,7 +134,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "sore",
     tglBerangkat: "18 April 2026",
     harga: 120000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Layanan eksekutif sore hari. Konfigurasi kursi 2-2 memberikan ruang gerak lebih luas.",
     fasilitas: [
@@ -165,7 +159,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "malam",
     tglBerangkat: "15 April 2026",
     harga: 420000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Perjalanan eksklusif tengah malam. Kursi sleeper yang dapat direbahkan maksimal untuk tidur nyenyak.",
     fasilitas: [
@@ -192,7 +185,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "pagi",
     tglBerangkat: "20 April 2026",
     harga: 185000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Awali pagi dengan bus tingkat terbaru. Stabilitas tinggi dan suspensi udara yang sangat empuk.",
     fasilitas: [
@@ -219,7 +211,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "sore",
     tglBerangkat: "15 April 2026",
     harga: 310000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Perjalanan antar provinsi dengan standar kenyamanan tinggi. Termasuk satu kali servis makan gratis.",
     fasilitas: [
@@ -240,7 +231,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "pagi",
     tglBerangkat: "15 April 2026",
     harga: 65000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Transportasi efisien untuk keperluan kerja atau bisnis ke arah pelabuhan Tanjung Priok.",
     fasilitas: [
@@ -260,7 +250,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "malam",
     tglBerangkat: "15 April 2026",
     harga: 450000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Layanan First Class. Fasilitas kursi pijat dan kru kabin (stewardess) yang siap melayani kebutuhan Anda.",
     fasilitas: [
@@ -287,7 +276,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "siang",
     tglBerangkat: "15 April 2026",
     harga: 380000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Menghubungkan dua kota sejuk. Bus didesain untuk kenyamanan di jalur pegunungan yang berkelok.",
     fasilitas: [
@@ -313,7 +301,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "pagi",
     tglBerangkat: "15 April 2026",
     harga: 35000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Pilihan terbaik untuk menghindari macet pagi hari. Keberangkatan tepat waktu setiap hari.",
     fasilitas: [
@@ -333,7 +320,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "pagi",
     tglBerangkat: "16 April 2026",
     harga: 220000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Perjalanan siang hari yang menyenangkan dengan bus tingkat. Dek bawah lebih privat dan tenang.",
     fasilitas: [
@@ -354,7 +340,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "siang",
     tglBerangkat: "15 April 2026",
     harga: 110000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Layanan eksekutif via Tol Cipali. Perjalanan cepat dan kursi yang dapat direbahkan jauh.",
     fasilitas: [
@@ -375,7 +360,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "malam",
     tglBerangkat: "15 April 2026",
     harga: 400000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Format kabin hotel berjalan. Privasi maksimal dengan fasilitas multimedia lengkap di tiap bilik.",
     fasilitas: [
@@ -401,7 +385,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "pagi",
     tglBerangkat: "15 April 2026",
     harga: 25000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Shuttle ekonomi antar kota Jabar. Murah, cepat, dan tersedia setiap jam.",
     fasilitas: [
@@ -421,7 +404,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "sore",
     tglBerangkat: "15 April 2026",
     harga: 360000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Perjalanan jarak jauh dengan stabilitas bus tingkat. Dek bawah khusus kursi eksekutif plus leg rest.",
     fasilitas: [
@@ -447,7 +429,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "malam",
     tglBerangkat: "16 April 2026",
     harga: 190000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Armada modern dengan pandangan kaca depan yang luas. Tiba di Jakarta pagi hari siap beraktivitas.",
     fasilitas: [
@@ -468,7 +449,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "pagi",
     tglBerangkat: "15 April 2026",
     harga: 130000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Kombinasi kelas sleeper dan eksekutif dalam satu bus. Pilihan mewah untuk rute Malang Raya.",
     fasilitas: [
@@ -494,7 +474,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "siang",
     tglBerangkat: "15 April 2026",
     harga: 30000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Layanan ekonomi cepat Jatim. Solusi termurah untuk mobilitas antar kabupaten.",
     fasilitas: [
@@ -514,7 +493,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "pagi",
     tglBerangkat: "15 April 2026",
     harga: 165000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Perjalanan pagi dari BSD langsung ke Bandung. Dek atas menawarkan pemandangan jalan tol yang estetik.",
     fasilitas: [
@@ -540,7 +518,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "sore",
     tglBerangkat: "17 April 2026",
     harga: 85000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Bus eksekutif dengan suspensi udara. Sangat nyaman melintasi jalur pegunungan Merapi-Merbabu.",
     fasilitas: [
@@ -561,7 +538,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "malam",
     tglBerangkat: "15 April 2026",
     harga: 145000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Kelas sleeper dengan harga terjangkau. Pengalaman tidur di kabin kapsul sepanjang perjalanan.",
     fasilitas: [
@@ -582,7 +558,6 @@ export const daftarTiketBus = [
     waktuKeberangkatan: "siang",
     tglBerangkat: "15 April 2026",
     harga: 140000,
-    detailTiket: "/DaftarTiketBus/Detail",
     description:
       "Bus eksekutif terbaru dengan desain aerodinamis. Cepat, aman, dan sangat stabil di jalan tol.",
     fasilitas: [

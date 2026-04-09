@@ -173,7 +173,7 @@ export default function JadwalBus() {
                       waktuKeberangkatan={item.waktuKeberangkatan}
                       tglBerangkat={item.tglBerangkat}
                       harga={item.harga}
-                      detailTiket={`${item.detailTiket}/${item.id}`}
+                      detailTiket={`/DaftarTiketBus/Detail/${item.id}`}
                     />
                   ))}
                 <PaginationListTicketBus

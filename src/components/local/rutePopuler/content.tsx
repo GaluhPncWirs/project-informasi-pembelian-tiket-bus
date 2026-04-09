@@ -9,7 +9,7 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
     const toDetailTicket = daftarTiketBus.find(
       (nameRute) => nameRute.rute === item.rute,
     );
-    push(`${toDetailTicket?.detailTiket}/${toDetailTicket?.id}`);
+    push(`/DaftarTiketBus/Detail/${toDetailTicket?.id}`);
   }
   return (
     <div
