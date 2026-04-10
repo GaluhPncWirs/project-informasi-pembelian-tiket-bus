@@ -13,11 +13,8 @@ export default function ListNavigasiBar() {
       >
         <Link to="/DaftarTiketBus">Tiket Bus</Link>
       </li>
-      <li className={`${pathname === `/RutePopuler` && `textUnderline`}`}>
-        <Link to="/RutePopuler">Rute Populer</Link>
-      </li>
-      <li className={`${pathname === `/Tentang` && `textUnderline`}`}>
-        <Link to="/Tentang">Tentang</Link>
+      <li className={`${pathname === `/TentangKami` && `textUnderline`}`}>
+        <Link to="/TentangKami">Tentang</Link>
       </li>
     </>
   );

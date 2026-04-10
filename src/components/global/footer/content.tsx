@@ -10,9 +10,7 @@ import {
   MapPin,
   MessageCircleQuestion,
   Phone,
-  Route,
   ScrollText,
-  ShieldCheck,
   XIcon,
 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -40,25 +38,20 @@ export default function Footer() {
             <ul className="flex flex-col gap-1.5">
               <li>
                 <Home className="size-5 inline-block mr-2" />
-                <Link to="#" className="texsClickable">
+                <Link to="/Beranda" className="texsClickable">
                   Beranda
                 </Link>
               </li>
               <li>
                 <ClipboardList className="size-5 inline-block mr-2" />
-                <Link to="#" className="texsClickable">
+                <Link to="/DaftarTiketBus" className="texsClickable">
                   Daftar Tiket
                 </Link>
               </li>
-              <li>
-                <Route className="size-5 inline-block mr-2" />
-                <Link to="#" className="texsClickable">
-                  Rute Populer
-                </Link>
-              </li>
+
               <li>
                 <Building2 className="size-5 inline-block mr-2" />
-                <Link to="#" className="texsClickable">
+                <Link to="/TentangKami" className="texsClickable">
                   Tentang
                 </Link>
               </li>
@@ -89,12 +82,6 @@ export default function Footer() {
                 <ScrollText className="size-5 inline-block mr-2" />
                 <Link to="#" className="texsClickable">
                   Syarat & Ketentuan
-                </Link>
-              </li>
-              <li>
-                <ShieldCheck className="size-5 inline-block mr-2" />
-                <Link to="#" className="texsClickable">
-                  Kebijakan Privasi
                 </Link>
               </li>
             </ul>

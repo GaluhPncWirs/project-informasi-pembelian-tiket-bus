@@ -70,7 +70,7 @@ export default function Beranda() {
               siap melayani perjalanan anda dengan layanan terbaik.
             </p>
             <Link
-              to="/Tentang"
+              to="/TentangKami"
               className="py-2 px-5 rounded-md text-white color-primary"
             >
               Lihat Informasi Detail

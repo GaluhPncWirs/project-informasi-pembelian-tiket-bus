@@ -9,6 +9,7 @@ import {
 import Beranda from "../Beranda/page.tsx";
 import JadwalBus from "../DaftarTiketBus/JadwalBus/page.tsx";
 import DetailTiketBus from "../DaftarTiketBus/DetailTiketBus/page.tsx";
+import TentangKami from "../TentangKami/page.tsx";
 
 const root = createRoot(document.getElementById("root")!);
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
         element: <DetailTiketBus />,
       },
     ],
+  },
+  {
+    path: "/TentangKami",
+    element: <TentangKami />,
   },
 ]);
 
