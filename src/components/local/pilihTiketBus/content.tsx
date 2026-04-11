@@ -30,7 +30,7 @@ export default function PilihTiketBus(props: dataTicket) {
     <div className="flex flex-col md:flex-row items-stretch gap-6 p-4 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md transition-shadow">
       <div className="w-full md:w-1/4">
         <img
-          src={srcImg}
+          src={`/images/local/jadwalBus/${srcImg}`}
           alt="Bus"
           className="rounded-lg w-full h-full object-cover min-h-30"
         />

@@ -4,6 +4,7 @@ export type dataTicket = {
   typeBus: string;
   typeTiket: string;
   rute: string;
+  tiketDibeli: number;
   waktuBerangkat: string;
   waktuEstimasi: string;
   waktuKeberangkatan: string;

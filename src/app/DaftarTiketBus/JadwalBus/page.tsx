@@ -21,6 +21,7 @@ export default function JadwalBus() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const ITEM_PER_PAGE = 4;
 
+  // untuk select tipe tiket
   function handleTypeBusChange(
     busType: string,
     checked: boolean | "indeterminate",
@@ -34,6 +35,14 @@ export default function JadwalBus() {
     });
   }
 
+  // untuk ambil data
+  const { setFetchAllDataTicketBus } = useFilterTicketBus();
+
+  useEffect(() => {
+    setFetchAllDataTicketBus();
+  }, [setFetchAllDataTicketBus]);
+
+  // untuk filter tiket bus
   const { dataTicketBus, setApplyAllFilters, setHandleResetFilter } =
     useFilterTicketBus(
       useShallow((state) => ({
@@ -52,8 +61,15 @@ export default function JadwalBus() {
       timeOfDepature: timeOfDepature,
       sortFindTicketBus: sortFindTicketBus,
     });
-  }, [rangePriceValue, selectedTypeTiket, timeOfDepature, sortFindTicketBus]);
+  }, [
+    setApplyAllFilters,
+    rangePriceValue,
+    selectedTypeTiket,
+    timeOfDepature,
+    sortFindTicketBus,
+  ]);
 
+  // untuk reset filter
   function handleResetFilter() {
     setRangePriceValue(MIN_PRICE);
     setselectedTypeTiket([]);

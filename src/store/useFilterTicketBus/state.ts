@@ -1,7 +1,7 @@
 import { create } from "zustand";
-import { daftarTiketBus } from "../../data/dataTiketBus/data";
 import type { dataTicket } from "../../types/typeDataTicket";
 import { toast } from "sonner";
+import { getDatasTicketBus } from "@/lib/firebase/services";
 
 type ApplyAllFilters = {
   rangePriceVal: number;
@@ -12,12 +12,13 @@ type ApplyAllFilters = {
 };
 
 type FilterTicketBus = {
-  allDataTicketBus: dataTicket[];
-  dataTicketBus: dataTicket[];
+  allDataTicketBus: dataTicket[] | [];
+  dataTicketBus: dataTicket[] | [];
   searchCriteria: {
     kotaYangDipilih: string[];
     tanggalBerangkat: string;
   };
+  setFetchAllDataTicketBus: () => void;
   setApplyAllFilters: (filters: ApplyAllFilters) => void;
   setHandleSearchTicketBus: (
     kotaYangDipilih: string[],
@@ -27,11 +28,27 @@ type FilterTicketBus = {
 };
 
 export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
-  allDataTicketBus: [...daftarTiketBus],
-  dataTicketBus: [...daftarTiketBus],
+  allDataTicketBus: [],
+  dataTicketBus: [],
   searchCriteria: {
     kotaYangDipilih: [],
     tanggalBerangkat: "",
+  },
+
+  setFetchAllDataTicketBus: async () => {
+    try {
+      const getData = await getDatasTicketBus();
+      if (getData.status) {
+        set({
+          allDataTicketBus: getData.data as dataTicket[],
+          dataTicketBus: getData.data as dataTicket[],
+        });
+      } else {
+        toast.error("Gagal mengambil data tiket bus");
+      }
+    } catch {
+      toast.error("Terjadi kesalahan saat mengambil data");
+    }
   },
 
   setApplyAllFilters: (filters) => {
