@@ -210,7 +210,7 @@ export default function DetailTiketBus() {
                     Kopi: Coffee,
                   };
 
-                  const Icon = facilityIcons[item.label] ?? AirVentIcon;
+                  const Icon = facilityIcons[item] ?? AirVentIcon;
 
                   return (
                     <div
@@ -220,7 +220,7 @@ export default function DetailTiketBus() {
                       <div className="bg-slate-200 p-5 rounded-md">
                         <Icon className="size-10 text-[#1A237E]" />
                       </div>
-                      <h2 className="text-center">{item.label}</h2>
+                      <h2 className="text-center">{item}</h2>
                     </div>
                   );
                 })}

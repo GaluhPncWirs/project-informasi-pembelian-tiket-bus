@@ -11,8 +11,5 @@ export type dataTicket = {
   harga: number;
   description: string;
   policy: string[];
-  fasilitas: {
-    label: string;
-    icon: string;
-  }[];
+  fasilitas: string[];
 };

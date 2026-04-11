@@ -12,12 +12,7 @@ export const daftarTiketBus = [
     harga: 150000,
     description:
       "Nikmati perjalanan premium dengan bus tingkat modern. Kursi luas di dek atas memberikan pandangan luas sepanjang perjalanan.",
-    fasilitas: [
-      { label: "AC", icon: "AirVent" },
-      { label: "WiFi", icon: "Wifi" },
-      { label: "Reclining Seat", icon: "Armchair" },
-      { label: "USB Charger", icon: "Plug2" },
-    ],
+    fasilitas: ["AC", "WiFi", "Reclining Seat", "USB Charger"],
     policy: [
       "Dilarang merokok",
       "Check-in 30 menit sebelum berangkat",
@@ -37,12 +32,7 @@ export const daftarTiketBus = [
     harga: 280000,
     description:
       "Perjalanan malam yang tenang dengan kursi ergonomis dan leg rest untuk istirahat maksimal.",
-    fasilitas: [
-      { label: "Toilet", icon: "Bath" },
-      { label: "Selimut", icon: "Bed" },
-      { label: "Leg Rest", icon: "Armchair" },
-      { label: "Servis Makan", icon: "Utensils" },
-    ],
+    fasilitas: ["Toilet", "Selimut", "Leg Rest", "Servis Makan"],
     policy: [
       "Reschedule tersedia",
       "Termasuk makan malam",
@@ -63,11 +53,8 @@ export const daftarTiketBus = [
     harga: 125000,
     description:
       "Kelas mewah dengan privasi tinggi. Setiap kursi memiliki sekat dan hiburan pribadi.",
-    fasilitas: [
-      { label: "Personal TV", icon: "Monitor" },
-      { label: "Snack", icon: "Utensils" },
-      { label: "WiFi", icon: "Wifi" },
-    ],
+    fasilitas: ["Personal TV", "Snack", "Wifi"],
+
     policy: [
       "Pembatalan H-1",
       "Dilarang membawa durian",
@@ -87,12 +74,7 @@ export const daftarTiketBus = [
     harga: 350000,
     description:
       "Kombinasi bus tingkat dan sleeper seat di dek bawah. Pengalaman perjalanan paling nyaman via Tol Trans Jawa.",
-    fasilitas: [
-      { label: "Sleeper Seat", icon: "Bed" },
-      { label: "WiFi", icon: "Wifi" },
-      { label: "Toilet", icon: "Bath" },
-      { label: "Reading Light", icon: "Plug2" },
-    ],
+    fasilitas: ["Sleeper Seat", "Toilet", "Wifi", "Reading Light"],
     policy: [
       "Termasuk selimut",
       "Rest area pilihan",
@@ -113,10 +95,7 @@ export const daftarTiketBus = [
     harga: 45000,
     description:
       "Pilihan paling hemat untuk perjalanan singkat. Bus bersih dan ber-AC standar.",
-    fasilitas: [
-      { label: "AC", icon: "AirVent" },
-      { label: "Bagasi Atas", icon: "Briefcase" },
-    ],
+    fasilitas: ["AC", "Bagasi Atas"],
     policy: [
       "Non-refundable",
       "Dilarang membawa senjata",
@@ -136,11 +115,8 @@ export const daftarTiketBus = [
     harga: 120000,
     description:
       "Layanan eksekutif sore hari. Konfigurasi kursi 2-2 memberikan ruang gerak lebih luas.",
-    fasilitas: [
-      { label: "AC", icon: "AirVent" },
-      { label: "Toilet", icon: "Bath" },
-      { label: "Snack Box", icon: "Utensils" },
-    ],
+    fasilitas: ["Air minum", "Toilet", "Snack Box"],
+
     policy: [
       "Air minum gratis",
       "Penurunan terminal resmi",
@@ -161,12 +137,7 @@ export const daftarTiketBus = [
     harga: 420000,
     description:
       "Perjalanan eksklusif tengah malam. Kursi sleeper yang dapat direbahkan maksimal untuk tidur nyenyak.",
-    fasilitas: [
-      { label: "Sleeper Seat", icon: "Bed" },
-      { label: "Monitor TV", icon: "Monitor" },
-      { label: "Coffee", icon: "Coffee" },
-      { label: "WiFi", icon: "Wifi" },
-    ],
+    fasilitas: ["Sleeper Seat", "TV", "Coffee", "WiFi"],
     policy: [
       "Wajib ID asli",
       "Refund 50% hari H",
@@ -187,12 +158,7 @@ export const daftarTiketBus = [
     harga: 185000,
     description:
       "Awali pagi dengan bus tingkat terbaru. Stabilitas tinggi dan suspensi udara yang sangat empuk.",
-    fasilitas: [
-      { label: "AC", icon: "AirVent" },
-      { label: "Toilet", icon: "Bath" },
-      { label: "Leg Rest", icon: "Armchair" },
-      { label: "Bagasi", icon: "Briefcase" },
-    ],
+    fasilitas: ["AC", "Toilet", "Leg Rest", "Bagasi"],
     policy: [
       "Bagasi sepeda lipat OK",
       "Toilet bersih",
@@ -213,11 +179,7 @@ export const daftarTiketBus = [
     harga: 310000,
     description:
       "Perjalanan antar provinsi dengan standar kenyamanan tinggi. Termasuk satu kali servis makan gratis.",
-    fasilitas: [
-      { label: "Servis Makan", icon: "Utensils" },
-      { label: "Selimut", icon: "Bed" },
-      { label: "Reclining Seat", icon: "Armchair" },
-    ],
+    fasilitas: ["Servis Makan", "Selimut", "Reclining Seat"],
     policy: ["Voucher makan khusus", "Asuransi jiwa", "Dilarang benda tajam"],
   },
   {
@@ -233,10 +195,7 @@ export const daftarTiketBus = [
     harga: 65000,
     description:
       "Transportasi efisien untuk keperluan kerja atau bisnis ke arah pelabuhan Tanjung Priok.",
-    fasilitas: [
-      { label: "AC", icon: "AirVent" },
-      { label: "Bagasi Atas", icon: "Briefcase" },
-    ],
+    fasilitas: ["AC", "Bagasi Atas"],
     policy: ["Barang di bawah kursi", "Dilarang berjualan", "Non-smoking"],
   },
   {
@@ -252,12 +211,7 @@ export const daftarTiketBus = [
     harga: 450000,
     description:
       "Layanan First Class. Fasilitas kursi pijat dan kru kabin (stewardess) yang siap melayani kebutuhan Anda.",
-    fasilitas: [
-      { label: "Massage Chair", icon: "Armchair" },
-      { label: "Pantry", icon: "Coffee" },
-      { label: "Sleeper Seat", icon: "Bed" },
-      { label: "WiFi", icon: "Wifi" },
-    ],
+    fasilitas: ["Massage Chair", "Pantry", "Sleeper Seat", "WiFi"],
     policy: [
       "Lounge eksekutif",
       "Free flow coffee",
@@ -278,11 +232,7 @@ export const daftarTiketBus = [
     harga: 380000,
     description:
       "Menghubungkan dua kota sejuk. Bus didesain untuk kenyamanan di jalur pegunungan yang berkelok.",
-    fasilitas: [
-      { label: "Toilet", icon: "Bath" },
-      { label: "Servis Makan", icon: "Utensils" },
-      { label: "Leg Rest", icon: "Armchair" },
-    ],
+    fasilitas: ["Toilet", "Servis Makan", "Leg Rest"],
     policy: [
       "Bagasi oleh-oleh",
       "Istirahat 2x",
@@ -303,10 +253,7 @@ export const daftarTiketBus = [
     harga: 35000,
     description:
       "Pilihan terbaik untuk menghindari macet pagi hari. Keberangkatan tepat waktu setiap hari.",
-    fasilitas: [
-      { label: "AC", icon: "AirVent" },
-      { label: "Bagasi", icon: "Briefcase" },
-    ],
+    fasilitas: ["AC", "Bagasi"],
     policy: ["Titik naik fleksibel", "Tarif flat", "Non-smoking"],
   },
   {
@@ -322,11 +269,7 @@ export const daftarTiketBus = [
     harga: 220000,
     description:
       "Perjalanan siang hari yang menyenangkan dengan bus tingkat. Dek bawah lebih privat dan tenang.",
-    fasilitas: [
-      { label: "USB Charger", icon: "Plug2" },
-      { label: "Toilet", icon: "Bath" },
-      { label: "WiFi", icon: "Wifi" },
-    ],
+    fasilitas: ["USB Charger", "Toilet", "WiFi"],
     policy: ["Anak < 2th gratis", "Charger tiap kursi", "Wajib sabuk pengaman"],
   },
   {
@@ -342,11 +285,7 @@ export const daftarTiketBus = [
     harga: 110000,
     description:
       "Layanan eksekutif via Tol Cipali. Perjalanan cepat dan kursi yang dapat direbahkan jauh.",
-    fasilitas: [
-      { label: "AC", icon: "AirVent" },
-      { label: "Toilet", icon: "Bath" },
-      { label: "Reclining Seat", icon: "Armchair" },
-    ],
+    fasilitas: ["AC", "Toilet", "Reclining Seat"],
     policy: ["No alcohol", "Tukar struk fisik", "Check-in 15 menit"],
   },
   {
@@ -362,11 +301,7 @@ export const daftarTiketBus = [
     harga: 400000,
     description:
       "Format kabin hotel berjalan. Privasi maksimal dengan fasilitas multimedia lengkap di tiap bilik.",
-    fasilitas: [
-      { label: "Sleeper Seat", icon: "Bed" },
-      { label: "Monitor TV", icon: "Monitor" },
-      { label: "Makan Malam", icon: "Utensils" },
-    ],
+    fasilitas: ["Sleeper Seat", "Monitor TV", "Makan Malam"],
     policy: [
       "Resto eksklusif",
       "Free earphone",
@@ -387,10 +322,7 @@ export const daftarTiketBus = [
     harga: 25000,
     description:
       "Shuttle ekonomi antar kota Jabar. Murah, cepat, dan tersedia setiap jam.",
-    fasilitas: [
-      { label: "AC", icon: "AirVent" },
-      { label: "Bagasi", icon: "Briefcase" },
-    ],
+    fasilitas: ["AC", "Bagasi"],
     policy: ["Bebas pilih kursi", "Terminal ke terminal", "Bayar loket"],
   },
   {
@@ -406,11 +338,7 @@ export const daftarTiketBus = [
     harga: 360000,
     description:
       "Perjalanan jarak jauh dengan stabilitas bus tingkat. Dek bawah khusus kursi eksekutif plus leg rest.",
-    fasilitas: [
-      { label: "Toilet", icon: "Bath" },
-      { label: "Selimut", icon: "Bed" },
-      { label: "Servis Makan", icon: "Utensils" },
-    ],
+    fasilitas: ["Toilet", "Selimut", "Servis Makan"],
     policy: [
       "Selimut dicuci rutin",
       "No pet",
@@ -431,11 +359,7 @@ export const daftarTiketBus = [
     harga: 190000,
     description:
       "Armada modern dengan pandangan kaca depan yang luas. Tiba di Jakarta pagi hari siap beraktivitas.",
-    fasilitas: [
-      { label: "AC", icon: "AirVent" },
-      { label: "Toilet", icon: "Bath" },
-      { label: "USB Charger", icon: "Plug2" },
-    ],
+    fasilitas: ["AC", "Toilet", "USB Charger"],
     policy: ["Jasa Raharja included", "Batas bagasi 2 koli", "No durian"],
   },
   {
@@ -451,11 +375,7 @@ export const daftarTiketBus = [
     harga: 130000,
     description:
       "Kombinasi kelas sleeper dan eksekutif dalam satu bus. Pilihan mewah untuk rute Malang Raya.",
-    fasilitas: [
-      { label: "Snack Box", icon: "Utensils" },
-      { label: "WiFi", icon: "Wifi" },
-      { label: "Air Mineral", icon: "Coffee" },
-    ],
+    fasilitas: ["Snack Box", "WiFi", "Air Mineral"],
     policy: [
       "Full AC",
       "Sopir sertifikasi",
@@ -476,10 +396,7 @@ export const daftarTiketBus = [
     harga: 30000,
     description:
       "Layanan ekonomi cepat Jatim. Solusi termurah untuk mobilitas antar kabupaten.",
-    fasilitas: [
-      { label: "AC", icon: "AirVent" },
-      { label: "Bagasi Atas", icon: "Briefcase" },
-    ],
+    fasilitas: ["AC", "Bagasi Atas"],
     policy: ["Anak pangku ok", "No refund", "Bebas asap rokok"],
   },
   {
@@ -495,11 +412,7 @@ export const daftarTiketBus = [
     harga: 165000,
     description:
       "Perjalanan pagi dari BSD langsung ke Bandung. Dek atas menawarkan pemandangan jalan tol yang estetik.",
-    fasilitas: [
-      { label: "AC", icon: "AirVent" },
-      { label: "Toilet", icon: "Bath" },
-      { label: "USB Charger", icon: "Plug2" },
-    ],
+    fasilitas: ["AC", "Toilet", "USB Charger"],
     policy: [
       "No odorous food",
       "Diskon lansia",
@@ -520,11 +433,7 @@ export const daftarTiketBus = [
     harga: 85000,
     description:
       "Bus eksekutif dengan suspensi udara. Sangat nyaman melintasi jalur pegunungan Merapi-Merbabu.",
-    fasilitas: [
-      { label: "AC", icon: "AirVent" },
-      { label: "WiFi", icon: "Wifi" },
-      { label: "Reclining Seat", icon: "Armchair" },
-    ],
+    fasilitas: ["AC", "WiFi", "Reclining Seat"],
     policy: ["Wajib sabuk pengaman", "Agen resmi saja", "P3K tersedia"],
   },
   {
@@ -540,11 +449,7 @@ export const daftarTiketBus = [
     harga: 145000,
     description:
       "Kelas sleeper dengan harga terjangkau. Pengalaman tidur di kabin kapsul sepanjang perjalanan.",
-    fasilitas: [
-      { label: "Sleeper Seat", icon: "Bed" },
-      { label: "Toilet", icon: "Bath" },
-      { label: "Snack", icon: "Utensils" },
-    ],
+    fasilitas: ["Sleeper Seat", "Toilet", "Snack"],
     policy: ["Selimut UV", "Earphone disediakan", "No sharp objects"],
   },
   {
@@ -560,11 +465,7 @@ export const daftarTiketBus = [
     harga: 140000,
     description:
       "Bus eksekutif terbaru dengan desain aerodinamis. Cepat, aman, dan sangat stabil di jalan tol.",
-    fasilitas: [
-      { label: "AC", icon: "AirVent" },
-      { label: "Toilet", icon: "Bath" },
-      { label: "WiFi", icon: "Wifi" },
-    ],
+    fasilitas: ["AC", "Toilet", "WiFi"],
     policy: [
       "Bagasi terbatas",
       "No drugs",
