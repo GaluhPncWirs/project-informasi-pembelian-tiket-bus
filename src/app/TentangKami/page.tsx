@@ -5,21 +5,21 @@ export default function TentangKami() {
   return (
     <RootLayout>
       <h1 className="text-4xl">Tentang Kami</h1>
-      <h3 className="text-slate-600 tracking-wider text-xl text-right">
-        Mitra Perjalanan Anda
-      </h3>
-      <div className="flex justify-between">
-        <div className="max-w-lg">
+      <div className="flex flex-col sm:flex-row sm:gap-5 md:justify-between">
+        <div className="sm:max-w-lg">
           <img
             src="/images/local/tentangKita/bus.png"
             alt="Bus"
-            className="w-64 h-40 object-cover"
+            className="w-64 h-36 object-cover"
           />
           <p className="tracking-wide text-justify mt-3">
             MF Rent Car Tour and Travel hadir untuk memudahkan anda dalam
             menemukan rute, jadwal, dan perjalanan. kami bersedia berkomitmen
             untuk transparansi dan layanan berkualitas.
           </p>
+          <h3 className="text-slate-600 tracking-wider text-xl text-right mt-5">
+            Mitra Perjalanan Anda
+          </h3>
         </div>
         <img
           src="/images/local/tentangKita/travel.png"
@@ -27,9 +27,9 @@ export default function TentangKami() {
           className="w-md h-72 object-contain"
         />
       </div>
-      <div className="grid grid-cols-3 gap-5 my-10">
-        <div className="flex flex-col items-center gap-3 bg-slate-50 rounded-md p-5 shadow-lg shadow-slate-400">
-          <div className="p-4 bg-emerald-100 rounded-md">
+      <div className="grid grid-cols-1 gap-5 my-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-col gap-3 bg-slate-50 rounded-md p-5 shadow-lg shadow-slate-400">
+          <div className="p-4 bg-emerald-100 rounded-md w-fit">
             <Eye className="size-8 text-[#2E7D32]" />
           </div>
           <h1 className="text-xl font-semibold tracking-wider">Visi</h1>
@@ -39,8 +39,8 @@ export default function TentangKami() {
             penumpang.
           </p>
         </div>
-        <div className="flex flex-col items-center gap-3 bg-slate-50 rounded-md p-5 shadow-lg shadow-slate-400">
-          <div className="p-4 bg-emerald-100 rounded-md">
+        <div className="flex flex-col gap-3 bg-slate-50 rounded-md p-5 shadow-lg shadow-slate-400">
+          <div className="p-4 bg-emerald-100 rounded-md w-fit">
             <Target className="size-8 text-[#2E7D32]" />
           </div>
           <h1 className="text-xl font-semibold tracking-wider">Misi</h1>
@@ -49,8 +49,8 @@ export default function TentangKami() {
             setiap perjalanan dengan pelayanan kami.
           </p>
         </div>
-        <div className="flex flex-col items-center gap-3 bg-slate-50 rounded-md p-5 shadow-lg shadow-slate-400">
-          <div className="p-4 bg-emerald-100 rounded-md">
+        <div className="flex flex-col gap-3 bg-slate-50 rounded-md p-5 shadow-lg shadow-slate-400">
+          <div className="p-4 bg-emerald-100 rounded-md w-fit">
             <HelpingHand className="size-8 text-[#2E7D32]" />
           </div>
           <h1 className="text-xl font-semibold tracking-wider">Nilai</h1>
