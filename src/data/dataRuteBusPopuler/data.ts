@@ -1,6 +1,5 @@
 export const ruteTerpopuler = [
   {
-    rute: "Surabaya - Malang",
     from: "Surabaya",
     city: "Malang",
     harga: 125000,
@@ -8,7 +7,6 @@ export const ruteTerpopuler = [
     layanan: ["Executive", "Double Decker"],
   },
   {
-    rute: "Semarang - Jakarta Selatan",
     from: "Semarang",
     city: "Jakarta Selatan",
     harga: 350000,
@@ -16,7 +14,6 @@ export const ruteTerpopuler = [
     layanan: ["Executive", "Luxury"],
   },
   {
-    rute: "Bekasi - Cirebon",
     from: "Bekasi",
     city: "Cirebon",
     harga: 120000,
@@ -24,7 +21,6 @@ export const ruteTerpopuler = [
     layanan: ["Luxury", "Sleeper Bus"],
   },
   {
-    rute: "Sukabumi - Bogor",
     from: "Sukabumi",
     city: "Bogor",
     harga: 35000,

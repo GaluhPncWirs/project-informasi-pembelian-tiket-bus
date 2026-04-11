@@ -6,15 +6,15 @@ import { useNavigate } from "react-router-dom";
 export default function RutePopuler({ item }: { item: dataRutePopuler }) {
   const push = useNavigate();
   function handleToDetailTicket() {
+    const convertToArray = [item.from, item.city].join(" - ");
     const toDetailTicket = daftarTiketBus.find(
-      (nameRute) => nameRute.rute === item.rute,
+      (nameRute) => nameRute.rute === convertToArray,
     );
     push(`/DaftarTiketBus/Detail/${toDetailTicket?.id}`);
   }
   return (
     <div
       className="group relative bg-white border border-slate-200 rounded-3xl p-6 transition-all duration-300 hover:border-[#1A237E] hover:shadow-xl hover:shadow-blue-500/10 cursor-pointer"
-      key={item.rute}
       onClick={handleToDetailTicket}
     >
       {/* Badge Kategori */}
