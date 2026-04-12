@@ -3,37 +3,6 @@ import app from "./init";
 
 const firestore = getFirestore(app);
 
-// const ruteTerpopuler = [
-//   {
-//     from: "Surabaya",
-//     city: "Malang",
-//     totalJadwal: 3,
-//     harga: 125000,
-//     layanan: ["Executive", "Double Decker"],
-//   },
-//   {
-//     from: "Semarang",
-//     city: "Jakarta Selatan",
-//     totalJadwal: 2,
-//     harga: 350000,
-//     layanan: ["Executive", "Luxury"],
-//   },
-//   {
-//     from: "Bekasi",
-//     city: "Cirebon",
-//     totalJadwal: 5,
-//     harga: 120000,
-//     layanan: ["Luxury", "Sleeper Bus"],
-//   },
-//   {
-//     from: "Sukabumi",
-//     city: "Bogor",
-//     totalJadwal: 7,
-//     harga: 35000,
-//     layanan: ["Economy"],
-//   },
-// ];
-
 export async function getDatasTicketBus() {
   try {
     const snapshot = await getDocs(collection(firestore, "data-tiket-bus"));
@@ -80,23 +49,73 @@ export async function getDatasRouteBusPopular() {
   }
 }
 
-// export async function batchUpload() {
-//   const batch = writeBatch(firestore);
+// async function batchUpload() {
+//   const getDataTiketBus = await getDatasTicketBus();
 
-//   daftarTiketBus.forEach((item) => {
-//     const docRef = doc(collection(firestore, "data-tiket-bus"));
-//     batch.set(docRef, item);
-//   });
+//   if (getDataTiketBus.status) {
+//     const createNewData = getDataTiketBus.data.reduce(
+//       (acc, cur) => {
+//         if (cur.rute) {
+//           const [dari, sampai] = cur.rute.split(" - ");
+//           let kategoriSelected = "";
 
-//   try {
-//     await batch.commit();
-//     console.log("Batch upload sukses!");
-//   } catch (error) {
-//     console.error("Batch upload gagal:", error);
+//           if (cur.typeTiket === "Economy") {
+//             kategoriSelected = "Bus Ekonomi";
+//           } else if (
+//             cur.typeTiket === "Luxury" &&
+//             cur.typeBus.toLowerCase().includes("sleeper")
+//           ) {
+//             kategoriSelected = "Premium Sleeper";
+//           } else if (cur.typeTiket === "Luxury") {
+//             kategoriSelected = "Luxury First Class";
+//           } else if (cur.harga > 300000) {
+//             kategoriSelected = "Favorit Jarak Jauh";
+//           } else {
+//             kategoriSelected = "Paling Ramai";
+//           }
+
+//           if (cur.tiketDibeli > 5) {
+//             acc.push({
+//               dari,
+//               sampai,
+//               totalJadwal: 1,
+//               harga: cur.harga,
+//               kategori: kategoriSelected,
+//               fasilitas: cur.fasilitas,
+//               skor: 4.5 + Math.random() * 0.5,
+//             });
+//           }
+//         }
+//         return acc;
+//       },
+//       [] as Array<{
+//         dari: string;
+//         sampai: string;
+//         totalJadwal: number;
+//         harga: number;
+//         kategori: string;
+//         fasilitas: string[];
+//         skor: number;
+//       }>,
+//     );
+
+//     const batch = writeBatch(firestore);
+
+//     createNewData.forEach((item) => {
+//       const docRef = doc(collection(firestore, "rute-bus-terpopuler"));
+//       batch.set(docRef, item);
+//     });
+
+//     try {
+//       await batch.commit();
+//       console.log("Batch upload sukses!");
+//     } catch (error) {
+//       console.error("Batch upload gagal:", error);
+//     }
 //   }
 // }
 
-// // batchUpload();
+// batchUpload();
 
 // // untuk realtime
 // export function subscribeToGetDataGamePS2(callback: (dataGame : dataGamePS2[]) => void){

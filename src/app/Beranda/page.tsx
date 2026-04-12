@@ -3,13 +3,31 @@ import { Bus, SlidersHorizontal, TicketPercent, Verified } from "lucide-react";
 import { Link } from "react-router-dom";
 import CariJadwalBus from "../../components/local/cariJadwalBus/content";
 import RutePopuler from "@/components/local/rutePopuler/content";
-import { ruteTerpopuler } from "@/data/dataRuteBusPopuler/data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PaginationListTicketBus from "@/layout/pagination/content";
+import type { dataRutePopuler } from "@/types/typeDataRutePopuler";
+import { getDatasRouteBusPopular } from "@/lib/firebase/services";
+import { toast } from "sonner";
 
 export default function Beranda() {
   const ITEM_PER_PAGE = 2;
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [getDataRutePopuler, setGetDataPopuler] = useState<dataRutePopuler[]>(
+    [],
+  );
+
+  useEffect(() => {
+    async function handleGetDataRutePopuler() {
+      const request = await getDatasRouteBusPopular();
+      if (request.status) {
+        setGetDataPopuler(request.data as dataRutePopuler[]);
+      } else {
+        toast("Gagal ambil data");
+      }
+    }
+    handleGetDataRutePopuler();
+  }, []);
+
   return (
     <>
       <header className="heroSection">
@@ -39,19 +57,19 @@ export default function Beranda() {
           </p>
           <div>
             <div className="mt-7 grid grid-cols-1 lg:grid-cols-2 gap-7">
-              {ruteTerpopuler
+              {getDataRutePopuler
                 .slice(
                   (currentPage - 1) * ITEM_PER_PAGE,
                   currentPage * ITEM_PER_PAGE,
                 )
-                .map((item, i) => (
-                  <div key={i}>
+                .map((item) => (
+                  <div key={item.id}>
                     <RutePopuler item={item} />
                   </div>
                 ))}
             </div>
             <PaginationListTicketBus
-              dataTicketBus={ruteTerpopuler}
+              dataTicketBus={getDataRutePopuler}
               ITEM_PER_PAGE={ITEM_PER_PAGE}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}

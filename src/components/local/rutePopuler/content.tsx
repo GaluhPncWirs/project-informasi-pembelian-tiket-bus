@@ -1,16 +1,31 @@
-import { daftarTiketBus } from "@/data/dataTiketBus/data";
+import { useGetDataTicketBus } from "@/store/useGetDataTiketBus/state";
 import type { dataRutePopuler } from "@/types/typeDataRutePopuler";
 import { ArrowRight, Bus, Clock } from "lucide-react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useShallow } from "zustand/shallow";
 
 export default function RutePopuler({ item }: { item: dataRutePopuler }) {
   const push = useNavigate();
+  const { dataTicketBus, handleGetDataTicketBus } = useGetDataTicketBus(
+    useShallow((state) => ({
+      dataTicketBus: state.dataTicketBus,
+      handleGetDataTicketBus: state.handleGetDataTicketBus,
+    })),
+  );
+
+  useEffect(() => {
+    handleGetDataTicketBus();
+  }, [handleGetDataTicketBus]);
+
   function handleToDetailTicket() {
-    const convertToArray = [item.from, item.city].join(" - ");
-    const toDetailTicket = daftarTiketBus.find(
+    const convertToArray = [item.dari, item.sampai].join(" - ");
+    const toDetailTicket = dataTicketBus.find(
       (nameRute) => nameRute.rute === convertToArray,
     );
-    push(`/DaftarTiketBus/Detail/${toDetailTicket?.id}`);
+    if (toDetailTicket) {
+      push(`/DaftarTiketBus/Detail/${toDetailTicket.id}`);
+    }
   }
   return (
     <div
@@ -32,10 +47,10 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
           </div>
           <div>
             <h4 className="text-xs text-slate-400 tracking-wider">
-              Dari {item.from}
+              Dari {item.dari}
             </h4>
             <h3 className="font-bold text-slate-800 text-lg leading-snug tracking-wide">
-              {item.city}
+              {item.sampai}
             </h3>
           </div>
         </div>
@@ -46,8 +61,8 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
         </div>
 
         {/* Info Layanan (Chip/Tags) */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {item.layanan.map((label, idx) => (
+        <div className="flex flex-wrap gap-3 mb-6 max-w-56">
+          {item.fasilitas.map((label, idx) => (
             <span
               key={idx}
               className="text-[11px] font-medium px-2.5 py-1 bg-slate-100 text-slate-600 rounded-md group-hover:bg-blue-50 group-hover:text-blue-700 transition-colors"

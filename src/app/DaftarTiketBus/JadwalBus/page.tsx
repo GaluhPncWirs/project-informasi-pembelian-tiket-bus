@@ -9,8 +9,7 @@ import { formatRupiah } from "../../../hooks/convertRupiah";
 import { useFilterTicketBus } from "../../../store/useFilterTicketBus/state";
 import { useShallow } from "zustand/shallow";
 import PaginationListTicketBus from "@/layout/pagination/content";
-// import { getDatasTicketBus } from "@/lib/firebase/services";
-// import type { dataTicket } from "@/types/typeDataTicket";
+import { useGetDataTicketBus } from "@/store/useGetDataTiketBus/state";
 
 export default function JadwalBus() {
   const MIN_PRICE = 50_000;
@@ -22,9 +21,8 @@ export default function JadwalBus() {
   const [timeOfDepature, setTimeOfDepature] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const ITEM_PER_PAGE = 4;
-  // const [getDataTiketBus, setGetDataTicketBus] = useState<dataTicket[]>([]);
 
-  // untuk select tipe tiket
+  // untuk handle select tipe tiket
   function handleTypeBusChange(
     busType: string,
     checked: boolean | "indeterminate",
@@ -38,58 +36,16 @@ export default function JadwalBus() {
     });
   }
 
-  // untuk ambil data
-  const { setFetchAllDataTicketBus } = useFilterTicketBus();
+  const { handleGetDataTicketBus } = useGetDataTicketBus();
+  const { setSourceData } = useFilterTicketBus();
 
   useEffect(() => {
-    setFetchAllDataTicketBus();
-  }, [setFetchAllDataTicketBus]);
-
-  // useEffect(() => {
-  //   async function getData() {
-  //     const getData = await getDatasTicketBus();
-  //     if (getData.status) {
-  //       setGetDataTicketBus(getData.data as dataTicket[]);
-  //     }
-  //   }
-  //   getData();
-  // }, []);
-
-  // const createNewData = getDataTiketBus.reduce((acc, cur) => {
-  //   const [dari, sampai] = cur.rute.split(" - ");
-
-  //   let kategoriSelected = "";
-
-  //   if (cur.typeTiket === "Economy") {
-  //     kategoriSelected = "Bus Ekonomi";
-  //   } else if (
-  //     cur.typeTiket === "Luxury" &&
-  //     cur.typeBus.toLowerCase().includes("sleeper")
-  //   ) {
-  //     kategoriSelected = "Premium Sleeper";
-  //   } else if (cur.typeTiket === "Luxury") {
-  //     kategoriSelected = "Luxury First Class";
-  //   } else if (cur.harga > 300000) {
-  //     kategoriSelected = "Favorit Jarak Jauh";
-  //   } else {
-  //     kategoriSelected = "Paling Ramai";
-  //   }
-
-  //   if (cur.tiketDibeli > 5) {
-  //     acc.push({
-  //       dari,
-  //       sampai,
-  //       totalJadwal: 1,
-  //       harga: cur.harga,
-  //       kategori: kategoriSelected,
-  //       fasilitas: cur.fasilitas,
-  //       skor: 4.5 + Math.random() * 0.5,
-  //     });
-  //   }
-  //   return acc;
-  // }, []);
-
-  // console.log(createNewData);
+    async function load() {
+      await handleGetDataTicketBus();
+      setSourceData(useGetDataTicketBus.getState().dataTicketBus);
+    }
+    load();
+  }, [handleGetDataTicketBus, setSourceData]);
 
   // untuk filter tiket bus
   const { dataTicketBus, setApplyAllFilters, setHandleResetFilter } =

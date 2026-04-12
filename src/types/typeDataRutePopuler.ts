@@ -1,8 +1,10 @@
 export type dataRutePopuler = {
-  city: string;
-  from: string;
+  id: string;
+  dari: string;
+  sampai: string;
   totalJadwal: number;
   harga: number;
   kategori: string;
-  layanan: string[];
+  fasilitas: string[];
+  skor: number;
 };
