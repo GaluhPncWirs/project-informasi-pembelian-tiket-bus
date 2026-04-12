@@ -1,6 +1,6 @@
 import { daftarTiketBus } from "@/data/dataTiketBus/data";
 import type { dataRutePopuler } from "@/types/typeDataRutePopuler";
-import { ArrowRight, Bus } from "lucide-react";
+import { ArrowRight, Bus, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function RutePopuler({ item }: { item: dataRutePopuler }) {
@@ -26,7 +26,7 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
 
       <div className="flex flex-col h-full">
         {/* Header: Rute */}
-        <div className="flex items-center gap-3 truncate max-w-56 mb-4 mt-2">
+        <div className="flex items-center gap-3 truncate max-w-56 mt-2">
           <div className="p-3 bg-blue-50 text-blue-600 rounded-2xl group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
             <Bus size={24} />
           </div>
@@ -34,10 +34,15 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
             <h4 className="text-xs text-slate-400 tracking-wider">
               Dari {item.from}
             </h4>
-            <h3 className="font-bold text-slate-800 text-lg leading-tight">
+            <h3 className="font-bold text-slate-800 text-lg leading-snug tracking-wide">
               {item.city}
             </h3>
           </div>
+        </div>
+
+        <div className="text-sm text-slate-400 flex items-center gap-1.5 my-2">
+          <Clock size={14} />{" "}
+          <span>{item.totalJadwal} Jadwal tersedia hari ini</span>
         </div>
 
         {/* Info Layanan (Chip/Tags) */}
@@ -53,7 +58,7 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
         </div>
 
         {/* gambar kotanya */}
-        <div className="absolute right-6 w-1/3 h-46">
+        <div className="absolute right-6 w-1/3 h-50">
           <img
             src="/images/local/beranda/bandung.webp"
             className="size-full object-cover rounded-lg"

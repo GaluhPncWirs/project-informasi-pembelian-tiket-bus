@@ -3,6 +3,37 @@ import app from "./init";
 
 const firestore = getFirestore(app);
 
+// const ruteTerpopuler = [
+//   {
+//     from: "Surabaya",
+//     city: "Malang",
+//     totalJadwal: 3,
+//     harga: 125000,
+//     layanan: ["Executive", "Double Decker"],
+//   },
+//   {
+//     from: "Semarang",
+//     city: "Jakarta Selatan",
+//     totalJadwal: 2,
+//     harga: 350000,
+//     layanan: ["Executive", "Luxury"],
+//   },
+//   {
+//     from: "Bekasi",
+//     city: "Cirebon",
+//     totalJadwal: 5,
+//     harga: 120000,
+//     layanan: ["Luxury", "Sleeper Bus"],
+//   },
+//   {
+//     from: "Sukabumi",
+//     city: "Bogor",
+//     totalJadwal: 7,
+//     harga: 35000,
+//     layanan: ["Economy"],
+//   },
+// ];
+
 export async function getDatasTicketBus() {
   try {
     const snapshot = await getDocs(collection(firestore, "data-tiket-bus"));
