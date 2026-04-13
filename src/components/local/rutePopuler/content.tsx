@@ -1,22 +1,11 @@
 import { useGetDataTicketBus } from "@/store/useGetDataTiketBus/state";
 import type { dataRutePopuler } from "@/types/typeDataRutePopuler";
 import { ArrowRight, Bus, Clock } from "lucide-react";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useShallow } from "zustand/shallow";
 
 export default function RutePopuler({ item }: { item: dataRutePopuler }) {
   const push = useNavigate();
-  const { dataTicketBus, handleGetDataTicketBus } = useGetDataTicketBus(
-    useShallow((state) => ({
-      dataTicketBus: state.dataTicketBus,
-      handleGetDataTicketBus: state.handleGetDataTicketBus,
-    })),
-  );
-
-  useEffect(() => {
-    handleGetDataTicketBus();
-  }, [handleGetDataTicketBus]);
+  const { dataTicketBus } = useGetDataTicketBus();
 
   function handleToDetailTicket() {
     const convertToArray = [item.dari, item.sampai].join(" - ");
@@ -61,11 +50,12 @@ export default function RutePopuler({ item }: { item: dataRutePopuler }) {
         </div>
 
         {/* Info Layanan (Chip/Tags) */}
-        <div className="flex flex-wrap gap-3 mb-6 max-w-56">
+        <div className="flex gap-3 mb-6 max-w-64">
           {item.fasilitas.map((label, idx) => (
             <span
               key={idx}
-              className="text-[11px] font-medium px-2.5 py-1 bg-slate-100 text-slate-600 rounded-md group-hover:bg-blue-50 group-hover:text-blue-700 transition-colors"
+              className="text-[11px] font-medium px-2.5 py-1 bg-slate-100 text-slate-600 rounded-md group-hover:bg-blue-50 group-hover:text-blue-700 transition-colors truncate max-w-full block"
+              title={label}
             >
               {label}
             </span>

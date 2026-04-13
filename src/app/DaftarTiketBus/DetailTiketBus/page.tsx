@@ -21,7 +21,6 @@ import {
   Wind,
 } from "lucide-react";
 import LinkButton from "../../../components/global/linkButton/content";
-import { useFilterTicketBus } from "@/store/useFilterTicketBus/state";
 import { formatRupiah } from "@/hooks/convertRupiah";
 import {
   Dialog,
@@ -38,97 +37,165 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useGetDataTicketBus } from "@/store/useGetDataTiketBus/state";
 
 export default function DetailTiketBus() {
   const { idTiketBus } = useParams();
-  const allDataTicketBus = useFilterTicketBus(
-    (state) => state.allDataTicketBus,
-  );
-  const isDetailTicketBus = allDataTicketBus.find(
+  const { dataTicketBus } = useGetDataTicketBus();
+  const isDetailTicketBus = dataTicketBus.find(
     (idTicket) => idTicket.id === idTiketBus,
   );
   return (
     <RootLayout>
-      <div className="mb-10">
-        <div>
-          <img
-            src="/images/local/jadwalBus/bus_double_decker.webp"
-            alt="tiket bus detail"
-            className="rounded-lg w-full max-h-96 object-cover mb-5 shadow-md shadow-slate-700"
-          />
-          <div className="flex items-center gap-3">
-            {Array.from({ length: 10 })
-              .slice(0, 5)
-              .map((_, i: number) => {
-                const gambarTerakhir = i === 4;
-                const sisaGambar = 10 - 4;
-                return (
-                  <div
-                    key={i}
-                    className="relative w-1/3 aspect-video cursor-pointer"
-                  >
-                    <Dialog>
-                      <DialogTrigger>
+      <div>
+        <img
+          src="/images/local/jadwalBus/bus_double_decker.webp"
+          alt="tiket bus detail"
+          className="rounded-lg w-full max-h-96 object-cover mb-5 shadow-md shadow-slate-700"
+        />
+        <div className="flex items-center gap-3">
+          {Array.from({ length: 10 })
+            .slice(0, 5)
+            .map((_, i: number) => {
+              const gambarTerakhir = i === 4;
+              const sisaGambar = 10 - 4;
+              return (
+                <div
+                  key={i}
+                  className="relative w-1/3 aspect-video cursor-pointer"
+                >
+                  <Dialog>
+                    <DialogTrigger>
+                      <img
+                        src="/images/local/jadwalBus/bus_double_decker.webp"
+                        alt={`tiket bus detail ${i}`}
+                        className="size-full object-cover rounded-lg"
+                      />
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Gambar ke-{i + 1}</DialogTitle>
+                      </DialogHeader>
+                      <DialogDescription>
                         <img
                           src="/images/local/jadwalBus/bus_double_decker.webp"
-                          alt={`tiket bus detail ${i}`}
-                          className="size-full object-cover rounded-lg"
+                          alt={`gambar ke-${i}`}
                         />
+                      </DialogDescription>
+                    </DialogContent>
+                  </Dialog>
+
+                  {gambarTerakhir && sisaGambar > 0 && (
+                    <Dialog>
+                      <DialogTrigger>
+                        <div className="absolute inset-0 bg-black/60 rounded-lg flex items-center justify-center hover:bg-black/50 transition">
+                          <span className="text-white font-bold text-sm md:text-lg">
+                            +{sisaGambar}
+                          </span>
+                        </div>
                       </DialogTrigger>
                       <DialogContent>
                         <DialogHeader>
-                          <DialogTitle>Gambar ke-{i + 1}</DialogTitle>
+                          <DialogTitle>Gambar Selanjutnya</DialogTitle>
                         </DialogHeader>
-                        <DialogDescription>
-                          <img
-                            src="/images/local/jadwalBus/bus_double_decker.webp"
-                            alt={`gambar ke-${i}`}
-                          />
-                        </DialogDescription>
+                        <div>
+                          <Carousel>
+                            <CarouselContent>
+                              {Array.from({ length: i }).map((_, indexImg) => (
+                                <CarouselItem key={indexImg}>
+                                  <img
+                                    src="/images/local/jadwalBus/bus_double_decker.webp"
+                                    alt={`gambar ke-${i}`}
+                                  />
+                                </CarouselItem>
+                              ))}
+                            </CarouselContent>
+                            <CarouselPrevious />
+                            <CarouselNext />
+                          </Carousel>
+                        </div>
                       </DialogContent>
                     </Dialog>
-
-                    {gambarTerakhir && sisaGambar > 0 && (
-                      <Dialog>
-                        <DialogTrigger>
-                          <div className="absolute inset-0 bg-black/60 rounded-lg flex items-center justify-center hover:bg-black/50 transition">
-                            <span className="text-white font-bold text-sm md:text-lg">
-                              +{sisaGambar}
-                            </span>
-                          </div>
-                        </DialogTrigger>
-                        <DialogContent>
-                          <DialogHeader>
-                            <DialogTitle>Gambar Selanjutnya</DialogTitle>
-                          </DialogHeader>
-                          <div>
-                            <Carousel>
-                              <CarouselContent>
-                                {Array.from({ length: i }).map(
-                                  (_, indexImg) => (
-                                    <CarouselItem key={indexImg}>
-                                      <img
-                                        src="/images/local/jadwalBus/bus_double_decker.webp"
-                                        alt={`gambar ke-${i}`}
-                                      />
-                                    </CarouselItem>
-                                  ),
-                                )}
-                              </CarouselContent>
-                              <CarouselPrevious />
-                              <CarouselNext />
-                            </Carousel>
-                          </div>
-                        </DialogContent>
-                      </Dialog>
-                    )}
-                  </div>
-                );
-              })}
-          </div>
+                  )}
+                </div>
+              );
+            })}
         </div>
+      </div>
+      <div className="mb-8">
         {!isDetailTicketBus ? (
-          <h1>Loading...</h1>
+          <div className="mt-7 flex flex-col gap-5 animate-pulse">
+            {/* Header Section: Icon, Title, and Price */}
+            <div className="flex justify-between">
+              <div className="flex items-center gap-5">
+                <div className="flex flex-col items-center gap-2">
+                  {/* Icon Skeleton */}
+                  <div className="size-6 bg-slate-200 rounded-full" />
+                  <div className="size-12 bg-slate-200 rounded-md" />
+                </div>
+                <div className="space-y-2">
+                  {/* Title & Subtitle Skeleton */}
+                  <div className="h-7 w-32 bg-slate-200 rounded" />
+                  <div className="h-4 w-48 bg-slate-200 rounded" />
+                </div>
+              </div>
+              {/* Price Skeleton */}
+              <div className="h-7 w-28 bg-slate-200 rounded" />
+            </div>
+
+            {/* Info Grid Section */}
+            <div className="flex flex-wrap gap-8 md:justify-between md:gap-0">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="space-y-2">
+                  <div className="h-4 w-20 bg-slate-200 rounded" />
+                  <div className="h-6 w-24 bg-slate-200 rounded" />
+                </div>
+              ))}
+            </div>
+
+            <div className="w-full h-1 bg-slate-200 rounded-md" />
+
+            {/* Facilities Section */}
+            <div>
+              <div className="h-6 w-32 bg-slate-200 rounded mb-5" />
+              <div className="grid grid-cols-4 gap-5 place-items-center md:grid-cols-5">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div
+                    key={i}
+                    className="flex flex-col gap-3 items-center w-full"
+                  >
+                    <div className="bg-slate-200 h-20 w-20 md:h-24 md:w-24 rounded-md" />
+                    <div className="h-4 w-16 bg-slate-200 rounded" />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="w-full h-1 bg-slate-200 rounded-md" />
+
+            {/* Description Section */}
+            <div>
+              <div className="h-6 w-28 bg-slate-200 rounded mb-3" />
+              <div className="space-y-2">
+                <div className="h-4 w-full bg-slate-200 rounded" />
+                <div className="h-4 w-full bg-slate-200 rounded" />
+                <div className="h-4 w-3/4 bg-slate-200 rounded" />
+              </div>
+            </div>
+
+            {/* Policy Section */}
+            <div>
+              <div className="h-6 w-28 bg-slate-200 rounded mb-3" />
+              <div className="space-y-3">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="flex gap-2 items-center">
+                    <div className="size-2 bg-slate-200 rounded-full" />
+                    <div className="h-4 w-1/2 bg-slate-200 rounded" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         ) : (
           <div className="mt-7 flex flex-col gap-5">
             <div className="flex justify-between">
@@ -242,7 +309,9 @@ export default function DetailTiketBus() {
           </div>
         )}
       </div>
-      <LinkButton href="/DaftarTiketBus" textButton="Kembali" />
+      <div>
+        <LinkButton href="/DaftarTiketBus" textButton="Kembali" />
+      </div>
     </RootLayout>
   );
 }
