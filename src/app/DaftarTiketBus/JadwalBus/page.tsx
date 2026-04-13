@@ -9,7 +9,6 @@ import { formatRupiah } from "../../../hooks/convertRupiah";
 import { useFilterTicketBus } from "../../../store/useFilterTicketBus/state";
 import { useShallow } from "zustand/shallow";
 import PaginationListTicketBus from "@/layout/pagination/content";
-import { useGetDataTicketBus } from "@/store/useGetDataTiketBus/state";
 
 export default function JadwalBus() {
   const MIN_PRICE = 50_000;
@@ -36,16 +35,12 @@ export default function JadwalBus() {
     });
   }
 
-  const { handleGetDataTicketBus } = useGetDataTicketBus();
+  // load data tiket bus
   const { setSourceData } = useFilterTicketBus();
 
   useEffect(() => {
-    async function load() {
-      await handleGetDataTicketBus();
-      setSourceData(useGetDataTicketBus.getState().dataTicketBus);
-    }
-    load();
-  }, [handleGetDataTicketBus, setSourceData]);
+    setSourceData();
+  }, [setSourceData]);
 
   // untuk filter tiket bus
   const { dataTicketBus, setApplyAllFilters, setHandleResetFilter } =

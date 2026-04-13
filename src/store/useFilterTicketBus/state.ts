@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import type { dataTicket } from "../../types/typeDataTicket";
 import { toast } from "sonner";
+import { useGetDataTicketBus } from "../useGetDataTiketBus/state";
 
 type ApplyAllFilters = {
   rangePriceVal: number;
@@ -17,7 +18,7 @@ type FilterTicketBus = {
     kotaYangDipilih: string[];
     tanggalBerangkat: string;
   };
-  setSourceData: (data: dataTicket[]) => void;
+  setSourceData: () => void;
   setApplyAllFilters: (filters: ApplyAllFilters) => void;
   setHandleSearchTicketBus: (
     kotaYangDipilih: string[],
@@ -33,7 +34,14 @@ export const useFilterTicketBus = create<FilterTicketBus>((set) => ({
     kotaYangDipilih: [],
     tanggalBerangkat: "",
   },
-  setSourceData: (data) => set({ allDataTicketBus: data, dataTicketBus: data }),
+
+  setSourceData: async () => {
+    await useGetDataTicketBus.getState().handleGetDataTicketBus();
+    set({
+      allDataTicketBus: useGetDataTicketBus.getState().dataTicketBus,
+      dataTicketBus: useGetDataTicketBus.getState().dataTicketBus,
+    });
+  },
 
   setApplyAllFilters: (filters) => {
     set((prev) => {
